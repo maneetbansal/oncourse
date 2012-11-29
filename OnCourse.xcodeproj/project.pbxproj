@@ -13,17 +13,20 @@
 		97DD0D9F16671FD50022378D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9E16671FD50022378D /* CoreGraphics.framework */; };
 		97DD0DA516671FD50022378D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DA316671FD50022378D /* InfoPlist.strings */; };
 		97DD0DA716671FD50022378D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0DA616671FD50022378D /* main.m */; };
-		97DD0DAB16671FD50022378D /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0DAA16671FD50022378D /* OCAppDelegate.m */; };
 		97DD0DAD16671FD50022378D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DAC16671FD50022378D /* Default.png */; };
 		97DD0DAF16671FD50022378D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DAE16671FD50022378D /* Default@2x.png */; };
 		97DD0DB116671FD50022378D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DB016671FD50022378D /* Default-568h@2x.png */; };
-		97DD0DB416671FD50022378D /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0DB316671FD50022378D /* OCViewController.m */; };
-		97DD0DB716671FD50022378D /* OCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DB516671FD50022378D /* OCViewController.xib */; };
 		97DD0DDF1667683A0022378D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0DDE1667683A0022378D /* SenTestingKit.framework */; };
 		97DD0DE01667683A0022378D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9A16671FD50022378D /* UIKit.framework */; };
 		97DD0DE11667683A0022378D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9C16671FD50022378D /* Foundation.framework */; };
 		97DD0DE71667683A0022378D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DE51667683A0022378D /* InfoPlist.strings */; };
 		97DD0DEA1667683A0022378D /* Kiwi.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0DE91667683A0022378D /* Kiwi.m */; };
+		97DD0E301667BD570022378D /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E281667BD570022378D /* OCAppDelegate.m */; };
+		97DD0E311667BD570022378D /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E281667BD570022378D /* OCAppDelegate.m */; };
+		97DD0E321667BD570022378D /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E2B1667BD570022378D /* OCViewController.m */; };
+		97DD0E331667BD570022378D /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E2B1667BD570022378D /* OCViewController.m */; };
+		97DD0E341667BD570022378D /* OCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0E2F1667BD570022378D /* OCViewController.xib */; };
+		97DD0E351667BD570022378D /* OCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0E2F1667BD570022378D /* OCViewController.xib */; };
 		C1A16833ADC94012AF345B23 /* libPods-Kiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */; };
 /* End PBXBuildFile section */
 
@@ -39,20 +42,20 @@
 		97DD0DA416671FD50022378D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		97DD0DA616671FD50022378D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		97DD0DA816671FD50022378D /* OnCourse-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnCourse-Prefix.pch"; sourceTree = "<group>"; };
-		97DD0DA916671FD50022378D /* OCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCAppDelegate.h; sourceTree = "<group>"; };
-		97DD0DAA16671FD50022378D /* OCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCAppDelegate.m; sourceTree = "<group>"; };
 		97DD0DAC16671FD50022378D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		97DD0DAE16671FD50022378D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		97DD0DB016671FD50022378D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		97DD0DB216671FD50022378D /* OCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
-		97DD0DB316671FD50022378D /* OCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
-		97DD0DB616671FD50022378D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OCViewController.xib; sourceTree = "<group>"; };
 		97DD0DDD1667683A0022378D /* Kiwi.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kiwi.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DD0DDE1667683A0022378D /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		97DD0DE41667683A0022378D /* Kiwi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kiwi-Info.plist"; sourceTree = "<group>"; };
 		97DD0DE61667683A0022378D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		97DD0DE91667683A0022378D /* Kiwi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kiwi.m; sourceTree = "<group>"; };
 		97DD0DEB1667683A0022378D /* Kiwi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kiwi-Prefix.pch"; sourceTree = "<group>"; };
+		97DD0E271667BD570022378D /* OCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAppDelegate.h; sourceTree = "<group>"; };
+		97DD0E281667BD570022378D /* OCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAppDelegate.m; sourceTree = "<group>"; };
+		97DD0E2A1667BD570022378D /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
+		97DD0E2B1667BD570022378D /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
+		97DD0E2F1667BD570022378D /* OCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OCViewController.xib; sourceTree = "<group>"; };
 		E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kiwi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,11 +122,8 @@
 		97DD0DA016671FD50022378D /* OnCourse */ = {
 			isa = PBXGroup;
 			children = (
-				97DD0DA916671FD50022378D /* OCAppDelegate.h */,
-				97DD0DAA16671FD50022378D /* OCAppDelegate.m */,
-				97DD0DB216671FD50022378D /* OCViewController.h */,
-				97DD0DB316671FD50022378D /* OCViewController.m */,
-				97DD0DB516671FD50022378D /* OCViewController.xib */,
+				97DD0E251667BD570022378D /* Classes */,
+				97DD0E2E1667BD570022378D /* Resources */,
 				97DD0DA116671FD50022378D /* Supporting Files */,
 			);
 			path = OnCourse;
@@ -160,6 +160,57 @@
 				97DD0DEB1667683A0022378D /* Kiwi-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97DD0E251667BD570022378D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				97DD0E261667BD570022378D /* AppDelegate */,
+				97DD0E291667BD570022378D /* Controllers */,
+				97DD0E2C1667BD570022378D /* Helpers */,
+				97DD0E2D1667BD570022378D /* Models */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		97DD0E261667BD570022378D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				97DD0E271667BD570022378D /* OCAppDelegate.h */,
+				97DD0E281667BD570022378D /* OCAppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		97DD0E291667BD570022378D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97DD0E2A1667BD570022378D /* OCViewController.h */,
+				97DD0E2B1667BD570022378D /* OCViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		97DD0E2C1667BD570022378D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		97DD0E2D1667BD570022378D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97DD0E2E1667BD570022378D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97DD0E2F1667BD570022378D /* OCViewController.xib */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +290,7 @@
 				97DD0DAD16671FD50022378D /* Default.png in Resources */,
 				97DD0DAF16671FD50022378D /* Default@2x.png in Resources */,
 				97DD0DB116671FD50022378D /* Default-568h@2x.png in Resources */,
-				97DD0DB716671FD50022378D /* OCViewController.xib in Resources */,
+				97DD0E341667BD570022378D /* OCViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0DE71667683A0022378D /* InfoPlist.strings in Resources */,
+				97DD0E351667BD570022378D /* OCViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +355,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0DA716671FD50022378D /* main.m in Sources */,
-				97DD0DAB16671FD50022378D /* OCAppDelegate.m in Sources */,
-				97DD0DB416671FD50022378D /* OCViewController.m in Sources */,
+				97DD0E301667BD570022378D /* OCAppDelegate.m in Sources */,
+				97DD0E321667BD570022378D /* OCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0DEA1667683A0022378D /* Kiwi.m in Sources */,
+				97DD0E311667BD570022378D /* OCAppDelegate.m in Sources */,
+				97DD0E331667BD570022378D /* OCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,14 +379,6 @@
 				97DD0DA416671FD50022378D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		97DD0DB516671FD50022378D /* OCViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				97DD0DB616671FD50022378D /* en */,
-			);
-			name = OCViewController.xib;
 			sourceTree = "<group>";
 		};
 		97DD0DE51667683A0022378D /* InfoPlist.strings */ = {
