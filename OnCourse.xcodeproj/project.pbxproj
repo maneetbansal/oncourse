@@ -27,10 +27,6 @@
 		97DD0DE71667683A0022378D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0DE51667683A0022378D /* InfoPlist.strings */; };
 		97DD0E301667BD570022378D /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E281667BD570022378D /* OCAppDelegate.m */; };
 		97DD0E311667BD570022378D /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E281667BD570022378D /* OCAppDelegate.m */; };
-		97DD0E321667BD570022378D /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E2B1667BD570022378D /* OCViewController.m */; };
-		97DD0E331667BD570022378D /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E2B1667BD570022378D /* OCViewController.m */; };
-		97DD0E341667BD570022378D /* OCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0E2F1667BD570022378D /* OCViewController.xib */; };
-		97DD0E351667BD570022378D /* OCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DD0E2F1667BD570022378D /* OCViewController.xib */; };
 		97DD0E511667C1AE0022378D /* OCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E501667C1AE0022378D /* OCUtility.m */; };
 		97DD0E521667C1AE0022378D /* OCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E501667C1AE0022378D /* OCUtility.m */; };
 		97DD0E581667C7400022378D /* OCUtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E561667C7400022378D /* OCUtilityTests.m */; };
@@ -65,9 +61,6 @@
 		97DD0DEB1667683A0022378D /* Kiwi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kiwi-Prefix.pch"; sourceTree = "<group>"; };
 		97DD0E271667BD570022378D /* OCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAppDelegate.h; sourceTree = "<group>"; };
 		97DD0E281667BD570022378D /* OCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAppDelegate.m; sourceTree = "<group>"; };
-		97DD0E2A1667BD570022378D /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
-		97DD0E2B1667BD570022378D /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
-		97DD0E2F1667BD570022378D /* OCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OCViewController.xib; sourceTree = "<group>"; };
 		97DD0E4F1667C1AE0022378D /* OCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCUtility.h; sourceTree = "<group>"; };
 		97DD0E501667C1AE0022378D /* OCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCUtility.m; sourceTree = "<group>"; };
 		97DD0E561667C7400022378D /* OCUtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCUtilityTests.m; sourceTree = "<group>"; };
@@ -210,8 +203,6 @@
 		97DD0E291667BD570022378D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97DD0E2A1667BD570022378D /* OCViewController.h */,
-				97DD0E2B1667BD570022378D /* OCViewController.m */,
 				97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */,
 				97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */,
 				97938ECB1667D1DC00D53965 /* OCLoginViewController.h */,
@@ -239,7 +230,6 @@
 		97DD0E2E1667BD570022378D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				97DD0E2F1667BD570022378D /* OCViewController.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -321,7 +311,6 @@
 				97DD0DAD16671FD50022378D /* Default.png in Resources */,
 				97DD0DAF16671FD50022378D /* Default@2x.png in Resources */,
 				97DD0DB116671FD50022378D /* Default-568h@2x.png in Resources */,
-				97DD0E341667BD570022378D /* OCViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0DE71667683A0022378D /* InfoPlist.strings in Resources */,
-				97DD0E351667BD570022378D /* OCViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +375,6 @@
 			files = (
 				97DD0DA716671FD50022378D /* main.m in Sources */,
 				97DD0E301667BD570022378D /* OCAppDelegate.m in Sources */,
-				97DD0E321667BD570022378D /* OCViewController.m in Sources */,
 				97DD0E511667C1AE0022378D /* OCUtility.m in Sources */,
 				97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */,
 				97938ECD1667D1DC00D53965 /* OCLoginViewController.m in Sources */,
@@ -399,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0E311667BD570022378D /* OCAppDelegate.m in Sources */,
-				97DD0E331667BD570022378D /* OCViewController.m in Sources */,
 				97DD0E521667C1AE0022378D /* OCUtility.m in Sources */,
 				97DD0E581667C7400022378D /* OCUtilityTests.m in Sources */,
 				97938EC71667CF7D00D53965 /* OCCourseListingsViewControllerTests.m in Sources */,

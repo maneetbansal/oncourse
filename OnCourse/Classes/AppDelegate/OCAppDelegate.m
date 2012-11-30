@@ -7,7 +7,6 @@
 //
 
 #import "OCAppDelegate.h"
-#import "OCViewController.h"
 #import "OCCourseListingsViewController.h"
 #import "OCLoginViewController.h"
 
@@ -17,8 +16,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[OCViewController alloc] initWithNibName:@"OCViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
     [self presentFirstView];
     [self.window makeKeyAndVisible];
     return YES;
