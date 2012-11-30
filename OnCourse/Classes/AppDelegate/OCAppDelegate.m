@@ -7,8 +7,9 @@
 //
 
 #import "OCAppDelegate.h"
-
 #import "OCViewController.h"
+#import "OCCourseListingsViewController.h"
+#import "OCLoginViewController.h"
 
 @implementation OCAppDelegate
 
@@ -18,8 +19,26 @@
     // Override point for customization after application launch.
     self.viewController = [[OCViewController alloc] initWithNibName:@"OCViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
+    [self presentFirstView];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)presentFirstView
+{
+    OCCourseListingsViewController *courseListingsViewController = [[OCCourseListingsViewController alloc] init];
+    OCLoginViewController *loginViewController = [[OCLoginViewController alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults stringForKey:@"isLogin"]) {
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:courseListingsViewController];
+    }
+    else
+    {
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    }
+    [self.navigationController setNavigationBarHidden:YES];
+    self.window.rootViewController = self.navigationController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
