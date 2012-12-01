@@ -8,11 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		1FB6C2275E3E47C3934B1469 /* libPods-OnCourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */; };
+		975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */; };
+		975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
+		975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
 		97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */; };
 		97938EC71667CF7D00D53965 /* OCCourseListingsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */; };
-		97938ECA1667D15100D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC81667D15100D53965 /* OCLoginViewController.m */; };
+		97938ECA1667D15100D53965 /* OCLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */; };
 		97938ECD1667D1DC00D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938ECC1667D1DC00D53965 /* OCLoginViewController.m */; };
 		97938ECE1667D1DC00D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938ECC1667D1DC00D53965 /* OCLoginViewController.m */; };
+		97B3081E166A15F500089470 /* login_background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081B166A15F500089470 /* login_background-568h@2x.png */; };
+		97B3081F166A15F500089470 /* login_background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081B166A15F500089470 /* login_background-568h@2x.png */; };
+		97B30820166A15F500089470 /* login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081C166A15F500089470 /* login_background.png */; };
+		97B30821166A15F500089470 /* login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081C166A15F500089470 /* login_background.png */; };
+		97B30822166A15F500089470 /* login_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081D166A15F500089470 /* login_background@2x.png */; };
+		97B30823166A15F500089470 /* login_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3081D166A15F500089470 /* login_background@2x.png */; };
+		97B3083B166A25EE00089470 /* LivoryBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30837166A25EE00089470 /* LivoryBold.otf */; };
+		97B3083C166A25EE00089470 /* LivoryBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30837166A25EE00089470 /* LivoryBold.otf */; };
+		97B3083D166A25EE00089470 /* LivoryBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30838166A25EE00089470 /* LivoryBoldItalic.otf */; };
+		97B3083E166A25EE00089470 /* LivoryBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30838166A25EE00089470 /* LivoryBoldItalic.otf */; };
+		97B3083F166A25EE00089470 /* LivoryItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30839166A25EE00089470 /* LivoryItalic.otf */; };
+		97B30840166A25EE00089470 /* LivoryItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B30839166A25EE00089470 /* LivoryItalic.otf */; };
+		97B30841166A25EE00089470 /* LivoryRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B3083A166A25EE00089470 /* LivoryRegular.otf */; };
+		97B30842166A25EE00089470 /* LivoryRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97B3083A166A25EE00089470 /* LivoryRegular.otf */; };
+		97B30847166A54C000089470 /* login_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30843166A54BF00089470 /* login_button.png */; };
+		97B30848166A54C000089470 /* login_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30843166A54BF00089470 /* login_button.png */; };
+		97B30849166A54C000089470 /* login_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30844166A54C000089470 /* login_button@2x.png */; };
+		97B3084A166A54C000089470 /* login_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30844166A54C000089470 /* login_button@2x.png */; };
+		97B3084B166A54C000089470 /* login_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30845166A54C000089470 /* login_Down.png */; };
+		97B3084C166A54C000089470 /* login_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30845166A54C000089470 /* login_Down.png */; };
+		97B3084D166A54C000089470 /* login_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30846166A54C000089470 /* login_Down@2x.png */; };
+		97B3084E166A54C000089470 /* login_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30846166A54C000089470 /* login_Down@2x.png */; };
 		97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9A16671FD50022378D /* UIKit.framework */; };
 		97DD0D9D16671FD50022378D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9C16671FD50022378D /* Foundation.framework */; };
 		97DD0D9F16671FD50022378D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9E16671FD50022378D /* CoreGraphics.framework */; };
@@ -37,12 +62,26 @@
 		5B455DBF1A864425BDCADB9F /* Pods-Kiwi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi.xcconfig"; path = "Pods/Pods-Kiwi.xcconfig"; sourceTree = SOURCE_ROOT; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewTests.m; sourceTree = "<group>"; };
+		975CCFAD1668DA56008B5CB3 /* OCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginView.h; sourceTree = "<group>"; };
+		975CCFAE1668DA56008B5CB3 /* OCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginView.m; sourceTree = "<group>"; };
 		97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingsViewController.h; sourceTree = "<group>"; };
 		97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingsViewController.m; sourceTree = "<group>"; };
 		97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingsViewControllerTests.m; sourceTree = "<group>"; };
-		97938EC81667D15100D53965 /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
+		97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewControllerTests.m; sourceTree = "<group>"; };
 		97938ECB1667D1DC00D53965 /* OCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginViewController.h; sourceTree = "<group>"; };
 		97938ECC1667D1DC00D53965 /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
+		97B3081B166A15F500089470 /* login_background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_background-568h@2x.png"; sourceTree = "<group>"; };
+		97B3081C166A15F500089470 /* login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_background.png; sourceTree = "<group>"; };
+		97B3081D166A15F500089470 /* login_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_background@2x.png"; sourceTree = "<group>"; };
+		97B30837166A25EE00089470 /* LivoryBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LivoryBold.otf; sourceTree = "<group>"; };
+		97B30838166A25EE00089470 /* LivoryBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LivoryBoldItalic.otf; sourceTree = "<group>"; };
+		97B30839166A25EE00089470 /* LivoryItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LivoryItalic.otf; sourceTree = "<group>"; };
+		97B3083A166A25EE00089470 /* LivoryRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LivoryRegular.otf; sourceTree = "<group>"; };
+		97B30843166A54BF00089470 /* login_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_button.png; sourceTree = "<group>"; };
+		97B30844166A54C000089470 /* login_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_button@2x.png"; sourceTree = "<group>"; };
+		97B30845166A54C000089470 /* login_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_Down.png; sourceTree = "<group>"; };
+		97B30846166A54C000089470 /* login_Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_Down@2x.png"; sourceTree = "<group>"; };
 		97DD0D9616671FD50022378D /* OnCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DD0D9A16671FD50022378D /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97DD0D9C16671FD50022378D /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,8 +135,35 @@
 		97938EE81667E2E000D53965 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				975CCFAD1668DA56008B5CB3 /* OCLoginView.h */,
+				975CCFAE1668DA56008B5CB3 /* OCLoginView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		97B30801166A0E9300089470 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				97B30843166A54BF00089470 /* login_button.png */,
+				97B30844166A54C000089470 /* login_button@2x.png */,
+				97B30845166A54C000089470 /* login_Down.png */,
+				97B30846166A54C000089470 /* login_Down@2x.png */,
+				97B3081B166A15F500089470 /* login_background-568h@2x.png */,
+				97B3081C166A15F500089470 /* login_background.png */,
+				97B3081D166A15F500089470 /* login_background@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		97B30836166A25EE00089470 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				97B30837166A25EE00089470 /* LivoryBold.otf */,
+				97B30838166A25EE00089470 /* LivoryBoldItalic.otf */,
+				97B30839166A25EE00089470 /* LivoryItalic.otf */,
+				97B3083A166A25EE00089470 /* LivoryRegular.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		97DD0D8B16671FD50022378D = {
@@ -164,7 +230,8 @@
 				97DD0DE31667683A0022378D /* Supporting Files */,
 				97DD0E561667C7400022378D /* OCUtilityTests.m */,
 				97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */,
-				97938EC81667D15100D53965 /* OCLoginViewController.m */,
+				97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */,
+				975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */,
 			);
 			path = Kiwi;
 			sourceTree = "<group>";
@@ -230,6 +297,8 @@
 		97DD0E2E1667BD570022378D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97B30836166A25EE00089470 /* fonts */,
+				97B30801166A0E9300089470 /* images */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -311,6 +380,17 @@
 				97DD0DAD16671FD50022378D /* Default.png in Resources */,
 				97DD0DAF16671FD50022378D /* Default@2x.png in Resources */,
 				97DD0DB116671FD50022378D /* Default-568h@2x.png in Resources */,
+				97B3081E166A15F500089470 /* login_background-568h@2x.png in Resources */,
+				97B30820166A15F500089470 /* login_background.png in Resources */,
+				97B30822166A15F500089470 /* login_background@2x.png in Resources */,
+				97B3083B166A25EE00089470 /* LivoryBold.otf in Resources */,
+				97B3083D166A25EE00089470 /* LivoryBoldItalic.otf in Resources */,
+				97B3083F166A25EE00089470 /* LivoryItalic.otf in Resources */,
+				97B30841166A25EE00089470 /* LivoryRegular.otf in Resources */,
+				97B30847166A54C000089470 /* login_button.png in Resources */,
+				97B30849166A54C000089470 /* login_button@2x.png in Resources */,
+				97B3084B166A54C000089470 /* login_Down.png in Resources */,
+				97B3084D166A54C000089470 /* login_Down@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +399,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DD0DE71667683A0022378D /* InfoPlist.strings in Resources */,
+				97B3081F166A15F500089470 /* login_background-568h@2x.png in Resources */,
+				97B30821166A15F500089470 /* login_background.png in Resources */,
+				97B30823166A15F500089470 /* login_background@2x.png in Resources */,
+				97B3083C166A25EE00089470 /* LivoryBold.otf in Resources */,
+				97B3083E166A25EE00089470 /* LivoryBoldItalic.otf in Resources */,
+				97B30840166A25EE00089470 /* LivoryItalic.otf in Resources */,
+				97B30842166A25EE00089470 /* LivoryRegular.otf in Resources */,
+				97B30848166A54C000089470 /* login_button.png in Resources */,
+				97B3084A166A54C000089470 /* login_button@2x.png in Resources */,
+				97B3084C166A54C000089470 /* login_Down.png in Resources */,
+				97B3084E166A54C000089470 /* login_Down@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +469,7 @@
 				97DD0E511667C1AE0022378D /* OCUtility.m in Sources */,
 				97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */,
 				97938ECD1667D1DC00D53965 /* OCLoginViewController.m in Sources */,
+				975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,8 +481,10 @@
 				97DD0E521667C1AE0022378D /* OCUtility.m in Sources */,
 				97DD0E581667C7400022378D /* OCUtilityTests.m in Sources */,
 				97938EC71667CF7D00D53965 /* OCCourseListingsViewControllerTests.m in Sources */,
-				97938ECA1667D15100D53965 /* OCLoginViewController.m in Sources */,
+				97938ECA1667D15100D53965 /* OCLoginViewControllerTests.m in Sources */,
 				97938ECE1667D1DC00D53965 /* OCLoginViewController.m in Sources */,
+				975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */,
+				975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

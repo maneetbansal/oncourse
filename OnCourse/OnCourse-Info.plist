@@ -24,6 +24,13 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>LivoryRegular.otf</string>
+		<string>LivoryItalic.otf</string>
+		<string>LivoryBoldItalic.otf</string>
+		<string>LivoryBold.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
