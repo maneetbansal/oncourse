@@ -55,6 +55,10 @@
                 NSLog(@"Login_ successfully");
             }
         }
+        else if ([@"login_fail" isEqualToString:function])
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Login Fail" message:@"Please check your email and password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+        }
         else if ([@"pageLoaded" isEqualToString:function])
         {
             NSLog(@"call login javascript function");

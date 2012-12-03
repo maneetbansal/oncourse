@@ -63,6 +63,10 @@
         self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
         [appDelegate.courseCrawler changeState:self.crawlerLoginState];
     }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Login Fail" message:@"Please fill the email and password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+    }
 }
 
 @end
