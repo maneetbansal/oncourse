@@ -8,10 +8,15 @@
 
 #import "OCLoginViewController.h"
 #import "OCLoginView.h"
+#import "OCUtility.h"
+#import "OCAppDelegate.h"
+#import "OCCourseraCrawler.h"
+#import "OCCrawlerLoginState.h"
 
 @interface OCLoginViewController ()
 
 @property (nonatomic, strong) OCLoginView *loginView;
+@property (nonatomic, strong) OCCrawlerLoginState *crawlerLoginState;
 
 @end
 
@@ -52,6 +57,11 @@
     NSString *username = self.loginView.textFieldUsername.text;
     NSString *password = self.loginView.textFieldPassword.text;
     if (username != nil && password != nil && username.length > 0 && password.length > 0) {
+        OCAppDelegate *appDelegate = [OCUtility appDelegate];
+//        [self.view addSubview:appDelegate.courseCrawler.webviewCrawler];
+        self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andEmail:username andPassword:password];
+        self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
+        [appDelegate.courseCrawler changeState:self.crawlerLoginState];
     }
 }
 

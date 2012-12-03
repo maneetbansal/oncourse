@@ -9,6 +9,7 @@
 #import "OCAppDelegate.h"
 #import "OCCourseListingsViewController.h"
 #import "OCLoginViewController.h"
+#import "OCCourseraCrawler.h"
 
 @implementation OCAppDelegate
 
@@ -16,6 +17,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.courseCrawler = [[OCCourseraCrawler alloc] init];
     [self presentFirstView];
     [self.window makeKeyAndVisible];
     return YES;

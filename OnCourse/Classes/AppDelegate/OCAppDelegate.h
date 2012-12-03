@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class OCViewController;
+@class OCCourseraCrawler;
 
 @interface OCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
+
+@property (strong, nonatomic) OCCourseraCrawler *courseCrawler;
 
 @end

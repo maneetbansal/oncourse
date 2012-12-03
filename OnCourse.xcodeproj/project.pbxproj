@@ -38,6 +38,17 @@
 		97B3084C166A54C000089470 /* login_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30845166A54C000089470 /* login_Down.png */; };
 		97B3084D166A54C000089470 /* login_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30846166A54C000089470 /* login_Down@2x.png */; };
 		97B3084E166A54C000089470 /* login_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B30846166A54C000089470 /* login_Down@2x.png */; };
+		97B30868166A671900089470 /* OCCourseraCrawlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30866166A671900089470 /* OCCourseraCrawlerTests.m */; };
+		97B3086B166A67CA00089470 /* OCCourseraCrawler.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3086A166A67CA00089470 /* OCCourseraCrawler.m */; };
+		97B3086C166A67CA00089470 /* OCCourseraCrawler.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3086A166A67CA00089470 /* OCCourseraCrawler.m */; };
+		97B30872166B0A7200089470 /* OCCrawlerAbstractState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30871166B0A7200089470 /* OCCrawlerAbstractState.m */; };
+		97B30873166B0A7200089470 /* OCCrawlerAbstractState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30871166B0A7200089470 /* OCCrawlerAbstractState.m */; };
+		97B30879166B0CE600089470 /* OCCrawlerLoginState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30878166B0CE600089470 /* OCCrawlerLoginState.m */; };
+		97B3087A166B0CE600089470 /* OCCrawlerLoginState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30878166B0CE600089470 /* OCCrawlerLoginState.m */; };
+		97B3087D166B149400089470 /* OCJavascriptFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3087C166B149400089470 /* OCJavascriptFunctions.m */; };
+		97B3087E166B149400089470 /* OCJavascriptFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3087C166B149400089470 /* OCJavascriptFunctions.m */; };
+		97B30881166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */; };
+		97B30882166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */; };
 		97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9A16671FD50022378D /* UIKit.framework */; };
 		97DD0D9D16671FD50022378D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9C16671FD50022378D /* Foundation.framework */; };
 		97DD0D9F16671FD50022378D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9E16671FD50022378D /* CoreGraphics.framework */; };
@@ -82,6 +93,17 @@
 		97B30844166A54C000089470 /* login_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_button@2x.png"; sourceTree = "<group>"; };
 		97B30845166A54C000089470 /* login_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_Down.png; sourceTree = "<group>"; };
 		97B30846166A54C000089470 /* login_Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_Down@2x.png"; sourceTree = "<group>"; };
+		97B30866166A671900089470 /* OCCourseraCrawlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseraCrawlerTests.m; sourceTree = "<group>"; };
+		97B30869166A67CA00089470 /* OCCourseraCrawler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseraCrawler.h; sourceTree = "<group>"; };
+		97B3086A166A67CA00089470 /* OCCourseraCrawler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseraCrawler.m; sourceTree = "<group>"; };
+		97B30870166B0A7200089470 /* OCCrawlerAbstractState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerAbstractState.h; sourceTree = "<group>"; };
+		97B30871166B0A7200089470 /* OCCrawlerAbstractState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerAbstractState.m; sourceTree = "<group>"; };
+		97B30877166B0CE500089470 /* OCCrawlerLoginState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerLoginState.h; sourceTree = "<group>"; };
+		97B30878166B0CE600089470 /* OCCrawlerLoginState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerLoginState.m; sourceTree = "<group>"; };
+		97B3087B166B149400089470 /* OCJavascriptFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCJavascriptFunctions.h; sourceTree = "<group>"; };
+		97B3087C166B149400089470 /* OCJavascriptFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCJavascriptFunctions.m; sourceTree = "<group>"; };
+		97B3087F166B1AD700089470 /* OCCrawlerCourseListingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerCourseListingState.h; sourceTree = "<group>"; };
+		97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerCourseListingState.m; sourceTree = "<group>"; };
 		97DD0D9616671FD50022378D /* OnCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DD0D9A16671FD50022378D /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97DD0D9C16671FD50022378D /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -232,6 +254,7 @@
 				97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */,
 				97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */,
 				975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */,
+				97B30866166A671900089470 /* OCCourseraCrawlerTests.m */,
 			);
 			path = Kiwi;
 			sourceTree = "<group>";
@@ -283,6 +306,12 @@
 			children = (
 				97DD0E4F1667C1AE0022378D /* OCUtility.h */,
 				97DD0E501667C1AE0022378D /* OCUtility.m */,
+				97B30870166B0A7200089470 /* OCCrawlerAbstractState.h */,
+				97B30871166B0A7200089470 /* OCCrawlerAbstractState.m */,
+				97B30877166B0CE500089470 /* OCCrawlerLoginState.h */,
+				97B30878166B0CE600089470 /* OCCrawlerLoginState.m */,
+				97B3087F166B1AD700089470 /* OCCrawlerCourseListingState.h */,
+				97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -290,6 +319,10 @@
 		97DD0E2D1667BD570022378D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				97B30869166A67CA00089470 /* OCCourseraCrawler.h */,
+				97B3086A166A67CA00089470 /* OCCourseraCrawler.m */,
+				97B3087B166B149400089470 /* OCJavascriptFunctions.h */,
+				97B3087C166B149400089470 /* OCJavascriptFunctions.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -470,6 +503,11 @@
 				97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */,
 				97938ECD1667D1DC00D53965 /* OCLoginViewController.m in Sources */,
 				975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */,
+				97B3086B166A67CA00089470 /* OCCourseraCrawler.m in Sources */,
+				97B30872166B0A7200089470 /* OCCrawlerAbstractState.m in Sources */,
+				97B30879166B0CE600089470 /* OCCrawlerLoginState.m in Sources */,
+				97B3087D166B149400089470 /* OCJavascriptFunctions.m in Sources */,
+				97B30881166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +523,12 @@
 				97938ECE1667D1DC00D53965 /* OCLoginViewController.m in Sources */,
 				975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */,
 				975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */,
+				97B30868166A671900089470 /* OCCourseraCrawlerTests.m in Sources */,
+				97B3086C166A67CA00089470 /* OCCourseraCrawler.m in Sources */,
+				97B30873166B0A7200089470 /* OCCrawlerAbstractState.m in Sources */,
+				97B3087A166B0CE600089470 /* OCCrawlerLoginState.m in Sources */,
+				97B3087E166B149400089470 /* OCJavascriptFunctions.m in Sources */,
+				97B30882166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
