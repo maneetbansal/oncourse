@@ -15,5 +15,8 @@
 + (NSString *)checkLogined;
 + (NSString *)jsCallObjectiveCFunction;
 + (NSString *)checkPageLoaded;
++ (NSString *)jsFetchAllImageCourse;
++ (NSString *)jsFetchAllTitleCourse;
++ (NSString *)jsFetchAllLinkCourse;
 
 @end

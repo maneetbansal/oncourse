@@ -7,8 +7,11 @@
 //
 
 #import "OCCourseListingsViewController.h"
+#import "OCCourseListingView.h"
 
 @interface OCCourseListingsViewController ()
+
+@property (nonatomic, strong) OCCourseListingView *courseListingView;
 
 @end
 
@@ -27,12 +30,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.courseListingView = [[OCCourseListingView alloc] initWithFrame:self.view.frame];
+    self.view = self.courseListingView;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateCourseListing:(NSMutableArray *)courses
+{
+    self.courseListingView.listAllCourse = courses;
+    [self.courseListingView reloadData];
 }
 
 @end

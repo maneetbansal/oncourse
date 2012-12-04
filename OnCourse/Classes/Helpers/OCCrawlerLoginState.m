@@ -9,6 +9,9 @@
 #import "OCCrawlerLoginState.h"
 #import "OCJavascriptFunctions.h"
 #import "OCCrawlerCourseListingState.h"
+#import "OCAppDelegate.h"
+#import "OCUtility.h"
+#import "OCCourseListingsViewController.h"
 
 @implementation OCCrawlerLoginState
 
@@ -46,13 +49,18 @@
         NSArray *components = [requestString componentsSeparatedByString:@":"];
         
         NSString *function = (NSString*)[components objectAtIndex:1];
-        NSString *argsAsString = [(NSString*)[components objectAtIndex:2]
-                                  stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         if ([@"login_successfully" isEqualToString:function]) {
             if ([self.crawlerDelegate respondsToSelector:@selector(changeState:)]) {
-                [self.crawlerDelegate changeState:[[OCCrawlerCourseListingState alloc] init]];
+                [self.crawlerDelegate changeState:[[OCCrawlerCourseListingState alloc] initWithWebview:self.webviewCrawler]];
                 NSLog(@"Login_ successfully");
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                if (![userDefaults objectForKey:@"email"]) {
+                    [userDefaults setObject:@"Logined" forKey:@"isLogin"];
+                    [userDefaults setObject:self.email forKey:@"email"];
+                    [userDefaults setObject:self.password forKey:@"password"];
+                }
+                [self presentListCourseViewController];
             }
         }
         else if ([@"login_fail" isEqualToString:function])
@@ -74,6 +82,12 @@
 {
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+}
+
+- (void)presentListCourseViewController
+{
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    [appDelegate.navigationController pushViewController:[[OCCourseListingsViewController alloc] init] animated:YES];
 }
 
 @end

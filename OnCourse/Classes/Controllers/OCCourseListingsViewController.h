@@ -10,4 +10,6 @@
 
 @interface OCCourseListingsViewController : UIViewController
 
+- (void)updateCourseListing:(NSMutableArray *)courses;
+
 @end

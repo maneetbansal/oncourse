@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1FB6C2275E3E47C3934B1469 /* libPods-OnCourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */; };
+		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
+		9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
+		9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6D1166D2E0C00B0A75A /* OCCourse.m */; };
+		9752A6D3166D2E0C00B0A75A /* OCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6D1166D2E0C00B0A75A /* OCCourse.m */; };
 		975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */; };
 		975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
 		975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
@@ -73,6 +77,10 @@
 		5B455DBF1A864425BDCADB9F /* Pods-Kiwi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi.xcconfig"; path = "Pods/Pods-Kiwi.xcconfig"; sourceTree = SOURCE_ROOT; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9752A6B6166D000B00B0A75A /* OCCourseListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingView.h; sourceTree = "<group>"; };
+		9752A6B7166D000B00B0A75A /* OCCourseListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingView.m; sourceTree = "<group>"; };
+		9752A6D0166D2E0C00B0A75A /* OCCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourse.h; sourceTree = "<group>"; };
+		9752A6D1166D2E0C00B0A75A /* OCCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourse.m; sourceTree = "<group>"; };
 		975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewTests.m; sourceTree = "<group>"; };
 		975CCFAD1668DA56008B5CB3 /* OCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginView.h; sourceTree = "<group>"; };
 		975CCFAE1668DA56008B5CB3 /* OCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginView.m; sourceTree = "<group>"; };
@@ -159,6 +167,8 @@
 			children = (
 				975CCFAD1668DA56008B5CB3 /* OCLoginView.h */,
 				975CCFAE1668DA56008B5CB3 /* OCLoginView.m */,
+				9752A6B6166D000B00B0A75A /* OCCourseListingView.h */,
+				9752A6B7166D000B00B0A75A /* OCCourseListingView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +329,8 @@
 		97DD0E2D1667BD570022378D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9752A6D0166D2E0C00B0A75A /* OCCourse.h */,
+				9752A6D1166D2E0C00B0A75A /* OCCourse.m */,
 				97B30869166A67CA00089470 /* OCCourseraCrawler.h */,
 				97B3086A166A67CA00089470 /* OCCourseraCrawler.m */,
 				97B3087B166B149400089470 /* OCJavascriptFunctions.h */,
@@ -508,6 +520,8 @@
 				97B30879166B0CE600089470 /* OCCrawlerLoginState.m in Sources */,
 				97B3087D166B149400089470 /* OCJavascriptFunctions.m in Sources */,
 				97B30881166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
+				9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */,
+				9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +543,8 @@
 				97B3087A166B0CE600089470 /* OCCrawlerLoginState.m in Sources */,
 				97B3087E166B149400089470 /* OCJavascriptFunctions.m in Sources */,
 				97B30882166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
+				9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */,
+				9752A6D3166D2E0C00B0A75A /* OCCourse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,4 +36,19 @@
     
 }
 
++ (NSString *)jsFetchAllImageCourse
+{
+    return @"function OCFetchAllImageCourse() { var imageLinks = document.getElementsByClassName('coursera-course-listing-icon'); var result = ''; for(var i = 0; i<imageLinks.length; ++i) {result += imageLinks[i].src; if(i != imageLinks.length-1) result += ';'; } return result;} OCFetchAllImageCourse();";
+}
+
++ (NSString *)jsFetchAllTitleCourse
+{
+    return @"function OCFetchAllTitleCourse() { var titles = ''; var courseListingName = document.getElementsByClassName('coursera-course-listing-name'); for(var i =0; i<courseListingName.length; ++i){ titles += courseListingName[i].getElementsByTagName('a')[0].innerHTML; if(i != courseListingName.length-1) titles+=';';} return titles; } OCFetchAllTitleCourse();";
+}
+
++ (NSString *)jsFetchAllLinkCourse
+{
+    return @"function OCFetchAllTitleCourse() { var titles = ''; var courseListingName = document.getElementsByClassName('coursera-course-listing-name'); for(var i =0; i<courseListingName.length; ++i){ titles += courseListingName[i].getElementsByTagName('a')[0].href; if(i != courseListingName.length-1) titles+=';';} return titles; } OCFetchAllTitleCourse();";
+}
+
 @end

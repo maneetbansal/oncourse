@@ -8,6 +8,8 @@
 
 #import "OCCrawlerAbstractState.h"
 
-@interface OCCrawlerCourseListingState : OCCrawlerAbstractState
+@interface OCCrawlerCourseListingState : OCCrawlerAbstractState <UIWebViewDelegate>
+
+- (id)initWithWebview:(UIWebView *)webview;
 
 @end
