@@ -20,5 +20,6 @@
 + (NSString *)jsFetchAllLinkCourse;
 + (NSString *)jsFetchAllMetaInfoCourse;
 + (NSString *)jsFetchAllStatusCourse;
++ (NSString *)jsFetchAllProgressCourse;
 
 @end

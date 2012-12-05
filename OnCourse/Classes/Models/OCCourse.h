@@ -15,5 +15,6 @@
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) NSString *metaInfo;
 @property (nonatomic, retain) NSString *status;
+@property (nonatomic, assign) int progress;
 
 @end

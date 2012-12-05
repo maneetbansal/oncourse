@@ -58,7 +58,12 @@
 
 + (NSString *)jsFetchAllStatusCourse
 {
-    return @"function OCFetchAllStatusCourse(){var result = ''; var courseStatus = document.getElementsByClassName('btn btn-success coursera-course-button'); for(var i=0;i<courseStatus.length;++i){ if(!courseStatus[i].getAttribute('disabled')) {result += 'available';} else {result += 'disabled'; } result += ';'; } return result;} OCFetchAllStatusCourse();";
+    return @"function OCFetchAllStatusCourse(){var result = ''; var courseStatus = document.getElementsByClassName('btn btn-success coursera-course-button'); for(var i=0;i<courseStatus.length;++i){ if(courseStatus[i].getAttribute('disabled')) {result += 'disabled';} else if(courseStatus[i].innerHTML == 'View class archive'){result += 'archive'} else {result += 'available'; } result += ';'; } return result;} OCFetchAllStatusCourse();";
+}
+
++ (NSString *)jsFetchAllProgressCourse
+{
+    return @"function OCFetchAllProgressCourse(){ var result = ''; var courseProgress = document.getElementsByClassName('progress-bar'); for(var i=0;i<courseProgress.length;++i){ result += courseProgress[i].style.width.slice(0, -1); result += ';'; } return result;} OCFetchAllProgressCourse();";
 }
 
 @end

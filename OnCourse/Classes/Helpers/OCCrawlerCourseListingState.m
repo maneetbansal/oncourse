@@ -95,6 +95,13 @@
     return [[NSString stringWithFormat:@"%@", result] componentsSeparatedByString:@";"];
 }
 
+- (NSArray *)fetchAllProgressCourse
+{
+    NSString *js = [OCJavascriptFunctions jsFetchAllProgressCourse];
+    NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:js];
+    return [[NSString stringWithFormat:@"%@", result] componentsSeparatedByString:@";"];
+}
+
 - (void)fetchAllCourse
 {
     NSLog(@"fetching all course");
@@ -103,8 +110,11 @@
     NSArray *links = [self fetchAllLinkCourse];
     NSArray *metaInfo = [self fetchAllMetaInfoCourse];
     NSArray *status = [self fetchAllStatusCourse];
+    NSArray *progress = [self fetchAllProgressCourse];
 
     NSMutableArray *courses = [[NSMutableArray alloc] init];
+    
+    int iProgress = 0;
     
     for (int i = 0; i < images.count; ++i) {
         OCCourse *aCourse = [[OCCourse alloc] init];
@@ -115,11 +125,16 @@
         aCourse.link = [links objectAtIndex:i];
         aCourse.metaInfo = [metaInfo objectAtIndex:i];
         aCourse.status = [status objectAtIndex:i];
+        if ([@"available" isEqualToString:aCourse.status]) {
+            aCourse.progress = [[progress objectAtIndex:iProgress] intValue];
+            iProgress += 1;
+        }
         
         NSLog(imageLink);
         NSLog(aCourse.link);
         NSLog(aCourse.metaInfo);
         NSLog(aCourse.status);
+        NSLog([NSString stringWithFormat:@"%i", aCourse.progress]);
         NSLog(@"\n");
         
         [courses addObject:aCourse];
