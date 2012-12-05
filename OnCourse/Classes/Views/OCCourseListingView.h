@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *listAllCourse;
 
 - (void)reloadData;
+- (void)orientationChanged;
 
 @end

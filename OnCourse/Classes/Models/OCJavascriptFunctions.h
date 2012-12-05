@@ -18,5 +18,7 @@
 + (NSString *)jsFetchAllImageCourse;
 + (NSString *)jsFetchAllTitleCourse;
 + (NSString *)jsFetchAllLinkCourse;
++ (NSString *)jsFetchAllMetaInfoCourse;
++ (NSString *)jsFetchAllStatusCourse;
 
 @end

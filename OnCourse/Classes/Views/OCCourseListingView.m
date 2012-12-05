@@ -8,6 +8,7 @@
 
 #import "OCCourseListingView.h"
 #import "OCCourse.h"
+#import "OCCourseListingCell.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -34,8 +35,18 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
         [self constructUIComponents];
         [self addConstraints:[self arrayContraints]];
         [self setNiceBackground];
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(orientationChanged)
+         name:UIDeviceOrientationDidChangeNotification
+         object:[UIDevice currentDevice]];
     }
     return self;
+}
+
+- (void)orientationChanged
+{
+    [self.collectionCourseListing.collectionView reloadData];
 }
 
 - (void)reloadData
@@ -53,13 +64,12 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
     [self addSubview:self.labelTop];
     
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    [aFlowLayout setItemSize:CGSizeMake(200, 140)];
     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.collectionCourseListing = [[UICollectionViewController alloc] initWithCollectionViewLayout:aFlowLayout];
     self.collectionCourseListing.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     self.collectionCourseListing.collectionView.delegate = self;
     self.collectionCourseListing.collectionView.dataSource = self;
-    [self.collectionCourseListing.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"coursecell"];
+    [self.collectionCourseListing.collectionView registerClass:[OCCourseListingCell class] forCellWithReuseIdentifier:@"COURSE_CELL"];
     self.collectionCourseListing.collectionView.backgroundColor = [UIColor clearColor];
     
     [self addSubview:self.collectionCourseListing.collectionView];
@@ -121,20 +131,25 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"coursecell" forIndexPath:indexPath];
-    
+    OCCourseListingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"COURSE_CELL" forIndexPath:indexPath];
+
     OCCourse *course = [_listAllCourse objectAtIndex:indexPath.row];
+    CGSize size = self.frame.size;
+
+    if (size.width == [UIScreen mainScreen].bounds.size.width) {
+        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/2, size.width/2 * 135/ 240)];
+        cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, 30)];
+        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/2 + 20, 35, 150, 40)];
+    }
+    else
+    {
+        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
+        cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width/2 -10, 30)];
+        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        
+    }
     
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width/2, self.frame.size.width/2 * 135/ 240)];
-    [image setImage:course.image];
-    [cell addSubview:image];
-    
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 600, 30)];
-    title.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:0.7];
-    title.text = course.title;
-    [cell addSubview:title];
-    
-    cell.backgroundColor = [UIColor clearColor];
+    [cell reloadData:course];
     return cell;
 }
 // 4
@@ -158,7 +173,14 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.bounds.size.width, 90);
+    
+    CGSize size = self.frame.size;
+
+    if (size.width == [UIScreen mainScreen].bounds.size.width)
+        return CGSizeMake(size.width, size.width/2 *135/240);
+    else
+        return CGSizeMake(size.width /2 - 10, size.width/4 *135/240);
+    
 }
 
 // 3

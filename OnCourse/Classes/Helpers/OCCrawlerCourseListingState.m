@@ -81,12 +81,29 @@
     return [[NSString stringWithFormat:@"%@", result] componentsSeparatedByString:@";"];
 }
 
+- (NSArray *)fetchAllMetaInfoCourse
+{
+    NSString *js = [OCJavascriptFunctions jsFetchAllMetaInfoCourse];
+    NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:js];
+    return [[NSString stringWithFormat:@"%@", result] componentsSeparatedByString:@";"];
+}
+
+- (NSArray *)fetchAllStatusCourse
+{
+    NSString *js = [OCJavascriptFunctions jsFetchAllStatusCourse];
+    NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:js];
+    return [[NSString stringWithFormat:@"%@", result] componentsSeparatedByString:@";"];
+}
+
 - (void)fetchAllCourse
 {
     NSLog(@"fetching all course");
     NSArray *images = [self fetchAllImageCourse];
     NSArray *titles = [self fetchAllTitleCourse];
     NSArray *links = [self fetchAllLinkCourse];
+    NSArray *metaInfo = [self fetchAllMetaInfoCourse];
+    NSArray *status = [self fetchAllStatusCourse];
+
     NSMutableArray *courses = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < images.count; ++i) {
@@ -96,9 +113,13 @@
         aCourse.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageLink]]];
         aCourse.title = [titles objectAtIndex:i];
         aCourse.link = [links objectAtIndex:i];
+        aCourse.metaInfo = [metaInfo objectAtIndex:i];
+        aCourse.status = [status objectAtIndex:i];
         
         NSLog(imageLink);
         NSLog(aCourse.link);
+        NSLog(aCourse.metaInfo);
+        NSLog(aCourse.status);
         NSLog(@"\n");
         
         [courses addObject:aCourse];

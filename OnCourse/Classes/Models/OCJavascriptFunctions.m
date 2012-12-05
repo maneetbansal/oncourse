@@ -51,4 +51,14 @@
     return @"function OCFetchAllTitleCourse() { var titles = ''; var courseListingName = document.getElementsByClassName('coursera-course-listing-name'); for(var i =0; i<courseListingName.length; ++i){ titles += courseListingName[i].getElementsByTagName('a')[0].href; if(i != courseListingName.length-1) titles+=';';} return titles; } OCFetchAllTitleCourse();";
 }
 
++ (NSString *)jsFetchAllMetaInfoCourse
+{
+    return @"function OCFetchAllMetaInfoCourse(){var metaInfo = document.getElementsByClassName('coursera-course-listing-meta'); var info = ''; for (var i = 0; i< metaInfo.length; ++i) { info += metaInfo[i].getElementsByTagName('span')[0].innerHTML; info +=';'; } return info; } OCFetchAllMetaInfoCourse();";
+}
+
++ (NSString *)jsFetchAllStatusCourse
+{
+    return @"function OCFetchAllStatusCourse(){var result = ''; var courseStatus = document.getElementsByClassName('btn btn-success coursera-course-button'); for(var i=0;i<courseStatus.length;++i){ if(!courseStatus[i].getAttribute('disabled')) {result += 'available';} else {result += 'disabled'; } result += ';'; } return result;} OCFetchAllStatusCourse();";
+}
+
 @end
