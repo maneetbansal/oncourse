@@ -116,11 +116,24 @@
     
     int iProgress = 0;
     
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
     for (int i = 0; i < images.count; ++i) {
-        OCCourse *aCourse = [[OCCourse alloc] init];
+        __block OCCourse *aCourse = [[OCCourse alloc] init];
         NSString *imageLink = [NSString stringWithFormat:@"%@", [images objectAtIndex:i ]];
         
-        aCourse.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageLink]]];
+        dispatch_async(concurrentQueue, ^{
+            dispatch_sync(concurrentQueue, ^{
+                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageLink]];
+                NSError *downloadError = nil;
+                NSData *imageData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:&downloadError];
+                if (downloadError == nil && imageData != nil) {
+                    aCourse.image = [UIImage imageWithData:imageData];
+                }
+            });
+        });
+        
+//        aCourse.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageLink]]];
         aCourse.title = [titles objectAtIndex:i];
         aCourse.link = [links objectAtIndex:i];
         aCourse.metaInfo = [metaInfo objectAtIndex:i];
