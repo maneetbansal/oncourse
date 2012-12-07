@@ -44,7 +44,7 @@
     }
     else
     {
-        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, course.progress, self.frame.size.height)];
+        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, course.progress * self.frame.size.width / 100, self.frame.size.height)];
         overlapView.backgroundColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.5];
         [self addSubview:overlapView];
         
