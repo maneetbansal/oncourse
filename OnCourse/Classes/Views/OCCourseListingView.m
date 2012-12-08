@@ -9,6 +9,10 @@
 #import "OCCourseListingView.h"
 #import "OCCourse.h"
 #import "OCCourseListingCell.h"
+#import "OCCrawlerAuthenticationCourseState.h"
+#import "OCAppDelegate.h"
+#import "OCUtility.h"
+#import "OCCourseraCrawler.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -22,7 +26,7 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
 
 @property (nonatomic, strong) UILabel *labelTop;
 @property (nonatomic, strong) UICollectionViewController *collectionCourseListing;
-
+@property (nonatomic, strong) OCCrawlerAuthenticationCourseState *crawlerAuthenticationCourse;
 @end
 
 @implementation OCCourseListingView
@@ -163,7 +167,11 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
 {
     // TODO: Select Item
     NSLog([NSString stringWithFormat:@"%i", indexPath.row ]);
-    
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    NSString *courseLink = [[self.listAllCourse objectAtIndex:indexPath.row] link];
+    self.crawlerAuthenticationCourse = [[OCCrawlerAuthenticationCourseState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andCourseLink:courseLink];
+    self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
+    [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item

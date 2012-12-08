@@ -66,4 +66,14 @@
     return @"function OCFetchAllProgressCourse(){ var result = ''; var courseProgress = document.getElementsByClassName('progress-bar'); for(var i=0;i<courseProgress.length;++i){ result += courseProgress[i].style.width.slice(0, -1); result += ';'; } return result;} OCFetchAllProgressCourse();";
 }
 
++ (NSString *)jsCheckAuthenticationCourseNeeded
+{
+    return @"function OCCheckAuthenticationCourseNeeded(){ if (document.getElementById('agreehonorcode')) return true; else return false; } OCCheckAuthenticationCourseNeeded();";
+}
+
++ (NSString *)jsAuthenticateCourse
+{
+    return @"function OCAuthenticateCourse(){ return document.getElementById('agreehonorcode').href; } OCAuthenticateCourse();";
+}
+
 @end

@@ -17,6 +17,8 @@
 		975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */; };
 		975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
 		975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
+		978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
+		978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */; };
 		97938EC71667CF7D00D53965 /* OCCourseListingsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */; };
 		97938ECA1667D15100D53965 /* OCLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */; };
@@ -88,6 +90,8 @@
 		975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewTests.m; sourceTree = "<group>"; };
 		975CCFAD1668DA56008B5CB3 /* OCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginView.h; sourceTree = "<group>"; };
 		975CCFAE1668DA56008B5CB3 /* OCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginView.m; sourceTree = "<group>"; };
+		978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerAuthenticationCourseState.h; sourceTree = "<group>"; };
+		978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerAuthenticationCourseState.m; sourceTree = "<group>"; };
 		97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingsViewController.h; sourceTree = "<group>"; };
 		97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingsViewController.m; sourceTree = "<group>"; };
 		97938EC51667CF7D00D53965 /* OCCourseListingsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingsViewControllerTests.m; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 				97B30878166B0CE600089470 /* OCCrawlerLoginState.m */,
 				97B3087F166B1AD700089470 /* OCCrawlerCourseListingState.h */,
 				97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */,
+				978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */,
+				978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */,
 				9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */,
 				9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */,
+				978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +560,7 @@
 				9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */,
 				9752A6D3166D2E0C00B0A75A /* OCCourse.m in Sources */,
 				9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */,
+				978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

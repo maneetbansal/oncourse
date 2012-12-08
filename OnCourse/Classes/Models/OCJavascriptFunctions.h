@@ -21,5 +21,7 @@
 + (NSString *)jsFetchAllMetaInfoCourse;
 + (NSString *)jsFetchAllStatusCourse;
 + (NSString *)jsFetchAllProgressCourse;
++ (NSString *)jsCheckAuthenticationCourseNeeded;
++ (NSString *)jsAuthenticateCourse;
 
 @end
