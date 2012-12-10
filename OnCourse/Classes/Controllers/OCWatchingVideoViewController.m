@@ -7,8 +7,10 @@
 //
 
 #import "OCWatchingVideoViewController.h"
+#import "OCWatchingVideo.h"
 
 @interface OCWatchingVideoViewController ()
+@property (nonatomic, strong) OCWatchingVideo *watchingVideoView;
 
 @end
 
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:self.view.frame];
+    self.view = self.watchingVideoView;
 }
 
 - (void)didReceiveMemoryWarning

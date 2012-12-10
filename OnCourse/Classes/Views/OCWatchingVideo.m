@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 phatle. All rights reserved.
 //
 
+#import "OCAppDelegate.h"
+#import "OCUtility.h"
+#import "OCCourse.h"
 #import "OCWatchingVideo.h"
 
 @implementation OCWatchingVideo
@@ -14,7 +17,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self loadVideo];
     }
     return self;
 }
@@ -27,5 +30,14 @@
     // Drawing code
 }
 */
+
+- (void)loadVideo
+{
+    NSURL *url = [NSURL URLWithString:self.videoLink];
+    NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
+    
+    [self.webview loadRequest:requestObject];
+    [self addSubview:self.webview];
+}
 
 @end

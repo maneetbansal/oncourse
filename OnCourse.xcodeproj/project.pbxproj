@@ -10,6 +10,7 @@
 		1FB6C2275E3E47C3934B1469 /* libPods-OnCourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */; };
 		844CAC2A1675ECD20057CEDA /* OCWatchingVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC291675ECD20057CEDA /* OCWatchingVideo.m */; };
 		844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */; };
+		84E3979C1676061000B891CD /* OCCrawlerWatchingVideoState.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3979B1676061000B891CD /* OCCrawlerWatchingVideoState.m */; };
 		9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
@@ -85,6 +86,8 @@
 		844CAC291675ECD20057CEDA /* OCWatchingVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideo.m; sourceTree = "<group>"; };
 		844CAC2C1675ED600057CEDA /* OCWatchingVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCWatchingVideoViewController.h; sourceTree = "<group>"; };
 		844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideoViewController.m; sourceTree = "<group>"; };
+		84E3979A1676061000B891CD /* OCCrawlerWatchingVideoState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerWatchingVideoState.h; sourceTree = "<group>"; };
+		84E3979B1676061000B891CD /* OCCrawlerWatchingVideoState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerWatchingVideoState.m; sourceTree = "<group>"; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
@@ -334,8 +337,8 @@
 		97DD0E2C1667BD570022378D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				97DD0E4F1667C1AE0022378D /* OCUtility.h */,
 				97DD0E501667C1AE0022378D /* OCUtility.m */,
+				97DD0E4F1667C1AE0022378D /* OCUtility.h */,
 				97B30870166B0A7200089470 /* OCCrawlerAbstractState.h */,
 				97B30871166B0A7200089470 /* OCCrawlerAbstractState.m */,
 				97B30877166B0CE500089470 /* OCCrawlerLoginState.h */,
@@ -344,6 +347,8 @@
 				97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */,
 				978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */,
 				978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */,
+				84E3979A1676061000B891CD /* OCCrawlerWatchingVideoState.h */,
+				84E3979B1676061000B891CD /* OCCrawlerWatchingVideoState.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
 				844CAC2A1675ECD20057CEDA /* OCWatchingVideo.m in Sources */,
 				844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */,
+				84E3979C1676061000B891CD /* OCCrawlerWatchingVideoState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

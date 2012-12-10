@@ -11,10 +11,13 @@
 #import "OCLoginViewController.h"
 #import "OCCourseraCrawler.h"
 #import "OCCrawlerLoginState.h"
+#import "OCWatchingVideoViewController.h"
+#import "OCCrawlerWatchingVideoState.h"
 
 @interface OCAppDelegate()
 
 @property (nonatomic, strong) OCCrawlerLoginState *crawlerLoginState;
+@property (nonatomic, strong) OCCrawlerWatchingVideoState *crawlerWatchingVideoState;
 
 @end
 
@@ -34,6 +37,7 @@
 {
     OCCourseListingsViewController *courseListingsViewController = [[OCCourseListingsViewController alloc] init];
     OCLoginViewController *loginViewController = [[OCLoginViewController alloc] init];
+    OCWatchingVideoViewController *watchingVideoController = [[OCWatchingVideoViewController alloc] init];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults stringForKey:@"isLogin"]) {
@@ -43,12 +47,21 @@
         
         self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:self.courseCrawler.webviewCrawler andEmail:email andPassword:password];
         self.crawlerLoginState.crawlerDelegate = self.courseCrawler;
+        
         [self.courseCrawler changeState:self.crawlerLoginState];
     }
     else
     {
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     }
+    
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:watchingVideoController];
+//    
+//    self.crawlerWatchingVideoState = [[OCCrawlerWatchingVideoState alloc] initWithWebview:self.courseCrawler.webviewCrawler andVideoLink:@"https://class.coursera.org/friendsmoneybytes-2012-001/lecture/52"];
+//    self.crawlerWatchingVideoState.crawlerDelegate = self.courseCrawler;
+//    
+//    [self.courseCrawler changeState:self.crawlerWatchingVideoState];
+    
     [self.navigationController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navigationController;
 }
