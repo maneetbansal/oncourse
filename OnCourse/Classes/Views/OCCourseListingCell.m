@@ -36,19 +36,20 @@
     self.metaInfo.font = [UIFont fontWithName:@"Livory" size:12];
     [self addSubview:self.metaInfo];
     self.backgroundColor = [UIColor clearColor];
+    
+    self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(self.frame.size.width / 7 * 4, self.frame.size.height / 7 * 6, self.frame.size.width / 7 * 2.7, self.frame.size.height / 7)];
+    [self.progressBar setProgressViewStyle:UIProgressViewStyleDefault];
+    
     if ([@"disabled" isEqualToString:course.status])
     {
-        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        overlapView.backgroundColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.5];
-        [self addSubview:overlapView];
+        self.progressBar.progress = 1.0;
     }
     else
     {
-        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, course.progress * self.frame.size.width / 100, self.frame.size.height)];
-        overlapView.backgroundColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.5];
-        [self addSubview:overlapView];
-        
+        self.progressBar.progress = (float)course.progress / 100;
     }
+    
+    [self addSubview:self.progressBar];
 }
 
 /*

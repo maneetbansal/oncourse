@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1FB6C2275E3E47C3934B1469 /* libPods-OnCourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */; };
+		844CAC2A1675ECD20057CEDA /* OCWatchingVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC291675ECD20057CEDA /* OCWatchingVideo.m */; };
+		844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */; };
 		9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
@@ -79,6 +81,10 @@
 
 /* Begin PBXFileReference section */
 		5B455DBF1A864425BDCADB9F /* Pods-Kiwi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi.xcconfig"; path = "Pods/Pods-Kiwi.xcconfig"; sourceTree = SOURCE_ROOT; };
+		844CAC281675ECD20057CEDA /* OCWatchingVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCWatchingVideo.h; sourceTree = "<group>"; };
+		844CAC291675ECD20057CEDA /* OCWatchingVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideo.m; sourceTree = "<group>"; };
+		844CAC2C1675ED600057CEDA /* OCWatchingVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCWatchingVideoViewController.h; sourceTree = "<group>"; };
+		844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideoViewController.m; sourceTree = "<group>"; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
@@ -175,6 +181,8 @@
 			children = (
 				975CCFAD1668DA56008B5CB3 /* OCLoginView.h */,
 				975CCFAE1668DA56008B5CB3 /* OCLoginView.m */,
+				844CAC281675ECD20057CEDA /* OCWatchingVideo.h */,
+				844CAC291675ECD20057CEDA /* OCWatchingVideo.m */,
 				9752A6B6166D000B00B0A75A /* OCCourseListingView.h */,
 				9752A6B7166D000B00B0A75A /* OCCourseListingView.m */,
 				9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */,
@@ -313,6 +321,8 @@
 		97DD0E291667BD570022378D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				844CAC2C1675ED600057CEDA /* OCWatchingVideoViewController.h */,
+				844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */,
 				97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */,
 				97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */,
 				97938ECB1667D1DC00D53965 /* OCLoginViewController.h */,
@@ -536,6 +546,8 @@
 				9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */,
 				9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */,
 				978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
+				844CAC2A1675ECD20057CEDA /* OCWatchingVideo.m in Sources */,
+				844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
