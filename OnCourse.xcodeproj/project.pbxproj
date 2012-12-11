@@ -93,6 +93,8 @@
 		844CAC291675ECD20057CEDA /* OCWatchingVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideo.m; sourceTree = "<group>"; };
 		844CAC2C1675ED600057CEDA /* OCWatchingVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCWatchingVideoViewController.h; sourceTree = "<group>"; };
 		844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideoViewController.m; sourceTree = "<group>"; };
+		84E3979A1676061000B891CD /* OCCrawlerWatchingVideoState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerWatchingVideoState.h; sourceTree = "<group>"; };
+		84E3979B1676061000B891CD /* OCCrawlerWatchingVideoState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerWatchingVideoState.m; sourceTree = "<group>"; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
@@ -368,6 +370,8 @@
 				97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */,
 				978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */,
 				978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */,
+				84E3979A1676061000B891CD /* OCCrawlerWatchingVideoState.h */,
+				84E3979B1676061000B891CD /* OCCrawlerWatchingVideoState.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
