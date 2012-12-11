@@ -9,6 +9,7 @@
 #import "OCLectureListingView.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
+#import "OCLecture.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -143,7 +144,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LectureCell"];
     }
     
-    cell.textLabel.text = [[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] title];
     return cell;
 }
 

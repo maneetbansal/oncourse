@@ -11,6 +11,7 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseListingsViewController.h"
+#import "OCLecture.h"
 
 @interface OCCrawlerLectureListingState()
 
@@ -71,7 +72,17 @@
         if (2 == data.count) {
             [lectureData addObject:[data objectAtIndex:0]];
             NSArray *lectures = [[data objectAtIndex:1] componentsSeparatedByString:@";"];
-            [lectureData addObject:lectures];
+            NSMutableArray *arrayLectures = [@[] mutableCopy];
+            [lectures enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSArray *lec = [obj componentsSeparatedByString:@"~"];
+                if (2 == lec.count) {
+                    OCLecture *aLecture = [OCLecture new];
+                    aLecture.link = [lec objectAtIndex:0];
+                    aLecture.title = [lec objectAtIndex:1];
+                    [arrayLectures addObject:aLecture];
+                }
+            }];
+            [lectureData addObject:arrayLectures];
         }
     }
     [self presentLectureView:lectureData];

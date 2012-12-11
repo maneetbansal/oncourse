@@ -84,6 +84,8 @@
 		97FC3F2F1677B187008FD22F /* OCLectureListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F2D1677B187008FD22F /* OCLectureListingsViewController.m */; };
 		97FC3F321677B199008FD22F /* OCLectureListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F311677B199008FD22F /* OCLectureListingView.m */; };
 		97FC3F331677B199008FD22F /* OCLectureListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F311677B199008FD22F /* OCLectureListingView.m */; };
+		97FC3F3E1677BF25008FD22F /* OCLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F3D1677BF25008FD22F /* OCLecture.m */; };
+		97FC3F3F1677BF25008FD22F /* OCLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F3D1677BF25008FD22F /* OCLecture.m */; };
 		C1A16833ADC94012AF345B23 /* libPods-Kiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +167,8 @@
 		97FC3F2D1677B187008FD22F /* OCLectureListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLectureListingsViewController.m; sourceTree = "<group>"; };
 		97FC3F301677B199008FD22F /* OCLectureListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLectureListingView.h; sourceTree = "<group>"; };
 		97FC3F311677B199008FD22F /* OCLectureListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLectureListingView.m; sourceTree = "<group>"; };
+		97FC3F3C1677BF25008FD22F /* OCLecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLecture.h; sourceTree = "<group>"; };
+		97FC3F3D1677BF25008FD22F /* OCLecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLecture.m; sourceTree = "<group>"; };
 		E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kiwi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -385,6 +389,8 @@
 				97B3086A166A67CA00089470 /* OCCourseraCrawler.m */,
 				97B3087B166B149400089470 /* OCJavascriptFunctions.h */,
 				97B3087C166B149400089470 /* OCJavascriptFunctions.m */,
+				97FC3F3C1677BF25008FD22F /* OCLecture.h */,
+				97FC3F3D1677BF25008FD22F /* OCLecture.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				97FC3F291677B16A008FD22F /* OCCrawlerWatchingVideoState.m in Sources */,
 				97FC3F2E1677B187008FD22F /* OCLectureListingsViewController.m in Sources */,
 				97FC3F321677B199008FD22F /* OCLectureListingView.m in Sources */,
+				97FC3F3E1677BF25008FD22F /* OCLecture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +616,7 @@
 				97FC3F2A1677B16A008FD22F /* OCCrawlerWatchingVideoState.m in Sources */,
 				97FC3F2F1677B187008FD22F /* OCLectureListingsViewController.m in Sources */,
 				97FC3F331677B199008FD22F /* OCLectureListingView.m in Sources */,
+				97FC3F3F1677BF25008FD22F /* OCLecture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

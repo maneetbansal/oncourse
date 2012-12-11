@@ -78,7 +78,7 @@
 
 + (NSString *)jsFetchLectureLinks
 {
-    return @"function OCFetchLectureLinks(){ var listSection = document.getElementsByClassName('list_header_link'); var listItem = document.getElementsByClassName('item_section_list'); var result = []; for(var i =0; i< listSection.length; ++i) { var sectionItem = []; var section = listSection[i].getElementsByClassName('list_header')[0].innerHTML; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j=0; j<items.length; ++j) { sectionItem.push(items[j].href); } result.push(section); result.push('^'); result.push(sectionItem.join(';')); result.push('|');     } return result.join(''); } OCFetchLectureLinks();";
+    return @"function OCFetchLectureLinks(){ var listSection = document.getElementsByClassName('list_header_link'); var listItem = document.getElementsByClassName('item_section_list'); var result = []; for(var i =0; i< listSection.length; ++i) { var sectionItem = []; var section = listSection[i].getElementsByClassName('list_header')[0].innerHTML; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j=0; j<items.length; ++j) { sectionItem.push(items[j].href + '~' + items[j].text); } result.push(section); result.push('^'); result.push(sectionItem.join(';')); result.push('|');     } return result.join(''); } OCFetchLectureLinks();";
 }
 
 @end
