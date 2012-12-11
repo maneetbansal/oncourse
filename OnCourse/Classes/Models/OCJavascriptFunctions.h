@@ -23,5 +23,6 @@
 + (NSString *)jsFetchAllProgressCourse;
 + (NSString *)jsCheckAuthenticationCourseNeeded;
 + (NSString *)jsAuthenticateCourse;
++ (NSString *)jsFetchLectureLinks;
 
 @end

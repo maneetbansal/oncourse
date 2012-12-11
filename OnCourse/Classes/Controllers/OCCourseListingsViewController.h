@@ -11,5 +11,6 @@
 @interface OCCourseListingsViewController : UIViewController
 
 - (void)updateCourseListing:(NSMutableArray *)courses;
+- (void)presentLectureViewController:(NSMutableArray *)lectureData;
 
 @end

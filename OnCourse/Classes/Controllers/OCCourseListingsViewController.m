@@ -8,10 +8,12 @@
 
 #import "OCCourseListingsViewController.h"
 #import "OCCourseListingView.h"
+#import "OCLectureListingsViewController.h"
 
 @interface OCCourseListingsViewController ()
 
 @property (nonatomic, strong) OCCourseListingView *courseListingView;
+@property (nonatomic, strong) OCLectureListingsViewController *lectureListingsViewController;
 
 @end
 
@@ -44,6 +46,13 @@
 {
     self.courseListingView.listAllCourse = courses;
     [self.courseListingView reloadData];
+}
+
+- (void)presentLectureViewController:(NSMutableArray *)lectureData
+{
+    self.lectureListingsViewController = [[OCLectureListingsViewController alloc] initWithLectureData:lectureData];
+    [self.navigationController pushViewController:self.lectureListingsViewController animated:YES];
+
 }
 
 @end

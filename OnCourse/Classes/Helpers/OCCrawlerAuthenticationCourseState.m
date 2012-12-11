@@ -10,10 +10,13 @@
 #import "OCJavascriptFunctions.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
+#import "OCCrawlerLectureListingState.h"
+#import "OCCourseraCrawler.h"
 
 @interface OCCrawlerAuthenticationCourseState()
 
-@property (nonatomic, strong)NSString *courseLink;
+@property (nonatomic, strong) NSString *courseLink;
+@property (nonatomic, strong) OCCrawlerLectureListingState *lectureState;
 
 @end
 
@@ -50,7 +53,11 @@
             else
             {
 //                [self loadRequest:[self lectureLink]];
+                OCAppDelegate *appDelegate = [OCUtility appDelegate];
                 NSLog(@"authentication course successfully");
+                self.lectureState = [[OCCrawlerLectureListingState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andLectureIndexLink:[self lectureLink]];
+                self.lectureState.crawlerDelegate = appDelegate.courseCrawler;
+                [appDelegate.courseCrawler changeState:self.lectureState];
             }
         }
         
