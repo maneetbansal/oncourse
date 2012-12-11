@@ -10,4 +10,6 @@
 
 @interface OCWatchingVideoViewController : UIViewController
 
+- (void)setVideoLink:(NSString *)videoLink;
+
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "OCWatchingVideoViewController.h"
+#import "OCWatchingVideo.h"
 
 @interface OCWatchingVideoViewController ()
+@property (nonatomic, strong) OCWatchingVideo *watchingVideoView;
 
 @end
 
@@ -19,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:CGRectMake(0, 0, 400, 200)];
     }
     return self;
 }
@@ -27,12 +30,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view = self.watchingVideoView;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setVideoLink:(NSString *)videoLink
+{
+    self.watchingVideoView.videoLink = videoLink;
+    [self.watchingVideoView reloadDataWebview];
 }
 
 @end

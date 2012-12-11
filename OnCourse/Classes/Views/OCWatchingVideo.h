@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface OCWatchingVideo : UIView
+
 @property (nonatomic, strong) NSString *videoLink;
+@property (nonatomic, strong) UILabel *videoTitle;
+
+- (void)reloadDataWebview;
+
 @end
