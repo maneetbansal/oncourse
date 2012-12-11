@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:CGRectMake(0, 0, 500, 700)];
     }
     return self;
 }
@@ -29,7 +30,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:self.view.frame];
     self.view = self.watchingVideoView;
 }
 
@@ -37,6 +37,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setVideoLink:(NSString *)videoLink
+{
+    self.watchingVideoView.videoLink = videoLink;
+    [self.watchingVideoView reloadDataWebview];
 }
 
 @end
