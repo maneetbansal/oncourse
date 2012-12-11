@@ -21,7 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:CGRectMake(0, 0, 500, 700)];
+        self.watchingVideoView = [[OCWatchingVideo alloc] initWithFrame:CGRectMake(0, 0, 400, 200)];
     }
     return self;
 }

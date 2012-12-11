@@ -10,6 +10,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface OCWatchingVideo : UIView
+
 @property (nonatomic, strong) NSString *videoLink;
-@property (nonatomic, strong) UIWebView *webview;
+@property (nonatomic, strong) UILabel *videoTitle;
+
+- (void)reloadDataWebview;
+
 @end
