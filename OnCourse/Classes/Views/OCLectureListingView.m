@@ -7,9 +7,12 @@
 //
 
 #import "OCLectureListingView.h"
+#import "OCCourse.h"
+#import "OCCourseraCrawler.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCLecture.h"
+#import "OCCrawlerWatchingVideoState.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -25,6 +28,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 @property (nonatomic, strong) UITableView *tableviewLecture;
 @property (nonatomic, strong) NSMutableArray *lectureData;
 @property (nonatomic, strong) UIButton *buttonBack;
+@property (nonatomic, strong) OCCrawlerWatchingVideoState *crawlerWatchingVideoState;
 
 @end
 
@@ -56,7 +60,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.labelTop = [[UILabel alloc] init];
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
-    [self.labelTop setFont:[UIFont fontWithName:@"Livory" size:25]];
+    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
     self.labelTop.text = @"Lectures";
     [self addSubview:self.labelTop];
 
@@ -64,6 +68,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.tableviewLecture.delegate = self;
     self.tableviewLecture.dataSource = self;
     self.tableviewLecture.translatesAutoresizingMaskIntoConstraints = NO;
+    UIColor *backgroundColor = [[UIColor alloc] initWithWhite:1 alpha:0.0];
+    self.tableviewLecture.backgroundColor = backgroundColor;
+    
     [self.tableviewLecture reloadData];
     [self addSubview:self.tableviewLecture];
 
@@ -145,6 +152,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     }
     
     cell.textLabel.text = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] title];
+    cell.textLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    
     return cell;
 }
 
@@ -163,10 +172,11 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 892, 40)];
     view.backgroundColor = [UIColor colorWithRed:196/255.0 green:196/255.0 blue:196/255.0 alpha:1];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 350, 42)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 350, 42)];
     label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1];
+    label.font = [UIFont fontWithName:@"Livory-Bold" size:18];
+    label.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:0.7];
+//    label.textColor = [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1];
 
     [view addSubview:label];
 
@@ -182,7 +192,16 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog([NSString stringWithFormat:@"%i", indexPath.row]);
+    NSString *videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
+    NSLog(@"%@", videoLink);
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    self.crawlerWatchingVideoState = [[OCCrawlerWatchingVideoState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andVideoLink:videoLink];
+    self.crawlerWatchingVideoState.crawlerDelegate = appDelegate.courseCrawler;
+    [appDelegate.courseCrawler changeState:self.crawlerWatchingVideoState];
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
