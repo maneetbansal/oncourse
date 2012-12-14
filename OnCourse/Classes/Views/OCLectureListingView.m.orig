@@ -12,10 +12,14 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCLecture.h"
+<<<<<<< HEAD
 #import "OCWatchingVideoViewController.h"
 #import "OCLectureListingsViewController.h"
 #import "OCCrawlerWatchingVideoState.h"
 #import "OCCourseraCrawler.h"
+=======
+#import "OCCrawlerWatchingVideoState.h"
+>>>>>>> 574844dbd0ecc31060530676a1435f3d73d86475
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -31,8 +35,12 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 @property (nonatomic, strong) UITableView *tableviewLecture;
 @property (nonatomic, strong) NSMutableArray *lectureData;
 @property (nonatomic, strong) UIButton *buttonBack;
+<<<<<<< HEAD
 @property (nonatomic, strong) OCWatchingVideoViewController *watchingVideoController;
 @property (nonatomic, strong) NSString *videoLink;
+=======
+@property (nonatomic, strong) OCCrawlerWatchingVideoState *crawlerWatchingVideoState;
+>>>>>>> 574844dbd0ecc31060530676a1435f3d73d86475
 
 @end
 
@@ -196,10 +204,20 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+<<<<<<< HEAD
     self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] link];
     self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
+=======
+    NSLog([NSString stringWithFormat:@"%i", indexPath.row]);
+    NSString *videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
+    NSLog(@"%@", videoLink);
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    self.crawlerWatchingVideoState = [[OCCrawlerWatchingVideoState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andVideoLink:videoLink];
+    self.crawlerWatchingVideoState.crawlerDelegate = appDelegate.courseCrawler;
+    [appDelegate.courseCrawler changeState:self.crawlerWatchingVideoState];
+>>>>>>> 574844dbd0ecc31060530676a1435f3d73d86475
 }
 
 
