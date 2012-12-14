@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OCWatchingVideoViewController : UIViewController
+@interface OCWatchingVideoViewController : UIViewController<UIWebViewDelegate>
 
-- (void)setVideoLink:(NSString *)videoLink;
+- (id)initWithVideoLink:(NSString *)videoLink;
 
 @end

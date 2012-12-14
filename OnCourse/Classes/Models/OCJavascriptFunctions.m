@@ -36,6 +36,11 @@
     
 }
 
++ (NSString *)checkCourseLoaded
+{
+    return @"var number = 0; var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { number +=1; if(number >=2) {callObjectiveCFunction('pageLoaded','nothing'); clearInterval(pageLoadIntervalId);} } else {  } }, 1000);";
+}
+
 + (NSString *)jsFetchAllImageCourse
 {
     return @"function OCFetchAllImageCourse() { var imageLinks = document.getElementsByClassName('coursera-course-listing-icon'); var result = ''; for(var i = 0; i<imageLinks.length; ++i) {result += imageLinks[i].src; if(i != imageLinks.length-1) result += ';'; } return result;} OCFetchAllImageCourse();";
@@ -79,6 +84,11 @@
 + (NSString *)jsFetchLectureLinks
 {
     return @"function OCFetchLectureLinks(){ var listSection = document.getElementsByClassName('list_header_link'); var listItem = document.getElementsByClassName('item_section_list'); var result = []; for(var i =0; i< listSection.length; ++i) { var sectionItem = []; var section = listSection[i].getElementsByClassName('list_header')[0].innerHTML; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j=0; j<items.length; ++j) { sectionItem.push(items[j].href + '~' + items[j].text); } result.push(section); result.push('^'); result.push(sectionItem.join(';')); result.push('|');     } return result.join(''); } OCFetchLectureLinks();";
+}
+
++ (NSString *)jsPlayLectureVideo
+{
+    return @"function OCPlayLectureVideo(){ var iframe = document.getElementById('fancybox-frame'); var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCPlayLectureVideo();";
 }
 
 @end

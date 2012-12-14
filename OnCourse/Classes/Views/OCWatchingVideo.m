@@ -14,9 +14,14 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
+NSString *const kLabelTopWatchingVertical = @"V:|-15-[_labelTopWatching]-10-[moviePlayerView]";
+
+NSString *const kMoviePlayerHorizontal = @"H:|-0-[moviePlayerView]-0-|";
+NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
+
 @interface OCWatchingVideo()
 
-@property (nonatomic, strong) UIWebView *webview;
+@property (nonatomic, strong) UILabel *labelTopWatching;
 
 @end
 
@@ -26,41 +31,31 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self drawVideoTitle];
-        [self initWebview];
+        [self constructUIComponents];
+        [self addConstraints:[self arrayContraints]];
         [self setNiceBackground];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)constructUIComponents
 {
-    // Drawing code
-}
-*/
+    self.labelTopWatching = [[UILabel alloc] init];
+    self.labelTopWatching.translatesAutoresizingMaskIntoConstraints = NO;
+    self.labelTopWatching.backgroundColor = [UIColor clearColor];
+    [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory" size:25]];
+    self.labelTopWatching.text = @"Your courses";
+    [self addSubview:self.labelTopWatching];
 
-- (void)drawVideoTitle
-{
-    self.videoTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.height, 100)];
-    self.videoTitle.text = @"Video title";
-    self.videoTitle.translatesAutoresizingMaskIntoConstraints = NO;
-    self.videoTitle.backgroundColor = [UIColor clearColor];
-    [self.videoTitle setFont:[UIFont fontWithName:@"Livory" size:20]];
-    
-    [self addSubview:self.videoTitle];
-}
-
-- (void)initWebview
-{
-    self.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 100, [[UIScreen mainScreen] bounds].size.height - 50, 500)];
-    self.webview.autoresizesSubviews = YES;
-    self.webview.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    NSURLRequest *requestObject = [NSURLRequest requestWithURL:[NSURL URLWithString:self.videoLink]];
-    [self.webview loadRequest:requestObject];
-    [self addSubview:self.webview];
+    self.moviePlayer = [[MPMoviePlayerController alloc] init];
+    self.moviePlayer.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
+//    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    self.moviePlayer.shouldAutoplay = YES;
+    self.moviePlayer.repeatMode = NO;
+    [self.moviePlayer setFullscreen:YES animated:YES];
+    self.moviePlayer.view.backgroundColor = [UIColor clearColor];
+    [self addSubview:[self.moviePlayer view]];
 }
 
 - (void)setNiceBackground
@@ -72,13 +67,40 @@
     
 }
 
-- (void)reloadDataWebview
+- (NSArray *)labelTopWatchingConstraints
 {
-    NSURLRequest *requestObject = [NSURLRequest requestWithURL:[NSURL URLWithString:self.videoLink]];
-    NSString *embedHTML = @"\ <html><head>\ <style type=\"text/css\">\ body {\ background-color: transparent; color: white; }\ </style>\ </head><body style=\"margin:0\">\ <embed id=\"yt\" src=\"%@\" \ width=\"%0.0f\" height=\"%0.0f\"></embed>\ </body></html>";
-//    [self.webview loadRequest:requestObject];
-    NSString *html = [NSString stringWithFormat:embedHTML, self.videoLink, [[UIScreen mainScreen] bounds].size.height - 260, ([[UIScreen mainScreen] bounds].size.height - 260) /16 * 9];
-    [self.webview loadHTMLString:html baseURL:nil];
+    NSMutableArray *result = [@[] mutableCopy];
+    UIView *moviePlayerView = self.moviePlayer.view;
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelTopWatching, moviePlayerView);
+    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTopWatching attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopWatchingVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+    
+}
+
+- (NSArray *)moviePlayerConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    UIView *moviePlayerView = self.moviePlayer.view;
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(moviePlayerView);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kMoviePlayerHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kMoviePlayerVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+
+}
+
+- (NSArray *)arrayContraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    
+    [result addObjectsFromArray:[self labelTopWatchingConstraints]];
+    [result addObjectsFromArray:[self moviePlayerConstraints]];
+    
+    return [NSArray arrayWithArray:result];
 }
 
 @end

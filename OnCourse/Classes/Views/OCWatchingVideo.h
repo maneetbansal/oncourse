@@ -11,9 +11,6 @@
 
 @interface OCWatchingVideo : UIView
 
-@property (nonatomic, strong) NSString *videoLink;
-@property (nonatomic, strong) UILabel *videoTitle;
-
-- (void)reloadDataWebview;
+@property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
 
 @end

@@ -18,7 +18,7 @@
 {
     self = [super init];
     if (self) {
-        self.webviewCrawler = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 300, 500)];
+        self.webviewCrawler = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 300)];
     }
 
     return self;

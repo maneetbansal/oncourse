@@ -86,6 +86,7 @@
 		97FC3F331677B199008FD22F /* OCLectureListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F311677B199008FD22F /* OCLectureListingView.m */; };
 		97FC3F3E1677BF25008FD22F /* OCLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F3D1677BF25008FD22F /* OCLecture.m */; };
 		97FC3F3F1677BF25008FD22F /* OCLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F3D1677BF25008FD22F /* OCLecture.m */; };
+		97FC3F781678F980008FD22F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FC3F771678F97F008FD22F /* MediaPlayer.framework */; };
 		C1A16833ADC94012AF345B23 /* libPods-Kiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +170,7 @@
 		97FC3F311677B199008FD22F /* OCLectureListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLectureListingView.m; sourceTree = "<group>"; };
 		97FC3F3C1677BF25008FD22F /* OCLecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLecture.h; sourceTree = "<group>"; };
 		97FC3F3D1677BF25008FD22F /* OCLecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLecture.m; sourceTree = "<group>"; };
+		97FC3F771678F97F008FD22F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E66655067F9F4839ACF8D395 /* libPods-Kiwi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kiwi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FC3F781678F980008FD22F /* MediaPlayer.framework in Frameworks */,
 				97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */,
 				97DD0D9D16671FD50022378D /* Foundation.framework in Frameworks */,
 				97DD0D9F16671FD50022378D /* CoreGraphics.framework in Frameworks */,
@@ -243,6 +246,7 @@
 		97DD0D8B16671FD50022378D = {
 			isa = PBXGroup;
 			children = (
+				97FC3F771678F97F008FD22F /* MediaPlayer.framework */,
 				97DD0DA016671FD50022378D /* OnCourse */,
 				97DD0DE21667683A0022378D /* Kiwi */,
 				97DD0D9916671FD50022378D /* Frameworks */,
@@ -651,7 +655,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -666,6 +671,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -679,7 +686,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -687,6 +695,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -697,10 +707,14 @@
 			baseConfigurationReference = 8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnCourse/OnCourse-Prefix.pch";
 				INFOPLIST_FILE = "OnCourse/OnCourse-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -710,10 +724,14 @@
 			baseConfigurationReference = 8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnCourse/OnCourse-Prefix.pch";
 				INFOPLIST_FILE = "OnCourse/OnCourse-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

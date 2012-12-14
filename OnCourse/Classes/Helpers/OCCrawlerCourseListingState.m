@@ -57,7 +57,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkCourseLoaded]];
 }
 
 - (NSArray *)fetchAllImageCourse

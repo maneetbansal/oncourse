@@ -24,5 +24,7 @@
 + (NSString *)jsCheckAuthenticationCourseNeeded;
 + (NSString *)jsAuthenticateCourse;
 + (NSString *)jsFetchLectureLinks;
++ (NSString *)jsPlayLectureVideo;
++ (NSString *)checkCourseLoaded;
 
 @end

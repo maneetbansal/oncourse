@@ -10,6 +10,10 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCLecture.h"
+#import "OCWatchingVideoViewController.h"
+#import "OCLectureListingsViewController.h"
+#import "OCCrawlerWatchingVideoState.h"
+#import "OCCourseraCrawler.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -25,6 +29,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 @property (nonatomic, strong) UITableView *tableviewLecture;
 @property (nonatomic, strong) NSMutableArray *lectureData;
 @property (nonatomic, strong) UIButton *buttonBack;
+@property (nonatomic, strong) OCWatchingVideoViewController *watchingVideoController;
+@property (nonatomic, strong) NSString *videoLink;
 
 @end
 
@@ -182,6 +188,10 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] link];
+    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink];
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
