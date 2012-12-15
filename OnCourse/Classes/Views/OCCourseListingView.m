@@ -17,15 +17,17 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
-NSString *const kLabelTopVertical = @"V:|-15-[_labelTop]-10-[collectionView]";
+NSString *const kLabelTopVertical = @"V:|-15-[_labelTop]-10-[collectionView]-35-|";
 
 NSString *const kCollectionCourseListingHorizontal = @"H:|-0-[collectionView]-0-|";
-NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
+NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
 
 @interface OCCourseListingView()
 
 @property (nonatomic, strong) UILabel *labelTop;
 @property (nonatomic, strong) UICollectionViewController *collectionCourseListing;
+@property (nonatomic, strong) UIButton *accountInformationButton;
+@property (nonatomic, strong) UIButton *logoutButton;
 @property (nonatomic, strong) OCCrawlerAuthenticationCourseState *crawlerAuthenticationCourse;
 @end
 
@@ -77,6 +79,16 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
     self.collectionCourseListing.collectionView.backgroundColor = [UIColor clearColor];
     
     [self addSubview:self.collectionCourseListing.collectionView];
+    
+    self.accountInformationButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.accountInformationButton.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    [self.accountInformationButton setTitle:@"Your acccount" forState:UIControlStateNormal];
+    [self addSubview:self.accountInformationButton];
+    
+    self.logoutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    [self.logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
+    [self addSubview:self.logoutButton];
 }
 
 - (void)setNiceBackground
@@ -124,6 +136,8 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
     return [NSArray arrayWithArray:result];
 }
 
+
+
 #pragma mark - UICollectionView Datasource
 // 1
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
@@ -141,16 +155,21 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]-0-|";
     CGSize size = self.frame.size;
 
     if (size.width == [UIScreen mainScreen].bounds.size.width) {
+        self.accountInformationButton.frame = CGRectMake(20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25);
+        self.logoutButton.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width) / 2 + 20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25);
+        
         cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/2, size.width/2 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, 30)];
         cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/2 + 20, 35, 150, 40)];
     }
     else
     {
+        self.accountInformationButton.frame = CGRectMake(20, [UIScreen mainScreen].bounds.size.width - 50, [UIScreen mainScreen].bounds.size.height / 2 - 40, 25);
+        self.logoutButton.frame = CGRectMake(([UIScreen mainScreen].bounds.size.height) / 2 + 20, [UIScreen mainScreen].bounds.size.width - 50, [UIScreen mainScreen].bounds.size.height / 2 - 40, 25);
+        
         cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width/2 -10, 30)];
         cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        
     }
     
     [cell reloadData:course];
