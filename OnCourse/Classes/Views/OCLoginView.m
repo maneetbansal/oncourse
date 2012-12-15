@@ -63,7 +63,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     [self.textFieldPassword setSecureTextEntry:YES];
     
     self.buttonLogin = [self buttonWithDarkBackground];
-    [self.buttonLogin setTitle:@"Log in" forState:UIControlStateNormal];
+    [self.buttonLogin setTitle:@"Login" forState:UIControlStateNormal];
     
     self.labelOr = [[UILabel alloc] init];
     self.labelOr.translatesAutoresizingMaskIntoConstraints = NO;
