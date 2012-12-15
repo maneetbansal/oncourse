@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 phatle. All rights reserved.
 //
 
+#import "OCAppDelegate.h"
+#import "OCSignupViewController.h"
+#import "OCUtility.h"
 #import "OCLoginView.h"
 
 #define WIDTH_IPHONE_5 568
@@ -21,9 +24,14 @@ NSString *const kTextFieldPasswordVertical = @"V:[_textFieldUsername]-[_textFiel
 
 NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin]";
 
+NSString *const kLableOrVertical = @"V:[_buttonLogin]-20-[_labelOr]";
+
+NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
+
 @interface OCLoginView()
 
 @property (nonatomic, strong) UILabel *labelAppname;
+@property (nonatomic, strong) UILabel *labelOr;
 
 @end
 
@@ -46,12 +54,26 @@ NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin
     self.labelAppname = [[UILabel alloc] init];
     self.labelAppname.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelAppname.backgroundColor = [UIColor clearColor];
-    [self.labelAppname setFont:[UIFont fontWithName:@"Livory" size:40]];
-    self.labelAppname.text = @"OnCourse";
-    self.textFieldUsername = [self textFieldWithPlaceholder:@"coursera username"];
-    self.textFieldPassword = [self textFieldWithPlaceholder:@"coursera password"];
+    [self.labelAppname setFont:[UIFont fontWithName:@"Livory-Bold" size:38]];
+    self.labelAppname.text = @"Coursera Online";
+    
+    self.textFieldUsername = [self textFieldWithPlaceholder:@"Your email"];
+    
+    self.textFieldPassword = [self textFieldWithPlaceholder:@"Your password"];
     [self.textFieldPassword setSecureTextEntry:YES];
+    
     self.buttonLogin = [self buttonWithDarkBackground];
+    [self.buttonLogin setTitle:@"Log in" forState:UIControlStateNormal];
+    
+    self.labelOr = [[UILabel alloc] init];
+    self.labelOr.translatesAutoresizingMaskIntoConstraints = NO;
+    self.labelOr.backgroundColor = [UIColor clearColor];
+    [self.labelOr setFont:[UIFont fontWithName:@"Livory" size:18]];
+    self.labelOr.text = @"or";
+    
+    self.buttonSignup = [self buttonWithDarkBackground];
+    [self.buttonSignup setTitle:@"Sign up" forState:UIControlStateNormal];
+    [self.buttonSignup addTarget:self action:@selector(buttonSignupAction) forControlEvents:UIControlEventTouchDown];
     
     [self addUIComponentsToView:self];
 }
@@ -65,16 +87,23 @@ NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin
     
 }
 
+- (void)buttonSignupAction
+{
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    [appDelegate.navigationController pushViewController:[[OCSignupViewController alloc] init] animated: YES];
+}
+
 - (UIButton *)buttonWithDarkBackground
 {
     UIButton *result = [[UIButton alloc] init];
     result.translatesAutoresizingMaskIntoConstraints = NO;
-    [result setTitle:@"Login" forState:UIControlStateNormal];
+    [result setFont:[UIFont fontWithName:@"Livory" size:20]];
     [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateSelected];
 
     return result;
 }
+
 
 - (UITextField *)textFieldWithPlaceholder:(NSString *)placeholder
 {
@@ -94,6 +123,8 @@ NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin
     [paramView addSubview:self.textFieldUsername];
     [paramView addSubview:self.textFieldPassword];
     [paramView addSubview:self.buttonLogin];
+    [paramView addSubview:self.labelOr];
+    [paramView addSubview:self.buttonSignup];
 }
 
 - (NSArray *)labelAppnameContraints
@@ -140,6 +171,28 @@ NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin
     return [NSArray arrayWithArray:result];
 }
 
+- (NSArray *)labelOrContraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelOr, _buttonLogin);
+    
+    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelOr attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLableOrVertical options:0 metrics:nil views:viewsDictionary]];
+    
+    return [NSArray arrayWithArray:result];
+}
+
+- (NSArray *)buttonSignupContraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonSignup, _labelOr);
+    [result addObject:[NSLayoutConstraint constraintWithItem:self.buttonSignup attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+    
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonSignupVertical options:0 metrics:nil views:viewsDictionary]];
+    
+    return [NSArray arrayWithArray:result];
+}
+
 - (NSArray *)arrayContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
@@ -148,6 +201,8 @@ NSString *const kButtonLoginVertical = @"V:[_textFieldPassword]-20-[_buttonLogin
     [result addObjectsFromArray:[self textFieldUsernameContraints]];
     [result addObjectsFromArray:[self textFieldPasswordContraints]];
     [result addObjectsFromArray:[self buttonLoginContraints]];
+    [result addObjectsFromArray:[self labelOrContraints]];
+    [result addObjectsFromArray:[self buttonSignupContraints]];
 
     return [NSArray arrayWithArray:result];
 }

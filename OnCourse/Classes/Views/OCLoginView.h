@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UITextField *textFieldUsername;
 @property (nonatomic, strong) UITextField *textFieldPassword;
 @property (nonatomic, strong) UIButton *buttonLogin;
+@property (nonatomic, strong) UIButton *buttonSignup;
 
 @end
