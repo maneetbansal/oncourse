@@ -78,7 +78,10 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     [self.tableviewLecture reloadData];
     [self addSubview:self.tableviewLecture];
 
-    self.buttonBack = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 20, 10)];
+    self.buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.buttonBack.frame = CGRectMake(15, 15, 60, 30);
+    [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
+    self.buttonBack.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
 }
@@ -155,7 +158,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LectureCell"];
     }
     
-    cell.textLabel.text = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] title];
+    cell.textLabel.text = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] title];
     cell.textLabel.font = [UIFont fontWithName:@"Livory" size:16];
     
     return cell;
@@ -173,14 +176,11 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 892, 40)];
-    view.backgroundColor = [UIColor colorWithRed:196/255.0 green:196/255.0 blue:196/255.0 alpha:1];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 350, 42)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1136, 40)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1136, 40)];
     label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-    label.font = [UIFont fontWithName:@"Livory-Bold" size:18];
-    label.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:0.7];
-//    label.textColor = [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1];
+    label.font = [UIFont fontWithName:@"Livory-Bold" size:16];
+    label.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:1.0];
 
     [view addSubview:label];
 
@@ -196,7 +196,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section *2 +1] objectAtIndex:indexPath.row] link];
+    self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
     self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
