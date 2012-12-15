@@ -23,30 +23,4 @@
     return self;
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSString *requestString = [[request URL] absoluteString];
-    
-    NSLog(@"request : %@",requestString);
-    
-    if ([requestString hasPrefix:@"js-frame:"]) {
-        NSArray *components = [requestString componentsSeparatedByString:@":"];
-        
-        NSString *function = (NSString*)[components objectAtIndex:1];
-        if ([@"pageLoaded" isEqualToString:function]) {
-            
-        }
-        
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-//    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-//    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
-}
-
 @end
