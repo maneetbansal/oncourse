@@ -1,4 +1,4 @@
-//
+
 //  OCCourseListingCell.m
 //  OnCourse
 //
@@ -27,6 +27,7 @@
     [self addSubview:self.image];
     
     self.title.text = course.title;
+    self.title.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     self.title.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:0.7];
     [self addSubview:self.title];
     
