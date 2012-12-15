@@ -22,6 +22,7 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 @interface OCWatchingVideo()
 
 @property (nonatomic, strong) UILabel *labelTopWatching;
+@property (nonatomic, strong) UIButton *buttonBack;
 
 @end
 
@@ -56,6 +57,20 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self.moviePlayer setFullscreen:YES animated:YES];
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self addSubview:[self.moviePlayer view]];
+    
+    self.buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.buttonBack.frame = CGRectMake(15, 15, 60, 30);
+    [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
+    self.buttonBack.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
+    [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
+    [self addSubview:self.buttonBack];
+}
+
+- (void)actionBack
+{
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    [appDelegate.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)setNiceBackground
