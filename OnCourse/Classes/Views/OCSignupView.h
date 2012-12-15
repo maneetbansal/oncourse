@@ -10,4 +10,10 @@
 
 @interface OCSignupView : UIView
 
+@property (nonatomic, strong) UITextField *textFieldFullname;
+@property (nonatomic, strong) UITextField *textFieldUsername;
+@property (nonatomic, strong) UITextField *textFieldPassword;
+@property (nonatomic, strong) UIButton *buttonSignup;
+@property (nonatomic, strong) UIButton *buttonGoToLoginView;
+
 @end

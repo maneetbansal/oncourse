@@ -6,9 +6,17 @@
 //  Copyright (c) 2012 phatle. All rights reserved.
 //
 
+#import "OCSignupView.h"
+#import "OCUtility.h"
+#import "OCAppDelegate.h"
+#import "OCCourseraCrawler.h"
 #import "OCSignupViewController.h"
+#import "OCCrawlerSignupState.h"
 
 @interface OCSignupViewController ()
+
+@property (nonatomic, strong) OCSignupView *signupView;
+@property (nonatomic, strong) OCCrawlerSignupState *crawlerSignupState;
 
 @end
 
@@ -27,6 +35,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _signupView = [[OCSignupView alloc] initWithFrame:self.view.frame];
+    self.view = _signupView;
 }
 
 - (void)didReceiveMemoryWarning

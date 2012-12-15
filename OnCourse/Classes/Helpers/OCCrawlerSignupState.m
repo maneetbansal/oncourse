@@ -10,4 +10,16 @@
 
 @implementation OCCrawlerSignupState
 
+- (id)initWithWebview:(UIWebView *)webview
+{
+    self = [super init];
+    if (self){
+        self.webviewCrawler = webview;
+        self.webviewCrawler.delegate = self;
+    }
+    return self;
+}
+
+
+
 @end
