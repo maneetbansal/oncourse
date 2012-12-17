@@ -186,11 +186,25 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
 {
     // TODO: Select Item
     NSLog([NSString stringWithFormat:@"%i", indexPath.row ]);
-    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    
     NSString *courseLink = [[self.listAllCourse objectAtIndex:indexPath.row] link];
-    self.crawlerAuthenticationCourse = [[OCCrawlerAuthenticationCourseState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andCourseLink:courseLink];
-    self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
-    [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
+    NSString *courseStatus = [[self.listAllCourse objectAtIndex:indexPath.row] status];
+    NSString *metaInfo = [[self.listAllCourse objectAtIndex:indexPath.row] metaInfo];
+    NSString *date = [[metaInfo componentsSeparatedByString:@"<br>"] objectAtIndex:0];
+    NSString *announcement = @"";
+    if ([@"Date to be announced" isEqualToString:date]) {
+        announcement = @"Date to be announced!";
+    } else {
+        announcement = [NSString stringWithFormat:@"Please try again in %@!", date];
+    }
+    if ([@"disabled" isEqualToString:courseStatus]) {
+        [[[UIAlertView alloc] initWithTitle:@"Coming soon" message:[NSString stringWithFormat:@"This course is coming soon. %@", announcement] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else {
+        OCAppDelegate *appDelegate = [OCUtility appDelegate];
+        self.crawlerAuthenticationCourse = [[OCCrawlerAuthenticationCourseState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andCourseLink:courseLink];
+        self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
+        [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
+    }
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
