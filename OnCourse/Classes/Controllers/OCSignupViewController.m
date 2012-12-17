@@ -55,8 +55,10 @@
     if (fullname != nil && username != nil && password != nil & fullname.length > 0 & username.length > 0 && password.length > 0) {
         if ([self validateEmail:username] == NO) {
             [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The email is invalid. Please check it again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        } else if (password.length < 4) {
+            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The password is weak. Please use a stronger password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         } else {
-            
+            // Fill valid information
         }
     }
     else
