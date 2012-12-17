@@ -58,13 +58,14 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     self.textFieldFullname = [self textFieldWithPlaceholder:@"Full name"];
     self.textFieldUsername = [self textFieldWithPlaceholder:@"Email"];
     self.textFieldPassword = [self textFieldWithPlaceholder:@"Password"];
+    [self.textFieldPassword setSecureTextEntry:YES];
     
     self.buttonSignup = [self createButtonSignup];
     
     [self addUIComponentsToView:self];
     
     self.buttonGoToLoginView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.buttonGoToLoginView.frame = CGRectMake(10, 25, 60, 50);
+    self.buttonGoToLoginView.frame = CGRectMake(20, 25, 60, 50);
     [self.buttonGoToLoginView setTitle:@"Login" forState:UIControlStateNormal];
     self.buttonGoToLoginView.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonGoToLoginView addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];

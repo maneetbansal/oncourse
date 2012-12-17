@@ -11,6 +11,10 @@
 
 @interface OCCrawlerSignupState : OCCrawlerAbstractState <UIWebViewDelegate>
 
-- (id)initWithWebview:(UIWebView *)webview;
+@property (nonatomic, strong) NSString *fullname;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
+
+- (id)initWithWebview:(UIWebView *)webview andFullname:(NSString *)fullname andUsername:(NSString *)username andPassword:(NSString *)password;
 
 @end

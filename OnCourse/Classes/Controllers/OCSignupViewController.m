@@ -37,12 +37,42 @@
 	// Do any additional setup after loading the view.
     _signupView = [[OCSignupView alloc] initWithFrame:self.view.frame];
     self.view = _signupView;
+    [_signupView.buttonSignup addTarget:self action:@selector(actionSignup) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)actionSignup
+{
+    NSString *fullname = self.signupView.textFieldFullname.text;
+    NSString *username = self.signupView.textFieldUsername.text; // email format
+    NSString *password = self.signupView.textFieldPassword.text;
+    
+    if (fullname != nil && username != nil && password != nil & fullname.length > 0 & username.length > 0 && password.length > 0) {
+        if ([self validateEmail:username] == NO) {
+            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The email is invalid. Please check it again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        } else {
+            
+        }
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"Please fill enough information!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+}
+
+- (BOOL)validateEmail:(NSString *)email
+{
+    BOOL stricterFilter = YES;
+    NSString *stricterFiltrString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\[A-Za-z]{2,6}";
+    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFiltrString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
 }
 
 @end

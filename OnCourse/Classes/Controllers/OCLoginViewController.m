@@ -56,17 +56,34 @@
 {
     NSString *username = @"letan5505055@gmail.com";//self.loginView.textFieldUsername.text;
     NSString *password = @"123456";//self.loginView.textFieldPassword.text;
-    if (username != nil && password != nil && username.length > 0 && password.length > 0) {
-        OCAppDelegate *appDelegate = [OCUtility appDelegate];
-//        [self.view addSubview:appDelegate.courseCrawler.webviewCrawler];
-        self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andEmail:username andPassword:password];
-        self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
-        [appDelegate.courseCrawler changeState:self.crawlerLoginState];
+    if (username != nil && password != nil && username.length > 0 && password.length > 0)
+    {
+        if ([self validateEmail:username] == NO) {
+           [[[UIAlertView alloc] initWithTitle:@"Login fail" message:@"Your email is invalid. Please check it again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        }
+        else
+        {
+            OCAppDelegate *appDelegate = [OCUtility appDelegate];
+            //        [self.view addSubview:appDelegate.courseCrawler.webviewCrawler];
+            self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andEmail:username andPassword:password];
+            self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
+            [appDelegate.courseCrawler changeState:self.crawlerLoginState];
+        }
     }
     else
     {
-        [[[UIAlertView alloc] initWithTitle:@"Login Fail" message:@"Please fill the email and password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Login fail" message:@"Please fill the email and password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     }
+}
+
+- (BOOL)validateEmail:(NSString *)email
+{
+    BOOL stricterFilter = YES;
+    NSString *stricterFiltrString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\[A-Za-z]{2,6}";
+    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFiltrString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
 }
 
 @end
