@@ -69,10 +69,10 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     self.labelOr.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelOr.backgroundColor = [UIColor clearColor];
     [self.labelOr setFont:[UIFont fontWithName:@"Livory" size:18]];
-    self.labelOr.text = @"or";
+    self.labelOr.text = @"No Account Yet? Press Sign Up now.";
     
     self.buttonSignup = [self buttonWithDarkBackground];
-    [self.buttonSignup setTitle:@"Sign up" forState:UIControlStateNormal];
+    [self.buttonSignup setTitle:@"Sign Up" forState:UIControlStateNormal];
     [self.buttonSignup addTarget:self action:@selector(buttonSignupAction) forControlEvents:UIControlEventTouchDown];
     
     [self addUIComponentsToView:self];
@@ -206,6 +206,8 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
 
     return [NSArray arrayWithArray:result];
 }
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

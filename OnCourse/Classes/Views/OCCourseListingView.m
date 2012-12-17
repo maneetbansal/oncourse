@@ -65,8 +65,8 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     self.labelTop = [[UILabel alloc] init];
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
-    [self.labelTop setFont:[UIFont fontWithName:@"Livory" size:25]];
-    self.labelTop.text = @"Your courses";
+    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
+    self.labelTop.text = @"Your Courses";
     [self addSubview:self.labelTop];
     
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -81,12 +81,12 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     [self addSubview:self.collectionCourseListing.collectionView];
     
     self.accountInformationButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.accountInformationButton.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    self.accountInformationButton.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.accountInformationButton setTitle:@"Your acccount" forState:UIControlStateNormal];
     [self addSubview:self.accountInformationButton];
     
     self.logoutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
     [self addSubview:self.logoutButton];
 }

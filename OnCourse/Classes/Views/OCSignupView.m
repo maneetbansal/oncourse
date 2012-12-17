@@ -52,8 +52,8 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     self.labelSignup = [[UILabel alloc] init];
     self.labelSignup.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelSignup.backgroundColor = [UIColor clearColor];
-    [self.labelSignup setFont:[UIFont fontWithName:@"Livory-Bold" size:38]];
-    self.labelSignup.text = @"Sign up";
+    [self.labelSignup setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
+    self.labelSignup.text = @"Sign Up";
     
     self.textFieldFullname = [self textFieldWithPlaceholder:@"Full name"];
     self.textFieldUsername = [self textFieldWithPlaceholder:@"Email"];
@@ -65,7 +65,7 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     [self addUIComponentsToView:self];
     
     self.buttonGoToLoginView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.buttonGoToLoginView.frame = CGRectMake(20, 25, 60, 50);
+    self.buttonGoToLoginView.frame = CGRectMake(20, 25, 60, 30);
     [self.buttonGoToLoginView setTitle:@"Login" forState:UIControlStateNormal];
     self.buttonGoToLoginView.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonGoToLoginView addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
@@ -91,8 +91,8 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 {
     UIButton *result = [[UIButton alloc] init];
     result.translatesAutoresizingMaskIntoConstraints = NO;
-    [result setFont:[UIFont fontWithName:@"Livory" size:16]];
-    [result setTitle:@"Sign up" forState:UIControlStateNormal];
+    [result setFont:[UIFont fontWithName:@"Livory" size:20]];
+    [result setTitle:@"Sign Up" forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateSelected];
     
