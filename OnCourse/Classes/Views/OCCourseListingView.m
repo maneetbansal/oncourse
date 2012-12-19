@@ -169,7 +169,7 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
         
         cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width/2 -10, 30)];
-        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/4 + 20, 33, 100, 35)];
     }
     
     [cell reloadData:course];
