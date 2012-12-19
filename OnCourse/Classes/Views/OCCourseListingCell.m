@@ -48,7 +48,13 @@
     else
     {
         self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(self.frame.size.width / 7 * 4, self.frame.size.height / 7 * 6, self.frame.size.width / 7 * 2.7, self.frame.size.height / 7)];
-        [self.progressBar setProgressViewStyle:UIProgressViewStyleDefault];
+        
+        if ([@"archive" isEqualToString:course.status]) {
+            course.progress = 100;
+            [self.progressBar setProgressViewStyle:UIProgressViewStyleBar];
+        } else {
+            [self.progressBar setProgressViewStyle:UIProgressViewStyleDefault];
+        }
         
         self.progressBar.progress = (float)course.progress / 100;
         [self addSubview:self.progressBar];
