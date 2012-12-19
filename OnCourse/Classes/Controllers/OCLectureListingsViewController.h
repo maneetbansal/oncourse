@@ -10,6 +10,8 @@
 
 @interface OCLectureListingsViewController : UIViewController
 
+@property (nonatomic, strong) NSString *selectedVideoTitle;
+
 - (id)initWithLectureData:(NSMutableArray *)lectureData;
 
 @end

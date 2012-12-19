@@ -31,17 +31,23 @@
     return self;
 }
 
-- (id)initWithVideoLink:(NSString *)videoLink
+- (id)initWithVideoLink:(NSString *)videoLink andTitle:(NSString *)videoTitle
 {
     self = [super init];
     if (self) {
         self.webviewPlayer = [[UIWebView alloc] init];
         self.webviewPlayer.delegate = self;
+        self.videoTitle = videoTitle;
         [self loadRequest:videoLink];
         self.watchingVideoView = [OCWatchingVideo new];
         self.moviePlayer = self.watchingVideoView.moviePlayer;
     }
     return self;
+}
+
+- (NSString *)getVideoTitle
+{
+    return self.videoTitle;
 }
 
 - (void)loadRequest:(NSString *)videoLink
@@ -108,6 +114,11 @@
     [self.moviePlayer prepareToPlay];
     [self.moviePlayer play];
 
+}
+
+- (void)stopVideo
+{
+    [self.moviePlayer stop];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

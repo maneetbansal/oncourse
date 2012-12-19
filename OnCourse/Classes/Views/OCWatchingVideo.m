@@ -10,6 +10,7 @@
 #import "OCUtility.h"
 #import "OCCourse.h"
 #import "OCWatchingVideo.h"
+#import "OCButtonStyle.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -58,10 +59,9 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self addSubview:[self.moviePlayer view]];
     
-    self.buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.buttonBack.frame = CGRectMake(15, 15, 60, 30);
+    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
+    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(15, 15, 60, 30)];
     [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
-    self.buttonBack.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
 }

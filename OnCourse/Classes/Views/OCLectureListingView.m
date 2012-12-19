@@ -16,6 +16,7 @@
 #import "OCLectureListingsViewController.h"
 #import "OCCrawlerWatchingVideoState.h"
 #import "OCCourseraCrawler.h"
+#import "OCButtonStyle.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -33,6 +34,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 @property (nonatomic, strong) UIButton *buttonBack;
 @property (nonatomic, strong) OCWatchingVideoViewController *watchingVideoController;
 @property (nonatomic, strong) NSString *videoLink;
+@property (nonatomic, strong) NSString *videoTitle;
 
 @end
 
@@ -78,10 +80,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     [self.tableviewLecture reloadData];
     [self addSubview:self.tableviewLecture];
 
-    self.buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.buttonBack.frame = CGRectMake(15, 15, 60, 30);
+    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
+    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(15, 15, 60, 30)];
     [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
-    self.buttonBack.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
 }
@@ -197,9 +198,15 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
-    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink];
+    self.videoTitle = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] title];
+    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    
+    OCLectureListingsViewController *lectureListingViewController = [appDelegate.navigationController.viewControllers objectAtIndex:2];
+    lectureListingViewController.selectedVideoTitle = self.videoTitle;
+    
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
+    
 }
 
 
