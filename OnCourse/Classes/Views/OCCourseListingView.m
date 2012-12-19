@@ -80,13 +80,11 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     
     [self addSubview:self.collectionCourseListing.collectionView];
     
-    self.accountInformationButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.accountInformationButton.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
+    self.accountInformationButton = [self buttonWithDarkBackground:CGRectMake(20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25)];
     [self.accountInformationButton setTitle:@"Your acccount" forState:UIControlStateNormal];
     [self addSubview:self.accountInformationButton];
     
-    self.logoutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
+    self.logoutButton = [self buttonWithDarkBackground:CGRectMake(([UIScreen mainScreen].bounds.size.width) / 2 + 20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25)];
     [self.logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
     [self addSubview:self.logoutButton];
 }
@@ -238,5 +236,30 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     // Drawing code
 }
 */
+
+- (UIImage *)imageWithImage:(UIImage *)image scaleToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+- (UIButton *)buttonWithDarkBackground:(CGRect)rect
+{
+    UIButton *result = [[UIButton alloc] initWithFrame:rect];
+    
+    UIImage *button = [self imageWithImage:[UIImage imageNamed:@"login_button@2x"] scaleToSize:CGSizeMake(rect.size.width, rect.size.height)];
+    UIImage *button_down = [self imageWithImage:[UIImage imageNamed:@"login_Down@2x"] scaleToSize:CGSizeMake(rect.size.width, rect.size.height)];
+    
+    result.translatesAutoresizingMaskIntoConstraints = NO;
+    [result setFont:[UIFont fontWithName:@"Livory" size:16]];
+    [result setBackgroundImage:button forState:UIControlStateNormal];
+    [result setBackgroundImage:button_down forState:UIControlStateSelected];
+    
+    return result;
+}
 
 @end
