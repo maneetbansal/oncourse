@@ -10,6 +10,7 @@
 #import "OCUtility.h"
 #import "OCCourse.h"
 #import "OCSignupView.h"
+#import "OCButtonStyle.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -64,10 +65,9 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     
     [self addUIComponentsToView:self];
     
-    self.buttonGoToLoginView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.buttonGoToLoginView.frame = CGRectMake(20, 25, 60, 30);
+    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
+    self.buttonGoToLoginView = [buttonStyle buttonWithDarkBackground:CGRectMake(20, 25, 60, 30)];
     [self.buttonGoToLoginView setTitle:@"Login" forState:UIControlStateNormal];
-    self.buttonGoToLoginView.titleLabel.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     [self.buttonGoToLoginView addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonGoToLoginView];
 }
