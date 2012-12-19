@@ -14,7 +14,6 @@
 #import "OCLecture.h"
 #import "OCWatchingVideoViewController.h"
 #import "OCLectureListingsViewController.h"
-#import "OCCrawlerWatchingVideoState.h"
 #import "OCCourseraCrawler.h"
 #import "OCButtonStyle.h"
 

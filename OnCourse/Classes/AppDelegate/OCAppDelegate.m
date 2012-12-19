@@ -12,12 +12,10 @@
 #import "OCCourseraCrawler.h"
 #import "OCCrawlerLoginState.h"
 #import "OCWatchingVideoViewController.h"
-#import "OCCrawlerWatchingVideoState.h"
 
 @interface OCAppDelegate()
 
 @property (nonatomic, strong) OCCrawlerLoginState *crawlerLoginState;
-@property (nonatomic, strong) OCCrawlerWatchingVideoState *crawlerWatchingVideoState;
 
 @end
 
