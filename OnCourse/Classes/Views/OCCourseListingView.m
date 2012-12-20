@@ -188,6 +188,7 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     NSLog([NSString stringWithFormat:@"%i", indexPath.row ]);
     
     NSString *courseLink = [[self.listAllCourse objectAtIndex:indexPath.row] link];
+    NSString *courseTitle = [[self.listAllCourse objectAtIndex:indexPath.row] title];
     NSString *courseStatus = [[self.listAllCourse objectAtIndex:indexPath.row] status];
     NSString *metaInfo = [[self.listAllCourse objectAtIndex:indexPath.row] metaInfo];
     NSString *date = [[metaInfo componentsSeparatedByString:@"<br>"] objectAtIndex:0];
@@ -201,6 +202,7 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
         [[[UIAlertView alloc] initWithTitle:@"Coming soon" message:[NSString stringWithFormat:@"This course is coming soon. %@", announcement] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         OCAppDelegate *appDelegate = [OCUtility appDelegate];
+        appDelegate.selectedCourseTitle = courseTitle;
         self.crawlerAuthenticationCourse = [[OCCrawlerAuthenticationCourseState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andCourseLink:courseLink];
         self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
         [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];

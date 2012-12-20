@@ -21,6 +21,7 @@
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
 NSString *const kLabelTopLectureVertical = @"V:|-15-[_labelTop]-10-[_tableviewLecture]";
+NSString *const kLabelTopLectureHorizontal = @"H:|-70-[_labelTop]-0-|";
 
 NSString *const kTableviewLectureListingHorizontal = @"H:|-0-[_tableviewLecture]-0-|";
 NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
@@ -65,8 +66,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.labelTop = [[UILabel alloc] init];
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
-    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
-    self.labelTop.text = @"Lectures";
+    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
+    self.labelTop.text = [NSString stringWithFormat:@"%@",[self getCourseTitle]];
     [self addSubview:self.labelTop];
 
     self.tableviewLecture = [[UITableView alloc] init];
@@ -75,12 +76,11 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.tableviewLecture.translatesAutoresizingMaskIntoConstraints = NO;
     UIColor *backgroundColor = [[UIColor alloc] initWithWhite:1 alpha:0.0];
     self.tableviewLecture.backgroundColor = backgroundColor;
-    
-    [self.tableviewLecture reloadData];
+        [self.tableviewLecture reloadData];
     [self addSubview:self.tableviewLecture];
 
     OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(15, 15, 60, 30)];
+    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(5, 10, 60, 30)];
     [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
@@ -91,6 +91,12 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 
+}
+
+- (NSString *)getCourseTitle
+{
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    return appDelegate.selectedCourseTitle;
 }
 
 - (void)setNiceBackground
@@ -106,8 +112,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 {
     NSMutableArray *result = [@[] mutableCopy];
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelTop, _tableviewLecture);
-    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTop attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+//    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTop attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopLectureHorizontal options:0 metrics:nil views:viewsDictionary]];
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopLectureVertical options:0 metrics:nil views:viewsDictionary]];
 
     return [NSArray arrayWithArray:result];
@@ -199,13 +206,10 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
     self.videoTitle = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] title];
     self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
+    
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    
-    OCLectureListingsViewController *lectureListingViewController = [appDelegate.navigationController.viewControllers objectAtIndex:2];
-    lectureListingViewController.selectedVideoTitle = self.videoTitle;
-    
+    appDelegate.selectedVideoTitle = self.videoTitle;
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
-    
 }
 
 
