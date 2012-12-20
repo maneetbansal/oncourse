@@ -10,6 +10,8 @@
 
 @interface OCCourseListingsViewController : UIViewController
 
+@property (nonatomic, strong) NSString *courseTitle;
+
 - (void)updateCourseListing:(NSMutableArray *)courses;
 - (void)presentLectureViewController:(NSMutableArray *)lectureData;
 

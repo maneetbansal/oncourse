@@ -9,6 +9,7 @@
 #import "OCWatchingVideoViewController.h"
 #import "OCWatchingVideo.h"
 #import "OCJavascriptFunctions.h"
+#import "OCUtility.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface OCWatchingVideoViewController ()
@@ -43,11 +44,6 @@
         self.moviePlayer = self.watchingVideoView.moviePlayer;
     }
     return self;
-}
-
-- (NSString *)getVideoTitle
-{
-    return self.videoTitle;
 }
 
 - (void)loadRequest:(NSString *)videoLink

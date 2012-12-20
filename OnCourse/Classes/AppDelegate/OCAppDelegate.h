@@ -18,8 +18,4 @@
 
 @property (strong, nonatomic) OCCourseraCrawler *courseCrawler;
 
-@property (copy, nonatomic) NSString *selectedVideoTitle;
-
-@property (copy, nonatomic) NSString *selectedCourseTitle;
-
 @end

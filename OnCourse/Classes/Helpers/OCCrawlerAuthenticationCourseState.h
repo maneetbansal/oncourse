@@ -10,6 +10,6 @@
 
 @interface OCCrawlerAuthenticationCourseState : OCCrawlerAbstractState <UIWebViewDelegate>
 
-- (id)initWithWebView:(UIWebView *)webview andCourseLink:(NSString *)courseLink;
+- (id)initWithWebView:(UIWebView *)webview andCourseLink:(NSString *)courseLink andCourseTitle:(NSString *)courseTitle;
 
 @end

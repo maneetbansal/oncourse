@@ -11,11 +11,13 @@
 #import "OCCourse.h"
 #import "OCWatchingVideo.h"
 #import "OCButtonStyle.h"
+#import "OCLectureListingsViewController.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
 NSString *const kLabelTopWatchingVertical = @"V:|-15-[_labelTopWatching]-10-[moviePlayerView]";
+NSString *const kLabelTopWatchingHorizontal = @"H:|-70-[_labelTopWatching]-0-|";
 
 NSString *const kMoviePlayerHorizontal = @"H:|-0-[moviePlayerView]-0-|";
 NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
@@ -45,8 +47,8 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     self.labelTopWatching = [[UILabel alloc] init];
     self.labelTopWatching.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTopWatching.backgroundColor = [UIColor clearColor];
-    [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory" size:25]];
-    self.labelTopWatching.text = @"Your courses";
+    [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
+    self.labelTopWatching.text = @"Your course";
     [self addSubview:self.labelTopWatching];
 
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
@@ -60,7 +62,7 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self addSubview:[self.moviePlayer view]];
     
     OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(15, 15, 60, 30)];
+    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(5, 10, 60, 30)];
     [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
@@ -87,8 +89,9 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     NSMutableArray *result = [@[] mutableCopy];
     UIView *moviePlayerView = self.moviePlayer.view;
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelTopWatching, moviePlayerView);
-    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTopWatching attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+//    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTopWatching attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopWatchingHorizontal options:0 metrics:nil views:viewsDictionary]];
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopWatchingVertical options:0 metrics:nil views:viewsDictionary]];
 
     return [NSArray arrayWithArray:result];

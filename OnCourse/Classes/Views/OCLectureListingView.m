@@ -14,6 +14,7 @@
 #import "OCLecture.h"
 #import "OCWatchingVideoViewController.h"
 #import "OCLectureListingsViewController.h"
+#import "OCCrawlerAuthenticationCourseState.h"
 #import "OCCourseraCrawler.h"
 #import "OCButtonStyle.h"
 
@@ -67,7 +68,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
     [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
-    self.labelTop.text = [NSString stringWithFormat:@"%@",[self getCourseTitle]];
+    self.labelTop.text = @"Your course";
     [self addSubview:self.labelTop];
 
     self.tableviewLecture = [[UITableView alloc] init];
@@ -91,12 +92,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 
-}
-
-- (NSString *)getCourseTitle
-{
-    OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    return appDelegate.selectedCourseTitle;
 }
 
 - (void)setNiceBackground
@@ -208,7 +203,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
     
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    appDelegate.selectedVideoTitle = self.videoTitle;
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
 }
 

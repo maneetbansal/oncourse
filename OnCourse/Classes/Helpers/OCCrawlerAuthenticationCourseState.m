@@ -16,19 +16,21 @@
 @interface OCCrawlerAuthenticationCourseState()
 
 @property (nonatomic, strong) NSString *courseLink;
+@property (nonatomic, strong) NSString *courseTitle;
 @property (nonatomic, strong) OCCrawlerLectureListingState *lectureState;
 
 @end
 
 @implementation OCCrawlerAuthenticationCourseState
 
-- (id)initWithWebView:(UIWebView *)webview andCourseLink:(NSString *)courseLink
+- (id)initWithWebView:(UIWebView *)webview andCourseLink:(NSString *)courseLink andCourseTitle:(NSString *)courseTitle
 {
     self = [super init];
     if (self) {
         self.webviewCrawler = webview;
         self.webviewCrawler.delegate = self;
         self.courseLink = courseLink;
+        self.courseTitle = courseTitle;
         [self loadRequest:courseLink];
     }
     return self;

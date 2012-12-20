@@ -13,6 +13,5 @@
 @property (nonatomic, strong) NSString *videoTitle;
 
 - (id)initWithVideoLink:(NSString *)videoLink andTitle:(NSString *)videoTitle;
-- (NSString *)getVideoTitle;
 
 @end

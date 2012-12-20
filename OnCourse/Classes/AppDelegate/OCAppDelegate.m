@@ -36,22 +36,20 @@
     OCCourseListingsViewController *courseListingsViewController = [[OCCourseListingsViewController alloc] init];
     OCLoginViewController *loginViewController = [[OCLoginViewController alloc] init];
     
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    if ([userDefaults stringForKey:@"isLogin"]) {
-//        self.navigationController = [[UINavigationController alloc] initWithRootViewController:courseListingsViewController];
-//        NSString *email = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"email"]];
-//        NSString *password = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"password"]];
-//        
-//        self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:self.courseCrawler.webviewCrawler andEmail:email andPassword:password];
-//        self.crawlerLoginState.crawlerDelegate = self.courseCrawler;
-//        [self.courseCrawler changeState:self.crawlerLoginState];
-//    }
-//    else
-//    {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults stringForKey:@"isLogin"]) {
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:courseListingsViewController];
+        NSString *email = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"email"]];
+        NSString *password = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"password"]];
+        
+        self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:self.courseCrawler.webviewCrawler andEmail:email andPassword:password];
+        self.crawlerLoginState.crawlerDelegate = self.courseCrawler;
+        [self.courseCrawler changeState:self.crawlerLoginState];
+    }
+    else
+    {
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-//    }
-    self.selectedVideoTitle = @"";
-    self.selectedCourseTitle = @"";
+    }
     [self.navigationController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navigationController;
 }
