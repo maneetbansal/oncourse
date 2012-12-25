@@ -10,6 +10,7 @@
 #import "OCSignupViewController.h"
 #import "OCUtility.h"
 #import "OCLoginView.h"
+#import "MBProgressHUD.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -55,7 +56,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     self.labelAppname.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelAppname.backgroundColor = [UIColor clearColor];
     [self.labelAppname setFont:[UIFont fontWithName:@"Livory-Bold" size:38]];
-    self.labelAppname.text = @"Coursera Online";
+    self.labelAppname.text = @"OnCourse";
     
     self.textFieldUsername = [self textFieldWithPlaceholder:@"Your email"];
     
@@ -63,7 +64,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     [self.textFieldPassword setSecureTextEntry:YES];
     
     self.buttonLogin = [self buttonWithDarkBackground];
-    [self.buttonLogin setTitle:@"Login" forState:UIControlStateNormal];
+    [self.buttonLogin setTitle:@"Sign In" forState:UIControlStateNormal];
     
     self.labelOr = [[UILabel alloc] init];
     self.labelOr.translatesAutoresizingMaskIntoConstraints = NO;
@@ -83,7 +84,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     if (IS_IPHONE_5)
         [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background-568h@2x.png"]]];
     else
-        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background"]]];
+        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background.png"]]];
     
 }
 
@@ -99,7 +100,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     result.translatesAutoresizingMaskIntoConstraints = NO;
     [result setFont:[UIFont fontWithName:@"Livory" size:20]];
     [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
-    [result setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateSelected];
+    [result setBackgroundImage:[UIImage imageNamed:@"login_Down"] forState:UIControlStateSelected];
 
     return result;
 }

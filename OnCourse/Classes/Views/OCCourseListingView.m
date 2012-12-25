@@ -63,6 +63,8 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
 
 - (void)constructUIComponents
 {
+    
+    
     self.labelTop = [[UILabel alloc] init];
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
