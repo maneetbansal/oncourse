@@ -12,6 +12,7 @@
 #import "OCCourseraCrawler.h"
 #import "OCCrawlerLoginState.h"
 #import "OCWatchingVideoViewController.h"
+#import "OCStartScreenViewController.h";
 
 @interface OCAppDelegate()
 
@@ -33,23 +34,9 @@
 
 - (void)presentFirstView
 {
-    OCCourseListingsViewController *courseListingsViewController = [[OCCourseListingsViewController alloc] init];
-    OCLoginViewController *loginViewController = [[OCLoginViewController alloc] init];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults stringForKey:@"isLogin"]) {
-        self.navigationController = [[UINavigationController alloc] initWithRootViewController:courseListingsViewController];
-        NSString *email = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"email"]];
-        NSString *password = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"password"]];
-        
-        self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:self.courseCrawler.webviewCrawler andEmail:email andPassword:password];
-        self.crawlerLoginState.crawlerDelegate = self.courseCrawler;
-        [self.courseCrawler changeState:self.crawlerLoginState];
-    }
-    else
-    {
-        self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    }
+    OCStartScreenViewController *startScreenViewController = [[OCStartScreenViewController alloc] init];
+
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:startScreenViewController];
     [self.navigationController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navigationController;
 }
