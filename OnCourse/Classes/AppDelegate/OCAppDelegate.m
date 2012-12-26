@@ -12,7 +12,7 @@
 #import "OCCourseraCrawler.h"
 #import "OCCrawlerLoginState.h"
 #import "OCWatchingVideoViewController.h"
-#import "OCStartScreenViewController.h";
+#import "OCStartScreenViewController.h"
 
 @interface OCAppDelegate()
 
