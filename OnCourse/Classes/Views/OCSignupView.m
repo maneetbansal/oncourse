@@ -10,7 +10,7 @@
 #import "OCUtility.h"
 #import "OCCourse.h"
 #import "OCSignupView.h"
-#import "OCButtonStyle.h"
+#import "UIButton+Style.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -50,26 +50,14 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 
 - (void)constructUIComponent
 {
-    self.labelSignup = [[UILabel alloc] init];
-    self.labelSignup.translatesAutoresizingMaskIntoConstraints = NO;
-    self.labelSignup.backgroundColor = [UIColor clearColor];
-    [self.labelSignup setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
-    self.labelSignup.text = @"Sign Up";
-    
+    [self labelSignupUI];
     self.textFieldFullname = [self textFieldWithPlaceholder:@"Full name"];
     self.textFieldUsername = [self textFieldWithPlaceholder:@"Email"];
     self.textFieldPassword = [self textFieldWithPlaceholder:@"Password"];
     [self.textFieldPassword setSecureTextEntry:YES];
-    
     self.buttonSignup = [self createButtonSignup];
     
     [self addUIComponentsToView:self];
-    
-    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.buttonGoToLoginView = [buttonStyle buttonWithDarkBackground:CGRectMake(20, 25, 60, 30)];
-    [self.buttonGoToLoginView setTitle:@"Login" forState:UIControlStateNormal];
-    [self.buttonGoToLoginView addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
-    [self addSubview:self.buttonGoToLoginView];
 }
 
 - (void)actionGoToLoginView
@@ -87,11 +75,20 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     
 }
 
+- (void)labelSignupUI
+{
+    self.labelSignup = [[UILabel alloc] init];
+    self.labelSignup.translatesAutoresizingMaskIntoConstraints = NO;
+    self.labelSignup.backgroundColor = [UIColor clearColor];
+    [self.labelSignup setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
+    self.labelSignup.text = @"Sign Up";
+}
+
 - (UIButton *)createButtonSignup
 {
     UIButton *result = [[UIButton alloc] init];
     result.translatesAutoresizingMaskIntoConstraints = NO;
-    [result setFont:[UIFont fontWithName:@"Livory" size:20]];
+    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:20];
     [result setTitle:@"Sign Up" forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateSelected];

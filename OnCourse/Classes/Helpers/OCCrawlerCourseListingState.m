@@ -42,8 +42,6 @@
         NSArray *components = [requestString componentsSeparatedByString:@":"];
         
         NSString *function = (NSString*)[components objectAtIndex:1];
-        NSString *argsAsString = [(NSString*)[components objectAtIndex:2]
-                                  stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         if ([@"pageLoaded" isEqualToString:function]) {
             [self fetchAllCourse];
         }

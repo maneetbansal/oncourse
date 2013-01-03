@@ -98,7 +98,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
 {
     UIButton *result = [[UIButton alloc] init];
     result.translatesAutoresizingMaskIntoConstraints = NO;
-    [result setFont:[UIFont fontWithName:@"Livory" size:20]];
+    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:20];
     [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
     [result setBackgroundImage:[UIImage imageNamed:@"login_Down"] forState:UIControlStateSelected];
 

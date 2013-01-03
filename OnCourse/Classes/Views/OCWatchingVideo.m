@@ -10,7 +10,7 @@
 #import "OCUtility.h"
 #import "OCCourse.h"
 #import "OCWatchingVideo.h"
-#import "OCButtonStyle.h"
+#import "UIButton+Style.h"
 #import "OCLectureListingsViewController.h"
 
 #define WIDTH_IPHONE_5 568
@@ -60,12 +60,6 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self.moviePlayer setFullscreen:YES animated:YES];
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self addSubview:[self.moviePlayer view]];
-    
-    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(5, 10, 60, 30)];
-    [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
-    [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
-    [self addSubview:self.buttonBack];
 }
 
 - (void)actionBack

@@ -16,7 +16,7 @@
 #import "OCLectureListingsViewController.h"
 #import "OCCrawlerAuthenticationCourseState.h"
 #import "OCCourseraCrawler.h"
-#import "OCButtonStyle.h"
+#import "UIButton+Style.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -64,13 +64,22 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)constructUIComponents
 {
+    [self labelTopUI];
+    [self tableviewLectureUI];
+}
+
+- (void)labelTopUI
+{
     self.labelTop = [[UILabel alloc] init];
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
     [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
     self.labelTop.text = @"Your course";
     [self addSubview:self.labelTop];
+}
 
+- (void)tableviewLectureUI
+{
     self.tableviewLecture = [[UITableView alloc] init];
     self.tableviewLecture.delegate = self;
     self.tableviewLecture.dataSource = self;
@@ -79,12 +88,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.tableviewLecture.backgroundColor = backgroundColor;
         [self.tableviewLecture reloadData];
     [self addSubview:self.tableviewLecture];
-
-    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.buttonBack = [buttonStyle buttonWithDarkBackground:CGRectMake(5, 10, 60, 30)];
-    [self.buttonBack setTitle:@"Back" forState:UIControlStateNormal];
-    [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
-    [self addSubview:self.buttonBack];
 }
 
 - (void)actionBack

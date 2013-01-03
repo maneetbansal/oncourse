@@ -37,8 +37,6 @@
 	// Do any additional setup after loading the view.
     self.courseListingView = [[OCCourseListingView alloc] initWithFrame:self.view.frame];
     self.view = self.courseListingView;
-    OCAppDelegate *app = [OCUtility appDelegate];
-//    [self.view addSubview:app.courseCrawler.webviewCrawler];
 }
 
 - (void)didReceiveMemoryWarning

@@ -13,7 +13,7 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseraCrawler.h"
-#import "OCButtonStyle.h"
+#import "UIButton+Style.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -23,12 +23,18 @@ NSString *const kLabelTopVertical = @"V:|-15-[_labelTop]-10-[collectionView]-35-
 NSString *const kCollectionCourseListingHorizontal = @"H:|-0-[collectionView]-0-|";
 NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
 
+NSString *const kButtonAccountInfoHorizontal = @"H:|-0-[_buttonAccountInfo(==_buttonSignOut)]-0-[_buttonSignOut]";
+NSString *const kButtonAccountInfoVertical = @"V:[_buttonAccountInfo(==35)]-0-|";
+
+NSString *const kButtonSignOutHorizontal = @"H:[_buttonSignOut]-0-|";
+NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
+
 @interface OCCourseListingView()
 
 @property (nonatomic, strong) UILabel *labelTop;
 @property (nonatomic, strong) UICollectionViewController *collectionCourseListing;
-@property (nonatomic, strong) UIButton *accountInformationButton;
-@property (nonatomic, strong) UIButton *logoutButton;
+@property (nonatomic, strong) UIButton *buttonAccountInfo;
+@property (nonatomic, strong) UIButton *buttonSignOut;
 @property (nonatomic, strong) OCCrawlerAuthenticationCourseState *crawlerAuthenticationCourse;
 @end
 
@@ -40,7 +46,7 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     if (self) {
         // Initialization code
         [self constructUIComponents];
-        [self addConstraints:[self arrayContraints]];
+        [self addConstraints:[self arrayConstraints]];
         [self setNiceBackground];
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
         [[NSNotificationCenter defaultCenter]
@@ -63,15 +69,23 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
 
 - (void)constructUIComponents
 {
-    
-    
-    self.labelTop = [[UILabel alloc] init];
-    self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
-    self.labelTop.backgroundColor = [UIColor clearColor];
-    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
-    self.labelTop.text = @"Your Courses";
-    [self addSubview:self.labelTop];
-    
+    [self labelTopUI];
+    [self collectionViewCourseListingUI];
+    [self accountInfoButtonUI];
+    [self signOutButtonUI];
+    [self addComponentsUI];
+}
+
+- (void)addComponentsUI
+{
+    NSArray *components = @[self.labelTop, self.collectionCourseListing.collectionView, self.buttonAccountInfo, self.buttonSignOut];
+    [components enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self addSubview:obj];
+    }];
+}
+
+- (void)collectionViewCourseListingUI
+{
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.collectionCourseListing = [[UICollectionViewController alloc] initWithCollectionViewLayout:aFlowLayout];
@@ -80,17 +94,41 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     self.collectionCourseListing.collectionView.dataSource = self;
     [self.collectionCourseListing.collectionView registerClass:[OCCourseListingCell class] forCellWithReuseIdentifier:@"COURSE_CELL"];
     self.collectionCourseListing.collectionView.backgroundColor = [UIColor clearColor];
-    
-    [self addSubview:self.collectionCourseListing.collectionView];
-    
-    OCButtonStyle *buttonStyle = [[OCButtonStyle alloc] init];
-    self.accountInformationButton = [buttonStyle buttonWithDarkBackground:CGRectMake(20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25)];
-    [self.accountInformationButton setTitle:@"Your acccount" forState:UIControlStateNormal];
-    [self addSubview:self.accountInformationButton];
-    
-    self.logoutButton = [buttonStyle buttonWithDarkBackground:CGRectMake(([UIScreen mainScreen].bounds.size.width) / 2 + 20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25)];
-    [self.logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
-    [self addSubview:self.logoutButton];
+}
+
+- (void)labelTopUI
+{
+    self.labelTop = [[UILabel alloc] init];
+    self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
+    self.labelTop.backgroundColor = [UIColor clearColor];
+    [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:25]];
+    self.labelTop.text = @"Your Courses";
+}
+
+- (void)signOutButtonUI
+{
+    self.buttonSignOut = [UIButton buttonWithDarkBackgroundStyle];
+    self.buttonSignOut.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonSignOut setTitle:@"Sign Out" forState:UIControlStateNormal];
+    [self.buttonSignOut addTarget:self action:@selector(buttonSignOutAction) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)buttonSignOutAction
+{
+    NSLog(@"Sign out");
+}
+
+- (void)accountInfoButtonUI
+{
+    self.buttonAccountInfo = [UIButton buttonWithDarkBackgroundStyle];
+    self.buttonAccountInfo.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonAccountInfo setTitle:@"Account Information" forState:UIControlStateNormal];
+    [self.buttonAccountInfo addTarget:self action:@selector(buttonAccountInfoAction) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)buttonAccountInfoAction
+{
+    NSLog(@"Account Information");
 }
 
 - (void)setNiceBackground
@@ -128,12 +166,36 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     
 }
 
-- (NSArray *)arrayContraints
+- (NSArray *)buttonAccountInfoConstraints
 {
     NSMutableArray *result = [@[] mutableCopy];
-    
-    [result addObjectsFromArray:[self labelTopConstraints]];
-    [result addObjectsFromArray:[self collectionCourseListingConstrains]];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonAccountInfo, _buttonSignOut);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonAccountInfoHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonAccountInfoVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+}
+
+- (NSArray *)buttonSignOutConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonSignOut);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonSignOutHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonSignOutVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+}
+
+- (NSArray *)arrayConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+
+    NSArray *selectors = @[@"labelTopConstraints", @"collectionCourseListingConstrains", @"buttonAccountInfoConstraints", @"buttonSignOutConstraints"];
+    [selectors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [result addObjectsFromArray:[self performSelector:NSSelectorFromString(obj)]];
+    }];
     
     return [NSArray arrayWithArray:result];
 }
@@ -157,18 +219,13 @@ NSString *const kCollectionCourseListingVertical = @"V:[collectionView]";
     CGSize size = self.frame.size;
 
     if (size.width == [UIScreen mainScreen].bounds.size.width) {
-        self.accountInformationButton.frame = CGRectMake(20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25);
-        self.logoutButton.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width) / 2 + 20, [UIScreen mainScreen].bounds.size.height - 50, [UIScreen mainScreen].bounds.size.width / 2 - 40, 25);
-        
         cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/2, size.width/2 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, 30)];
         cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/2 + 20, 35, 150, 40)];
+
     }
     else
     {
-        self.accountInformationButton.frame = CGRectMake(20, [UIScreen mainScreen].bounds.size.width - 50, [UIScreen mainScreen].bounds.size.height / 2 - 40, 25);
-        self.logoutButton.frame = CGRectMake(([UIScreen mainScreen].bounds.size.height) / 2 + 20, [UIScreen mainScreen].bounds.size.width - 50, [UIScreen mainScreen].bounds.size.height / 2 - 40, 25);
-        
         cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width/2 -10, 30)];
         cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/4 + 20, 33, 100, 35)];
