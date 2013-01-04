@@ -59,6 +59,10 @@
             [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The password is weak. Please use a stronger password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         } else {
             // Fill valid information
+            OCAppDelegate *appDelegate = [OCUtility appDelegate];
+            self.crawlerSignupState = [[OCCrawlerSignupState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andFullname:fullname andUsername:username andPassword:password];
+            self.crawlerSignupState.crawlerDelegate = appDelegate.courseCrawler;
+            [appDelegate.courseCrawler changeState:self.crawlerSignupState];
         }
     }
     else
@@ -76,5 +80,12 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
 
 @end

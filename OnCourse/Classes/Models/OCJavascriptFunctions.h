@@ -26,5 +26,8 @@
 + (NSString *)jsFetchLectureLinks;
 + (NSString *)jsPlayLectureVideo;
 + (NSString *)checkCourseLoaded;
++ (NSString *)jsCheckCheckbox:(NSString *)checkboxId;
++ (NSString *)jsClickButton:(NSString *)buttonClassName;
++ (NSString *)jsCheckSignUpSuccessfully;
 
 @end

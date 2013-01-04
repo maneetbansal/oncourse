@@ -20,6 +20,15 @@
     return [NSString stringWithFormat:@"function OCFillElement(){ document.getElementById('%@').value = '%@' } OCFillElement();",element, content];
 }
 
++ (NSString *)jsCheckCheckbox:(NSString *)checkboxId
+{
+    return [NSString stringWithFormat:@"function OCCheckCheckbox(){ document.getElementById('%@').checked = true; } OCCheckCheckbox();",checkboxId];
+}
++ (NSString *)jsClickButton:(NSString *)buttonClassName
+{
+    return [NSString stringWithFormat:@"function OCClickButton(){ document.getElementsByClassName('%@')[0].click(); } OCClickButton();",buttonClassName];
+}
+
 + (NSString *)jsCallObjectiveCFunction
 {
     return @"function callObjectiveCFunction(functionName, args) { var iframe = document.createElement('IFRAME'); iframe.setAttribute('src', 'js-frame:' + functionName + ':' + encodeURIComponent(JSON.stringify(args))); document.documentElement.appendChild(iframe); iframe.parentNode.removeChild(iframe); iframe = null; }";
@@ -89,6 +98,12 @@
 + (NSString *)jsPlayLectureVideo
 {
     return @"function OCPlayLectureVideo(){ var iframe = document.getElementById('fancybox-frame'); var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCPlayLectureVideo();";
+}
+
++ (NSString *)jsCheckSignUpSuccessfully
+{
+    return @"var pageLoadIntervalId = setInterval(function() { if (document.getElementsByClassName('coursera-header-account-name').length != 0) { callObjectiveCFunction('signup_successfully','nothing'); clearInterval(pageLoadIntervalId); } else {  } }, 1000);";
+    
 }
 
 @end
