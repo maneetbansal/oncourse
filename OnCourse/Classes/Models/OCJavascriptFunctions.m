@@ -24,9 +24,15 @@
 {
     return [NSString stringWithFormat:@"function OCCheckCheckbox(){ document.getElementById('%@').checked = true; } OCCheckCheckbox();",checkboxId];
 }
+
 + (NSString *)jsClickButton:(NSString *)buttonClassName
 {
-    return [NSString stringWithFormat:@"function OCClickButton(){ document.getElementsByClassName('%@')[0].click(); } OCClickButton();",buttonClassName];
+    return [NSString stringWithFormat:@"var pageLoadIntervalId = setInterval(function() { var bts = document.getElementsByClassName('%@'); if (bts[0] != 0) { clearInterval(pageLoadIntervalId); bts[0].click();} else {  } }, 1000);",buttonClassName];
+}
+
++ (NSString *)jsSimulateKeyupEvent:(NSString *)elementId
+{
+    return [NSString stringWithFormat:@"jQuery('#%@').keyup();", elementId ];
 }
 
 + (NSString *)jsCallObjectiveCFunction

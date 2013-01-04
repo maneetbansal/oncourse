@@ -56,6 +56,8 @@
 
 - (void)fillAllElements
 {
+    //Simulate keyup event to enable signupbutton
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsSimulateKeyupEvent:@"coursera-signup-fullname"]];
     NSString *jsFillSignUpElement = [OCJavascriptFunctions jsFillElement:@"coursera-signup-fullname" withContent:self.fullname];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsFillSignUpElement];
     NSString *jsFillEmailElement = [OCJavascriptFunctions jsFillElement:@"coursera-signup-email" withContent:self.username];

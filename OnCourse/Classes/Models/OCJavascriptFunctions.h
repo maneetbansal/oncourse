@@ -30,5 +30,6 @@
 + (NSString *)jsClickButton:(NSString *)buttonClassName;
 + (NSString *)jsCheckSignUpSuccessfully;
 + (NSString *)jsGetDirectLink;
++ (NSString *)jsSimulateKeyupEvent:(NSString *)elementId;
 
 @end
