@@ -41,7 +41,7 @@
 
 + (NSString *)checkPageLoaded
 {
-    return @"var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { callObjectiveCFunction('pageLoaded','nothing'); clearInterval(pageLoadIntervalId); } else {  } }, 1000);";
+    return @"var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { clearInterval(pageLoadIntervalId); callObjectiveCFunction('pageLoaded','nothing');} else {  } }, 1000);";
     
 }
 
@@ -92,12 +92,17 @@
 
 + (NSString *)jsFetchLectureLinks
 {
-    return @"function OCFetchLectureLinks(){ var listSection = document.getElementsByClassName('list_header_link'); var listItem = document.getElementsByClassName('item_section_list'); var result = []; for(var i =0; i< listSection.length; ++i) { var sectionItem = []; var section = listSection[i].getElementsByClassName('list_header')[0].innerHTML; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j=0; j<items.length; ++j) { sectionItem.push(items[j].href + '~' + items[j].text); } result.push(section); result.push('^'); result.push(sectionItem.join(';')); result.push('|');     } return result.join(''); } OCFetchLectureLinks();";
+    return @"function OCFetchLectureLinks(){ var listSection = document.getElementsByClassName('course-item-list-header'); var listItem = document.getElementsByClassName('course-item-list-section-list'); var result = []; for(var i =0; i< listSection.length; ++i) { var sectionItem = []; var section = listSection[i].getElementsByTagName('h3')[0].innerText; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j=0; j<items.length; ++j) { sectionItem.push(items[j].href + '~' + items[j].text); } result.push(section); result.push('^'); result.push(sectionItem.join(';')); result.push('|');     } return result.join(''); } OCFetchLectureLinks();";
 }
 
 + (NSString *)jsPlayLectureVideo
 {
-    return @"function OCPlayLectureVideo(){ var iframe = document.getElementById('fancybox-frame'); var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCPlayLectureVideo();";
+    return @"var checkDirectLinkIntervalId = setInterval(function() { iframe = document.getElementsByClassName('course-modal-iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; var directLink = innerDoc.getElementById('QL_video_element_first').src; if (directLink) { clearInterval(checkDirectLinkIntervalId); callObjectiveCFunction('haveDirectLink', directLink);} else {  } }, 1000);";
+}
+
++ (NSString *)jsGetDirectLink
+{
+    return @"function OCGetDirectLink(){ iframe = document.getElementsByClassName('course-modal-iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCGetDirectLink();";
 }
 
 + (NSString *)jsCheckSignUpSuccessfully

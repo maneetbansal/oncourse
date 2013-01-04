@@ -88,7 +88,11 @@
         if ([@"pageLoaded" isEqualToString:function])
         {
             NSLog(@"Getting direct video link");
-            self.videoLectureLink = [self getDirectVideoLink];
+            [self checkDirectLink];
+        }
+        else if ([@"haveDirectLink" isEqualToString:function])
+        {
+            self.videoLectureLink = [self getDirectLink];
             [self playVideo];
             self.webviewPlayer = nil;
         }
@@ -98,9 +102,14 @@
     return YES;
 }
 
-- (NSString *)getDirectVideoLink
+- (void)checkDirectLink
 {
-    return [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsPlayLectureVideo]];
+    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsPlayLectureVideo]];
+}
+
+- (NSString *)getDirectLink
+{
+    return [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsGetDirectLink]];
 }
 
 - (void)playVideo

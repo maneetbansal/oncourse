@@ -29,5 +29,6 @@
 + (NSString *)jsCheckCheckbox:(NSString *)checkboxId;
 + (NSString *)jsClickButton:(NSString *)buttonClassName;
 + (NSString *)jsCheckSignUpSuccessfully;
++ (NSString *)jsGetDirectLink;
 
 @end

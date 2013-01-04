@@ -86,6 +86,7 @@
         }
     }
     [self presentLectureView:lectureData];
+    self.webviewCrawler.delegate = nil;
 }
 
 - (void)presentLectureView:(NSMutableArray *)lectureData
