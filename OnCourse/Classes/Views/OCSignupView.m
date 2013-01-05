@@ -16,6 +16,10 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
+NSString *const kButtonBackToLoginHorizontal = @"H:|-15-[_buttonBack(==70)]-15-[_labelSignup]";
+NSString *const kButtonBackToLoginVertical = @"V:|-25-[_buttonBack(==40)]-25-[_textFieldFullname]";
+
+NSString *const kLabelSignupHorizontal = @"H:[_labelSignup]-0-|";
 NSString *const kLabelSignupVertical = @"V:|-25-[_labelSignup]-25-[_textFieldFullname]";
 
 NSString *const kTextFieldFullnameHorizontal = @"H:|-[_textFieldFullname]-|";
@@ -55,12 +59,13 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 
 - (void)constructUIComponent
 {
+    [self buttonBackUI];
     [self labelSignupUI];
     self.textFieldFullname = [self textFieldWithPlaceholder:@"Full name"];
     self.textFieldUsername = [self textFieldWithPlaceholder:@"Email"];
     self.textFieldPassword = [self textFieldWithPlaceholder:@"Password"];
     [self.textFieldPassword setSecureTextEntry:YES];
-    self.buttonSignup = [self createButtonSignup];
+    self.buttonSignup = [self buttonSignupUI];
     
     [self addUIComponentsToView:self];
 }
@@ -80,6 +85,14 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     
 }
 
+- (void)buttonBackUI
+{
+    self.buttonBack = [UIButton buttonWithBackStyle];
+    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonBack setTitle:@"Log In" forState:UIControlStateNormal];
+    [self.buttonBack addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
+}
+
 - (void)labelSignupUI
 {
     self.labelSignup = [[UILabel alloc] init];
@@ -89,7 +102,7 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     self.labelSignup.text = @"Sign Up";
 }
 
-- (UIButton *)createButtonSignup
+- (UIButton *)buttonSignupUI
 {
     UIButton *result = [[UIButton alloc] init];
     result.translatesAutoresizingMaskIntoConstraints = NO;
@@ -115,6 +128,7 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 
 - (void)addUIComponentsToView:(UIView *)paramView
 {
+    [paramView addSubview:self.buttonBack];
     [paramView addSubview:self.labelSignup];
     [paramView addSubview:self.textFieldFullname];
     [paramView addSubview:self.textFieldUsername];
@@ -122,13 +136,24 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
     [paramView addSubview:self.buttonSignup];
 }
 
+- (NSArray *)buttonBackConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonBack, _labelSignup, _textFieldFullname);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToLoginHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToLoginVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+}
+
 - (NSArray *)labelSignupContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelSignup, _textFieldFullname);
     
-    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelSignup attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelSignupVertical options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelSignupHorizontal options:0 metrics:nil views:viewsDictionary]];
     
     return [NSArray arrayWithArray:result];
 }
@@ -180,7 +205,8 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 - (NSArray *)arrayContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
-    
+
+    [result addObjectsFromArray:[self buttonBackConstraints]];
     [result addObjectsFromArray:[self labelSignupContraints]];
     [result addObjectsFromArray:[self textFieldFullnameContraints]];
     [result addObjectsFromArray:[self textFieldUsernameContraints]];

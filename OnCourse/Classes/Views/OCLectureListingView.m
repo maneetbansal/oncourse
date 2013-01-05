@@ -21,8 +21,11 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
+NSString *const kButtonBackToCoursesViewHorizontal = @"H:|-15-[_buttonBack(==75)]-15-[_labelTop]";
+NSString *const kButtonBackToCoursesViewVertical = @"V:|-15-[_buttonBack(==40)]-10-[_tableviewLecture]";
+
 NSString *const kLabelTopLectureVertical = @"V:|-15-[_labelTop]-10-[_tableviewLecture]";
-NSString *const kLabelTopLectureHorizontal = @"H:|-70-[_labelTop]-0-|";
+NSString *const kLabelTopLectureHorizontal = @"H:[_labelTop]-0-|";
 
 NSString *const kTableviewLectureListingHorizontal = @"H:|-0-[_tableviewLecture]-0-|";
 NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
@@ -64,8 +67,18 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)constructUIComponents
 {
+    [self buttonBackUI];
     [self labelTopUI];
     [self tableviewLectureUI];
+    [self addUIComponetToView:self];
+}
+
+- (void)buttonBackUI
+{
+    self.buttonBack = [UIButton buttonWithBackStyle];
+    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonBack setTitle:@"Courses" forState:UIControlStateNormal];
+    [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)labelTopUI
@@ -75,7 +88,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.labelTop.backgroundColor = [UIColor clearColor];
     [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
     self.labelTop.text = @"Your course";
-    [self addSubview:self.labelTop];
 }
 
 - (void)tableviewLectureUI
@@ -87,7 +99,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     UIColor *backgroundColor = [[UIColor alloc] initWithWhite:1 alpha:0.0];
     self.tableviewLecture.backgroundColor = backgroundColor;
         [self.tableviewLecture reloadData];
-    [self addSubview:self.tableviewLecture];
 }
 
 - (void)actionBack
@@ -95,6 +106,13 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 
+}
+
+- (void)addUIComponetToView:(UIView *)paramView
+{
+    [paramView addSubview:self.buttonBack];
+    [paramView addSubview:self.labelTop];
+    [paramView addSubview:self.tableviewLecture];
 }
 
 - (void)setNiceBackground
@@ -106,11 +124,21 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     
 }
 
+- (NSArray *)buttonBackConstrains
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonBack, _labelTop, _tableviewLecture);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToCoursesViewHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToCoursesViewVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+}
+
 - (NSArray *)labelTopConstraints
 {
     NSMutableArray *result = [@[] mutableCopy];
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelTop, _tableviewLecture);
-//    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTop attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopLectureHorizontal options:0 metrics:nil views:viewsDictionary]];
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopLectureVertical options:0 metrics:nil views:viewsDictionary]];
@@ -134,7 +162,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 - (NSArray *)arrayContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
-    
+
+    [result addObjectsFromArray:[self buttonBackConstrains]];
     [result addObjectsFromArray:[self labelTopConstraints]];
     [result addObjectsFromArray:[self tableviewLectureListingConstrains]];
 

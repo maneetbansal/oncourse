@@ -11,5 +11,6 @@
 @interface UIButton (Style)
 
 + (UIButton *)buttonWithDarkBackgroundStyle;
++ (UIButton *)buttonWithBackStyle;
 
 @end

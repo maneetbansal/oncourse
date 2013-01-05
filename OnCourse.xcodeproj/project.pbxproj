@@ -12,6 +12,7 @@
 		844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */; };
 		845940F016946BE000A9E34E /* UIButton+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 845940EF16946BE000A9E34E /* UIButton+Style.m */; };
 		845940F116946BE000A9E34E /* UIButton+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 845940EF16946BE000A9E34E /* UIButton+Style.m */; };
+		849860301698264900CCF46F /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8498602F1698264900CCF46F /* back_button.png */; };
 		9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
@@ -114,6 +115,7 @@
 		844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWatchingVideoViewController.m; sourceTree = "<group>"; };
 		845940EE16946BE000A9E34E /* UIButton+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Style.h"; sourceTree = "<group>"; };
 		845940EF16946BE000A9E34E /* UIButton+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Style.m"; sourceTree = "<group>"; };
+		8498602F1698264900CCF46F /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		97B30801166A0E9300089470 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8498602F1698264900CCF46F /* back_button.png */,
 				97AAAAF0168C639E00EB1EBC /* startScreen.png */,
 				97AAAAF1168C639E00EB1EBC /* startScreen@2x.png */,
 				97B30843166A54BF00089470 /* login_button.png */,
@@ -546,6 +549,7 @@
 				97B3084D166A54C000089470 /* login_Down@2x.png in Resources */,
 				97AAAAF2168C639E00EB1EBC /* startScreen.png in Resources */,
 				97AAAAF4168C639E00EB1EBC /* startScreen@2x.png in Resources */,
+				849860301698264900CCF46F /* back_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

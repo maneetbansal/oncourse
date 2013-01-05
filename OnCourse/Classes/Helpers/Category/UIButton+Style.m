@@ -19,4 +19,13 @@
     return result;
 }
 
++ (UIButton *)buttonWithBackStyle
+{
+    UIButton *result = [[UIButton alloc] init];
+
+    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
+    [result setBackgroundImage:[UIImage imageNamed:@"back_button"] forState:UIControlStateNormal];
+    return result;
+}
+
 @end

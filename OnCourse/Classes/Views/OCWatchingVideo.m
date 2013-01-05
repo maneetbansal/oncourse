@@ -16,8 +16,11 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
+NSString *const kButtonBackToLecturesHorizontal = @"H:|-15-[_buttonBack(==75)]-15-[_labelTopWatching]";
+NSString *const kButtonBackToLecturesVertical = @"V:|-15-[_buttonBack(==40)]-10-[moviePlayerView]";
+
 NSString *const kLabelTopWatchingVertical = @"V:|-15-[_labelTopWatching]-10-[moviePlayerView]";
-NSString *const kLabelTopWatchingHorizontal = @"H:|-70-[_labelTopWatching]-0-|";
+NSString *const kLabelTopWatchingHorizontal = @"H:[_labelTopWatching]-0-|";
 
 NSString *const kMoviePlayerHorizontal = @"H:|-0-[moviePlayerView]-0-|";
 NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
@@ -44,13 +47,23 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
 - (void)constructUIComponents
 {
+    [self buttonBackUI];
+    [self labelTopWatchingUI];
+    [self moviePlayerUI];
+}
+
+- (void)labelTopWatchingUI
+{
     self.labelTopWatching = [[UILabel alloc] init];
     self.labelTopWatching.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTopWatching.backgroundColor = [UIColor clearColor];
     [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
     self.labelTopWatching.text = @"Your course";
     [self addSubview:self.labelTopWatching];
+}
 
+- (void)moviePlayerUI
+{
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
     self.moviePlayer.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
@@ -62,11 +75,19 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self addSubview:[self.moviePlayer view]];
 }
 
+- (void)buttonBackUI
+{
+    self.buttonBack = [UIButton buttonWithBackStyle];
+    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonBack setTitle:@"Lectures" forState:UIControlStateNormal];
+    [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
+    [self addSubview:self.buttonBack];
+}
+
 - (void)actionBack
 {
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)setNiceBackground
@@ -78,12 +99,23 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     
 }
 
+- (NSArray *)buttonBackConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    UIView *moviePlayerView = self.moviePlayer.view;
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_buttonBack, _labelTopWatching, moviePlayerView);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToLecturesHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kButtonBackToLecturesVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+}
+
 - (NSArray *)labelTopWatchingConstraints
 {
     NSMutableArray *result = [@[] mutableCopy];
     UIView *moviePlayerView = self.moviePlayer.view;
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelTopWatching, moviePlayerView);
-//    [result addObject:[NSLayoutConstraint constraintWithItem:self.labelTopWatching attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopWatchingHorizontal options:0 metrics:nil views:viewsDictionary]];
     [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelTopWatchingVertical options:0 metrics:nil views:viewsDictionary]];
@@ -108,7 +140,8 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 - (NSArray *)arrayContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
-    
+
+    [result addObjectsFromArray:[self buttonBackConstraints]];
     [result addObjectsFromArray:[self labelTopWatchingConstraints]];
     [result addObjectsFromArray:[self moviePlayerConstraints]];
     
