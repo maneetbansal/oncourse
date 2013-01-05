@@ -77,9 +77,7 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyle];
-    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonBack setTitle:@"Lectures" forState:UIControlStateNormal];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Lectures"];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
 }

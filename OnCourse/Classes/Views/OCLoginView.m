@@ -11,6 +11,7 @@
 #import "OCUtility.h"
 #import "OCLoginView.h"
 #import "MBProgressHUD.h"
+#import "UIButton+Style.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -52,31 +53,45 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
 
 - (void)constructUIComponents
 {
+    [self labelAppnameUI];
+    self.textFieldUsername = [self textFieldWithPlaceholder:@"Your email"];
+    self.textFieldPassword = [self textFieldWithPlaceholder:@"Your password"];
+    [self.textFieldPassword setSecureTextEntry:YES];
+    [self buttonLoginUI];
+    [self labelOrUI];
+    [self buttonSignupUI];
+    
+    [self addUIComponentsToView:self];
+}
+
+- (void)labelAppnameUI
+{
     self.labelAppname = [[UILabel alloc] init];
     self.labelAppname.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelAppname.backgroundColor = [UIColor clearColor];
     [self.labelAppname setFont:[UIFont fontWithName:@"Livory-Bold" size:38]];
     self.labelAppname.text = @"OnCourse";
-    
-    self.textFieldUsername = [self textFieldWithPlaceholder:@"Your email"];
-    
-    self.textFieldPassword = [self textFieldWithPlaceholder:@"Your password"];
-    [self.textFieldPassword setSecureTextEntry:YES];
-    
-    self.buttonLogin = [self buttonWithDarkBackground];
-    [self.buttonLogin setTitle:@"Sign In" forState:UIControlStateNormal];
-    
+}
+
+- (void)labelOrUI
+{
     self.labelOr = [[UILabel alloc] init];
     self.labelOr.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelOr.backgroundColor = [UIColor clearColor];
     [self.labelOr setFont:[UIFont fontWithName:@"Livory" size:18]];
     self.labelOr.text = @"No Account Yet? Press Sign Up now.";
-    
-    self.buttonSignup = [self buttonWithDarkBackground];
-    [self.buttonSignup setTitle:@"Sign Up" forState:UIControlStateNormal];
+}
+
+- (void)buttonLoginUI
+{
+    self.buttonLogin = [UIButton buttonBigWithDarkBackgroundStyleAndTitle:@"Sign In"];
+    [self.buttonLogin setTitle:@"Sign In" forState:UIControlStateNormal];
+}
+
+- (void)buttonSignupUI
+{
+    self.buttonSignup = [UIButton buttonBigWithDarkBackgroundStyleAndTitle:@"Sign Up"];
     [self.buttonSignup addTarget:self action:@selector(buttonSignupAction) forControlEvents:UIControlEventTouchDown];
-    
-    [self addUIComponentsToView:self];
 }
 
 - (void)setNiceBackground
@@ -93,18 +108,6 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController pushViewController:[[OCSignupViewController alloc] init] animated: YES];
 }
-
-- (UIButton *)buttonWithDarkBackground
-{
-    UIButton *result = [[UIButton alloc] init];
-    result.translatesAutoresizingMaskIntoConstraints = NO;
-    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:20];
-    [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
-    [result setBackgroundImage:[UIImage imageNamed:@"login_Down"] forState:UIControlStateSelected];
-
-    return result;
-}
-
 
 - (UITextField *)textFieldWithPlaceholder:(NSString *)placeholder
 {

@@ -82,14 +82,11 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
         [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background-568h@2x.png"]]];
     else
         [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background"]]];
-    
 }
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyle];
-    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonBack setTitle:@"Log In" forState:UIControlStateNormal];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Log In"];
     [self.buttonBack addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -104,13 +101,8 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 
 - (UIButton *)buttonSignupUI
 {
-    UIButton *result = [[UIButton alloc] init];
-    result.translatesAutoresizingMaskIntoConstraints = NO;
-    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:20];
-    [result setTitle:@"Sign Up" forState:UIControlStateNormal];
-    [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
-    [result setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateSelected];
-    
+    UIButton *result = [UIButton buttonBigWithDarkBackgroundStyleAndTitle:@"Sign Up"];
+
     return result;
 }
 

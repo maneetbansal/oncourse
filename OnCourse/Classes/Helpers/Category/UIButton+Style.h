@@ -10,7 +10,7 @@
 
 @interface UIButton (Style)
 
-+ (UIButton *)buttonWithDarkBackgroundStyle;
-+ (UIButton *)buttonWithBackStyle;
-
++ (UIButton *)buttonBigWithDarkBackgroundStyleAndTitle:(NSString *)title;
++ (UIButton *)buttonSmallWithDarkBackgroundStyleAndTitle:(NSString *)title;
++ (UIButton *)buttonWithBackStyleAndTitle:(NSString *)title;
 @end

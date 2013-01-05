@@ -107,9 +107,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 
 - (void)signOutButtonUI
 {
-    self.buttonSignOut = [UIButton buttonWithDarkBackgroundStyle];
-    self.buttonSignOut.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonSignOut setTitle:@"Sign Out" forState:UIControlStateNormal];
+    self.buttonSignOut = [UIButton buttonSmallWithDarkBackgroundStyleAndTitle:@"Sign Out"];
     [self.buttonSignOut addTarget:self action:@selector(buttonSignOutAction) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -120,9 +118,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 
 - (void)accountInfoButtonUI
 {
-    self.buttonAccountInfo = [UIButton buttonWithDarkBackgroundStyle];
-    self.buttonAccountInfo.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonAccountInfo setTitle:@"Account Information" forState:UIControlStateNormal];
+    self.buttonAccountInfo = [UIButton buttonSmallWithDarkBackgroundStyleAndTitle:@"Account Information"];
     [self.buttonAccountInfo addTarget:self action:@selector(buttonAccountInfoAction) forControlEvents:UIControlEventTouchDown];
 }
 

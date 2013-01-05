@@ -10,21 +10,29 @@
 
 @implementation UIButton (Style)
 
-+ (UIButton *)buttonWithDarkBackgroundStyle
++ (UIButton *)buttonBigWithDarkBackgroundStyleAndTitle:(NSString *)title
 {
-    UIButton *result = [[UIButton alloc] init];
-
-    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
-    [result setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
-    return result;
+    return [self buttonWithImage:@"login_button" andFontSize:20 andTitle:title];
 }
 
-+ (UIButton *)buttonWithBackStyle
+
++ (UIButton *)buttonSmallWithDarkBackgroundStyleAndTitle:(NSString *)title
+{
+    return [self buttonWithImage:@"login_button" andFontSize:16 andTitle:title];
+}
+
++ (UIButton *)buttonWithBackStyleAndTitle:(NSString *)title
+{
+    return [self buttonWithImage:@"back_button" andFontSize:16 andTitle:title];
+}
+
++ (UIButton *)buttonWithImage:(NSString *)image andFontSize:(int)fontSize andTitle:(NSString *)title
 {
     UIButton *result = [[UIButton alloc] init];
-
-    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:16];
-    [result setBackgroundImage:[UIImage imageNamed:@"back_button"] forState:UIControlStateNormal];
+    result.translatesAutoresizingMaskIntoConstraints = NO;
+    result.titleLabel.font = [UIFont fontWithName:@"Livory" size:fontSize];
+    [result setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [result setTitle:title forState:UIControlStateNormal];
     return result;
 }
 

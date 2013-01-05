@@ -75,9 +75,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyle];
-    self.buttonBack.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonBack setTitle:@"Courses" forState:UIControlStateNormal];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Courses"];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -105,7 +103,6 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 {
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
-
 }
 
 - (void)addUIComponetToView:(UIView *)paramView
