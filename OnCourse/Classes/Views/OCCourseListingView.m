@@ -219,16 +219,16 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
     CGSize size = self.frame.size;
 
     if (size.width == [UIScreen mainScreen].bounds.size.width) {
-        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/2, size.width/2 * 135/ 240)];
+//        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/2, size.width/2 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, 30)];
-        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/2 + 20, 35, 150, 40)];
+        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width / 3 + 65, 35, 150, 40)];
 
     }
     else
     {
-        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
+//        cell.image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, size.width/4, size.width/4 * 135/ 240)];
         cell.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width/2 -10, 30)];
-        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/4 + 20, 33, 100, 35)];
+        cell.metaInfo = [[UILabel alloc] initWithFrame:CGRectMake(size.width/4, 33, 100, 35)];
     }
     
     [cell reloadData:course];

@@ -23,6 +23,7 @@
 - (void)reloadData:(OCCourse *)course
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width / 3, self.frame.size.height - 30)];
     [self.image setImage:course.image];
     [self addSubview:self.image];
     
@@ -44,10 +45,11 @@
         UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         overlapView.backgroundColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.5];
         [self addSubview:overlapView];
+        [self.image setImage:[self convertToBlackWhiteImage:course.image]];
     }
     else
     {
-        self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(self.frame.size.width / 7 * 4, self.frame.size.height / 7 * 6, self.frame.size.width / 7 * 2.7, self.frame.size.height / 7)];
+        self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(self.frame.size.width / 3 + 20, self.frame.size.height / 7 * 6, self.frame.size.width / 3 * 2 - 40, self.frame.size.height / 7)];
         
         if ([@"archive" isEqualToString:course.status]) {
             course.progress = 100;
@@ -59,6 +61,28 @@
         self.progressBar.progress = (float)course.progress / 100;
         [self addSubview:self.progressBar];
     }
+}
+
+- (UIImage *)convertToBlackWhiteImage:(UIImage *)image
+{
+    UIImage *result;
+    CGColorSpaceRef colorSapce = CGColorSpaceCreateDeviceGray();
+    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, image.size.width, colorSapce, kCGImageAlphaNone);
+
+    if (context != nil) {
+        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+        CGContextSetShouldAntialias(context, NO);
+        CGContextDrawImage(context, CGRectMake(0, 0, image.size.width, image.size.height), [image CGImage]);
+        
+        CGImageRef bwImage = CGBitmapContextCreateImage(context);
+        CGContextRelease(context);
+        CGColorSpaceRelease(colorSapce);
+        
+        result = [UIImage imageWithCGImage:bwImage]; // This is result B/W image.
+        CGImageRelease(bwImage);
+    }
+
+    return result;
 }
 
 /*
