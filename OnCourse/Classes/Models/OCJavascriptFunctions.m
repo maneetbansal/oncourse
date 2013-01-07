@@ -103,12 +103,12 @@
 
 + (NSString *)jsPlayLectureVideo
 {
-    return @"var checkDirectLinkIntervalId = setInterval(function() { iframe = document.getElementsByClassName('course-modal-iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; var directLink = innerDoc.getElementById('QL_video_element_first').src; if (directLink) { clearInterval(checkDirectLinkIntervalId); callObjectiveCFunction('haveDirectLink', directLink);} else {  } }, 1000);";
+    return @"var checkDirectLinkIntervalId = setInterval(function() { iframe = document.getElementsByTagName('iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; var directLink = innerDoc.getElementById('QL_video_element_first').src; if (directLink) { clearInterval(checkDirectLinkIntervalId); callObjectiveCFunction('haveDirectLink', directLink);} else {  } }, 1000);";
 }
 
 + (NSString *)jsGetDirectLink
 {
-    return @"function OCGetDirectLink(){ iframe = document.getElementsByClassName('course-modal-iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCGetDirectLink();";
+    return @"function OCGetDirectLink(){ iframe = document.getElementsByTagName('iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCGetDirectLink();";
 }
 
 + (NSString *)jsCheckSignUpSuccessfully
