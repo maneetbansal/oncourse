@@ -23,10 +23,16 @@
 - (void)reloadData:(OCCourse *)course
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    self.image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width / 3, self.frame.size.height - 30)];
-    [self.image setImage:course.image];
-    [self addSubview:self.image];
-    
+
+//    self.image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width / 3, self.frame.size.height - 30)];
+//    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_async(concurrentQueue, ^{
+//            NSLog(@"%@", course.image);
+//            UIImage *logoCourse = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:course.image]]];
+//            [self.image setImage:logoCourse];
+//        });
+//    [self addSubview:self.image];
+
     self.title.text = course.title;
     self.title.font = [UIFont fontWithName:@"Livory-Bold" size:16];
     self.title.backgroundColor = [UIColor colorWithRed:50/255.0 green:128/255.0 blue:200/255.0 alpha:0.7];
@@ -45,7 +51,7 @@
         UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         overlapView.backgroundColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.5];
         [self addSubview:overlapView];
-        [self.image setImage:[self convertToBlackWhiteImage:course.image]];
+        [self.image setImage:[self convertToBlackWhiteImage:self.image.image]];
     }
     else
     {

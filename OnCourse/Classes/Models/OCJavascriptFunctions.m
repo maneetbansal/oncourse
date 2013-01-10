@@ -56,36 +56,6 @@
     return @"var number = 0; var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { number +=1; if(number >=2) {callObjectiveCFunction('pageLoaded','nothing'); clearInterval(pageLoadIntervalId);} } else {  } }, 1000);";
 }
 
-+ (NSString *)jsFetchAllImageCourse
-{
-    return @"function OCFetchAllImageCourse() { var imageLinks = document.getElementsByClassName('coursera-course-listing-icon'); var result = ''; for(var i = 0; i<imageLinks.length; ++i) {result += imageLinks[i].src; if(i != imageLinks.length-1) result += ';'; } return result;} OCFetchAllImageCourse();";
-}
-
-+ (NSString *)jsFetchAllTitleCourse
-{
-    return @"function OCFetchAllTitleCourse() { var titles = ''; var courseListingName = document.getElementsByClassName('coursera-course-listing-name'); for(var i =0; i<courseListingName.length; ++i){ titles += courseListingName[i].getElementsByTagName('a')[0].innerHTML; if(i != courseListingName.length-1) titles+=';';} return titles; } OCFetchAllTitleCourse();";
-}
-
-+ (NSString *)jsFetchAllLinkCourse
-{
-    return @"function OCFetchAllTitleCourse() { var titles = ''; var courseListingName = document.getElementsByClassName('coursera-course-listing-name'); for(var i =0; i<courseListingName.length; ++i){ titles += courseListingName[i].getElementsByTagName('a')[0].href; if(i != courseListingName.length-1) titles+=';';} return titles; } OCFetchAllTitleCourse();";
-}
-
-+ (NSString *)jsFetchAllMetaInfoCourse
-{
-    return @"function OCFetchAllMetaInfoCourse(){var metaInfo = document.getElementsByClassName('coursera-course-listing-meta'); var info = ''; for (var i = 0; i< metaInfo.length; ++i) { info += metaInfo[i].getElementsByTagName('span')[0].innerHTML; info +=';'; } return info; } OCFetchAllMetaInfoCourse();";
-}
-
-+ (NSString *)jsFetchAllStatusCourse
-{
-    return @"function OCFetchAllStatusCourse(){var result = ''; var courseStatus = document.getElementsByClassName('btn btn-success coursera-course-button'); for(var i=0;i<courseStatus.length;++i){ if(courseStatus[i].getAttribute('disabled')) {result += 'disabled';} else if(courseStatus[i].innerHTML == 'View class archive'){result += 'archive'} else {result += 'available'; } result += ';'; } return result;} OCFetchAllStatusCourse();";
-}
-
-+ (NSString *)jsFetchAllProgressCourse
-{
-    return @"function OCFetchAllProgressCourse(){ var result = ''; var courseProgress = document.getElementsByClassName('progress-bar'); for(var i=0;i<courseProgress.length;++i){ result += courseProgress[i].style.width.slice(0, -1); result += ';'; } return result;} OCFetchAllProgressCourse();";
-}
-
 + (NSString *)jsCheckAuthenticationCourseNeeded
 {
     return @"function OCCheckAuthenticationCourseNeeded(){ if (document.getElementById('agreehonorcode')) return true; else return false; } OCCheckAuthenticationCourseNeeded();";
@@ -115,6 +85,11 @@
 {
     return @"var pageLoadIntervalId = setInterval(function() { if (document.getElementsByClassName('coursera-header-account-name').length != 0) { callObjectiveCFunction('signup_successfully','nothing'); clearInterval(pageLoadIntervalId); } else {  } }, 1000);";
     
+}
+
++ (NSString *)jsFetchAllCourses
+{
+    return @"function OCFetchAllCourses() { var coursera_listing = []; var coursera_listing_box = document.getElementsByClassName('coursera-course-listing-box coursera-course-listing-box-wide coursera-account-course-listing-box'); for (var i = 0; i< coursera_listing_box.length; ++i) { aCourse = new Object(); var aBox = coursera_listing_box[i]; var coursera_image = aBox.getElementsByClassName('coursera-course-listing-icon')[0].src; var coursera_name = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].innerText; var coursera_link = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].href; var coursera_meta_info = aBox.getElementsByTagName('span')[0].innerText; var coursera_meta_status = aBox.getElementsByClassName('coursera-course-listing-meta')[0].getElementsByTagName('a')[0].getAttribute('disabled') ? 'disable' : 'available'; var progress_bar = aBox.getElementsByClassName('progress-bar'); var coursera_progress = progress_bar.length > 0 ? progress_bar[0].style.width.slice(0, -1) : -1; aCourse.course_image = coursera_image; aCourse.course_name = coursera_name; aCourse.course_link = coursera_link; aCourse.course_meta_info = coursera_meta_info; aCourse.course_status = coursera_meta_status; aCourse.course_progress = coursera_progress; coursera_listing.push(aCourse); } return JSON.stringify(coursera_listing); } OCFetchAllCourses(); ";
 }
 
 @end

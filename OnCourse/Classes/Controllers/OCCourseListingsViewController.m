@@ -45,7 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateCourseListing:(NSMutableArray *)courses
+- (void)updateCourseListing:(NSArray *)courses
 {
     self.courseListingView.listAllCourse = courses;
     [self.courseListingView reloadData];

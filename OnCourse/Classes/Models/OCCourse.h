@@ -12,9 +12,11 @@
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *link;
-@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) NSString *image;
 @property (nonatomic, retain) NSString *metaInfo;
 @property (nonatomic, retain) NSString *status;
 @property (nonatomic, assign) int progress;
+
+- (id)initWithJson:(NSDictionary *)json;
 
 @end

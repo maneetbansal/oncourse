@@ -15,12 +15,6 @@
 + (NSString *)checkLogined;
 + (NSString *)jsCallObjectiveCFunction;
 + (NSString *)checkPageLoaded;
-+ (NSString *)jsFetchAllImageCourse;
-+ (NSString *)jsFetchAllTitleCourse;
-+ (NSString *)jsFetchAllLinkCourse;
-+ (NSString *)jsFetchAllMetaInfoCourse;
-+ (NSString *)jsFetchAllStatusCourse;
-+ (NSString *)jsFetchAllProgressCourse;
 + (NSString *)jsCheckAuthenticationCourseNeeded;
 + (NSString *)jsAuthenticateCourse;
 + (NSString *)jsFetchLectureLinks;
@@ -31,5 +25,6 @@
 + (NSString *)jsCheckSignUpSuccessfully;
 + (NSString *)jsGetDirectLink;
 + (NSString *)jsSimulateKeyupEvent:(NSString *)elementId;
++ (NSString *)jsFetchAllCourses;
 
 @end

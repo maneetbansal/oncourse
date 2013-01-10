@@ -10,7 +10,7 @@
 
 @interface OCCourseListingView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) NSMutableArray *listAllCourse;
+@property (nonatomic, strong) NSArray *listAllCourse;
 
 - (void)reloadData;
 - (void)orientationChanged;

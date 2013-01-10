@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *metaInfo;
-@property (nonatomic, strong) UIImageView *image;
+@property (nonatomic, strong) __block UIImageView *image;
 @property (nonatomic, strong) UIProgressView *progressBar;
 
 - (void)reloadData:(OCCourse *)course;
