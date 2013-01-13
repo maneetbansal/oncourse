@@ -6,6 +6,7 @@ function OCFetchAllCourses()
   {
     aCourse = new Object();
     var aBox = coursera_listing_box[i];
+    var coursera_id = aBox.getAttribute('data-course-id');
     var coursera_image = aBox.getElementsByClassName('coursera-course-listing-icon')[0].src;
     var coursera_name = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].innerText;
     var coursera_link = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].href;
@@ -13,12 +14,13 @@ function OCFetchAllCourses()
     var coursera_meta_status = aBox.getElementsByClassName('coursera-course-listing-meta')[0].getElementsByTagName('a')[0].getAttribute('disabled') ? 'disable' : 'available';
     var progress_bar = aBox.getElementsByClassName('progress-bar');
     var coursera_progress = progress_bar.length > 0 ? progress_bar[0].style.width.slice(0, -1) : -1;
+    aCourse.course_id = parseInt(coursera_id);
     aCourse.course_image = coursera_image;
     aCourse.course_name = coursera_name;
     aCourse.course_link = coursera_link;
     aCourse.course_meta_info = coursera_meta_info;
     aCourse.course_status = coursera_meta_status;
-    aCourse.course_progress = coursera_progress;
+    aCourse.course_progress = parseInt(coursera_progress);
     coursera_listing.push(aCourse);
   }
   return JSON.stringify(coursera_listing);

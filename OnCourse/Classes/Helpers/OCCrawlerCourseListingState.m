@@ -10,9 +10,9 @@
 #import "OCJavascriptFunctions.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
-#import "OCCourse.h"
 #import "OCCourseListingsViewController.h"
 #import <SBJson.h>
+#import "Course+CoreData.h"
 
 @interface OCCrawlerCourseListingState()
 
@@ -68,26 +68,18 @@
 {
     NSLog(@"fetching all course");
     NSString *jsonCourses = [self executeJSFetchCourses];
-    NSArray *resDict = [jsonCourses JSONValue];
+    NSArray *resArray = [jsonCourses JSONValue];
 
-    [self updateCoursesListing:[self coursesJsonToCourse:resDict]];
+    //save to database
+    [Course initCourses:resArray];
+    [self updateCoursesListing];
 }
 
-- (NSArray *)coursesJsonToCourse:(NSArray *)coursesJson
-{
-    __block NSArray *courses = @[];
-    [coursesJson enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        OCCourse *aCourse = [[OCCourse alloc] initWithJson:obj];
-        courses = [courses arrayByAddingObject:aCourse];
-    }];
-    return courses;
-}
-
-- (void)updateCoursesListing:(NSArray *)courses
+- (void)updateCoursesListing
 {
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     OCCourseListingsViewController * courseListing = (OCCourseListingsViewController *)appDelegate.navigationController.topViewController;
-    [courseListing updateCourseListing:courses];
+    [courseListing updateCourseListing];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *courseTitle;
 
-- (void)updateCourseListing:(NSArray *)courses;
+- (void)updateCourseListing;
 - (void)presentLectureViewController:(NSMutableArray *)lectureData;
 
 @end

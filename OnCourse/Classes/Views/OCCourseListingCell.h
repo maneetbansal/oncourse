@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class OCCourse;
+@class Course;
 
 @interface OCCourseListingCell : UICollectionViewCell
 
@@ -16,6 +16,6 @@
 @property (nonatomic, strong) __block UIImageView *image;
 @property (nonatomic, strong) UIProgressView *progressBar;
 
-- (void)reloadData:(OCCourse *)course;
+- (void)reloadData:(Course *)course;
 
 @end

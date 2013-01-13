@@ -12,6 +12,7 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseraCrawler.h"
+#import "NSManagedObject+Adapter.h"
 
 @interface OCCourseListingsViewController ()
 
@@ -45,9 +46,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateCourseListing:(NSArray *)courses
+- (void)updateCourseListing
 {
-    self.courseListingView.listAllCourse = courses;
+    self.courseListingView.listAllCourse = [NSManagedObject findEntities:@"Course" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
     [self.courseListingView reloadData];
 }
 
@@ -55,7 +56,6 @@
 {
     self.lectureListingsViewController = [[OCLectureListingsViewController alloc] initWithLectureData:lectureData];
     [self.navigationController pushViewController:self.lectureListingsViewController animated:YES];
-
 }
 
 @end

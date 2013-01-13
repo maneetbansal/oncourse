@@ -17,11 +17,20 @@
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
 		9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
-		9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6D1166D2E0C00B0A75A /* OCCourse.m */; };
-		9752A6D3166D2E0C00B0A75A /* OCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6D1166D2E0C00B0A75A /* OCCourse.m */; };
 		975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */; };
 		975CCFAF1668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
 		975CCFB01668DA56008B5CB3 /* OCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAE1668DA56008B5CB3 /* OCLoginView.m */; };
+		977B7C8C169F133000D107DA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977B7C8B169F133000D107DA /* CoreData.framework */; };
+		977B7C90169F137900D107DA /* OnCourse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */; };
+		977B7C91169F137900D107DA /* OnCourse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */; };
+		977B7CA5169F237B00D107DA /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CA4169F237B00D107DA /* Lecture.m */; };
+		977B7CA6169F237B00D107DA /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CA4169F237B00D107DA /* Lecture.m */; };
+		977B7CAD169F23A900D107DA /* Course+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CAC169F23A900D107DA /* Course+CoreData.m */; };
+		977B7CAE169F23A900D107DA /* Course+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CAC169F23A900D107DA /* Course+CoreData.m */; };
+		977B7CC9169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */; };
+		977B7CCA169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */; };
+		977B7CEF169FEEDF00D107DA /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CEE169FEEDF00D107DA /* Course.m */; };
+		977B7CF0169FEEDF00D107DA /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CEE169FEEDF00D107DA /* Course.m */; };
 		978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */; };
@@ -122,11 +131,19 @@
 		9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingCell.m; sourceTree = "<group>"; };
 		9752A6B6166D000B00B0A75A /* OCCourseListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingView.h; sourceTree = "<group>"; };
 		9752A6B7166D000B00B0A75A /* OCCourseListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingView.m; sourceTree = "<group>"; };
-		9752A6D0166D2E0C00B0A75A /* OCCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourse.h; sourceTree = "<group>"; };
-		9752A6D1166D2E0C00B0A75A /* OCCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourse.m; sourceTree = "<group>"; };
 		975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewTests.m; sourceTree = "<group>"; };
 		975CCFAD1668DA56008B5CB3 /* OCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginView.h; sourceTree = "<group>"; };
 		975CCFAE1668DA56008B5CB3 /* OCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginView.m; sourceTree = "<group>"; };
+		977B7C8B169F133000D107DA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		977B7C8F169F137900D107DA /* OnCourse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnCourse.xcdatamodel; sourceTree = "<group>"; };
+		977B7CA3169F237B00D107DA /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
+		977B7CA4169F237B00D107DA /* Lecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lecture.m; sourceTree = "<group>"; };
+		977B7CAB169F23A800D107DA /* Course+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Course+CoreData.h"; sourceTree = "<group>"; };
+		977B7CAC169F23A900D107DA /* Course+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreData.m"; sourceTree = "<group>"; };
+		977B7CC7169F264C00D107DA /* NSManagedObject+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Adapter.h"; sourceTree = "<group>"; };
+		977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Adapter.m"; sourceTree = "<group>"; };
+		977B7CED169FEEDF00D107DA /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		977B7CEE169FEEDF00D107DA /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerAuthenticationCourseState.h; sourceTree = "<group>"; };
 		978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerAuthenticationCourseState.m; sourceTree = "<group>"; };
 		97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingsViewController.h; sourceTree = "<group>"; };
@@ -209,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977B7C8C169F133000D107DA /* CoreData.framework in Frameworks */,
 				97FC3F781678F980008FD22F /* MediaPlayer.framework in Frameworks */,
 				97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */,
 				97DD0D9D16671FD50022378D /* Foundation.framework in Frameworks */,
@@ -238,6 +256,17 @@
 				845940EF16946BE000A9E34E /* UIButton+Style.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		977B7C9A169F222100D107DA /* GenerateFiles */ = {
+			isa = PBXGroup;
+			children = (
+				977B7CED169FEEDF00D107DA /* Course.h */,
+				977B7CEE169FEEDF00D107DA /* Course.m */,
+				977B7CA3169F237B00D107DA /* Lecture.h */,
+				977B7CA4169F237B00D107DA /* Lecture.m */,
+			);
+			path = GenerateFiles;
 			sourceTree = "<group>";
 		};
 		97938EE81667E2E000D53965 /* Views */ = {
@@ -292,7 +321,6 @@
 		97DD0D8B16671FD50022378D = {
 			isa = PBXGroup;
 			children = (
-				97FC3F771678F97F008FD22F /* MediaPlayer.framework */,
 				97DD0DA016671FD50022378D /* OnCourse */,
 				97DD0DE21667683A0022378D /* Kiwi */,
 				97DD0D9916671FD50022378D /* Frameworks */,
@@ -314,6 +342,8 @@
 		97DD0D9916671FD50022378D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				977B7C8B169F133000D107DA /* CoreData.framework */,
+				97FC3F771678F97F008FD22F /* MediaPlayer.framework */,
 				97DD0D9A16671FD50022378D /* UIKit.framework */,
 				97DD0D9C16671FD50022378D /* Foundation.framework */,
 				97DD0D9E16671FD50022378D /* CoreGraphics.framework */,
@@ -438,14 +468,17 @@
 		97DD0E2D1667BD570022378D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9752A6D0166D2E0C00B0A75A /* OCCourse.h */,
-				9752A6D1166D2E0C00B0A75A /* OCCourse.m */,
+				977B7C9A169F222100D107DA /* GenerateFiles */,
 				97B30869166A67CA00089470 /* OCCourseraCrawler.h */,
 				97B3086A166A67CA00089470 /* OCCourseraCrawler.m */,
 				97B3087B166B149400089470 /* OCJavascriptFunctions.h */,
 				97B3087C166B149400089470 /* OCJavascriptFunctions.m */,
 				97FC3F3C1677BF25008FD22F /* OCLecture.h */,
 				97FC3F3D1677BF25008FD22F /* OCLecture.m */,
+				977B7CAB169F23A800D107DA /* Course+CoreData.h */,
+				977B7CAC169F23A900D107DA /* Course+CoreData.m */,
+				977B7CC7169F264C00D107DA /* NSManagedObject+Adapter.h */,
+				977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,6 +488,7 @@
 			children = (
 				97B30836166A25EE00089470 /* fonts */,
 				97B30801166A0E9300089470 /* images */,
+				977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -637,7 +671,6 @@
 				97B3087D166B149400089470 /* OCJavascriptFunctions.m in Sources */,
 				97B30881166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
 				9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */,
-				9752A6D2166D2E0C00B0A75A /* OCCourse.m in Sources */,
 				9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */,
 				978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
 				844CAC2A1675ECD20057CEDA /* OCWatchingVideo.m in Sources */,
@@ -653,6 +686,11 @@
 				97AAAAEA168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */,
 				97AAAAEE168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F016946BE000A9E34E /* UIButton+Style.m in Sources */,
+				977B7C90169F137900D107DA /* OnCourse.xcdatamodeld in Sources */,
+				977B7CA5169F237B00D107DA /* Lecture.m in Sources */,
+				977B7CAD169F23A900D107DA /* Course+CoreData.m in Sources */,
+				977B7CC9169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */,
+				977B7CEF169FEEDF00D107DA /* Course.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +713,6 @@
 				97B3087E166B149400089470 /* OCJavascriptFunctions.m in Sources */,
 				97B30882166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */,
 				9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */,
-				9752A6D3166D2E0C00B0A75A /* OCCourse.m in Sources */,
 				9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */,
 				978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */,
 				97FC3F281677B16A008FD22F /* OCCrawlerLectureListingState.m in Sources */,
@@ -689,6 +726,11 @@
 				97AAAAEB168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */,
 				97AAAAEF168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F116946BE000A9E34E /* UIButton+Style.m in Sources */,
+				977B7C91169F137900D107DA /* OnCourse.xcdatamodeld in Sources */,
+				977B7CA6169F237B00D107DA /* Lecture.m in Sources */,
+				977B7CAE169F23A900D107DA /* Course+CoreData.m in Sources */,
+				977B7CCA169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */,
+				977B7CF0169FEEDF00D107DA /* Course.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +915,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				977B7C8F169F137900D107DA /* OnCourse.xcdatamodel */,
+			);
+			currentVersion = 977B7C8F169F137900D107DA /* OnCourse.xcdatamodel */;
+			path = OnCourse.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 97DD0D8D16671FD50022378D /* Project object */;
 }

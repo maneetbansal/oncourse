@@ -7,7 +7,7 @@
 //
 
 #import "OCCourseListingCell.h"
-#import "OCCourse.h"
+#import "Course+CoreData.h"
 
 @implementation OCCourseListingCell
 
@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void)reloadData:(OCCourse *)course
+- (void)reloadData:(Course *)course
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
@@ -39,7 +39,7 @@
     [self addSubview:self.title];
     
     self.metaInfo.numberOfLines = 2;
-    self.metaInfo.text = [course.metaInfo stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    self.metaInfo.text = course.metaInfo;
     self.metaInfo.backgroundColor = [UIColor clearColor];
     self.metaInfo.font = [UIFont fontWithName:@"Livory" size:12];
     [self addSubview:self.metaInfo];
@@ -58,13 +58,13 @@
         self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(self.frame.size.width / 3 + 20, self.frame.size.height / 7 * 6, self.frame.size.width / 3 * 2 - 40, self.frame.size.height / 7)];
         
         if ([@"archive" isEqualToString:course.status]) {
-            course.progress = 100;
+            course.progress = @100;
             [self.progressBar setProgressViewStyle:UIProgressViewStyleBar];
         } else {
             [self.progressBar setProgressViewStyle:UIProgressViewStyleDefault];
         }
         
-        self.progressBar.progress = (float)course.progress / 100;
+        self.progressBar.progress = [course.progress floatValue] / 100;
         [self addSubview:self.progressBar];
     }
 }

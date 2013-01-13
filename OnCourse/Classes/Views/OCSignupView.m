@@ -8,7 +8,6 @@
 
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
-#import "OCCourse.h"
 #import "OCSignupView.h"
 #import "UIButton+Style.h"
 #import "OCCourseraCrawler.h"
