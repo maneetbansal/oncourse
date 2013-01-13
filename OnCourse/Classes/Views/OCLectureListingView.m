@@ -7,7 +7,6 @@
 //
 
 #import "OCLectureListingView.h"
-#import "OCCourse.h"
 #import "OCCourseraCrawler.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"

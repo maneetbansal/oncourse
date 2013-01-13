@@ -7,13 +7,13 @@
 //
 
 #import "OCCourseListingView.h"
-#import "OCCourse.h"
 #import "OCCourseListingCell.h"
 #import "OCCrawlerAuthenticationCourseState.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseraCrawler.h"
 #import "UIButton+Style.h"
+#import "Course+CoreData.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -209,7 +209,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OCCourseListingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"COURSE_CELL" forIndexPath:indexPath];
 
-    OCCourse *course = [_listAllCourse objectAtIndex:indexPath.row];
+    Course *course = [_listAllCourse objectAtIndex:indexPath.row];
     CGSize size = self.frame.size;
 
     if (size.width == [UIScreen mainScreen].bounds.size.width) {
@@ -238,13 +238,11 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: Select Item
-    NSLog([NSString stringWithFormat:@"%i", indexPath.row ]);
-    
     NSString *courseLink = [[self.listAllCourse objectAtIndex:indexPath.row] link];
     NSString *courseTitle = [[self.listAllCourse objectAtIndex:indexPath.row] title];
     NSString *courseStatus = [[self.listAllCourse objectAtIndex:indexPath.row] status];
     NSString *metaInfo = [[self.listAllCourse objectAtIndex:indexPath.row] metaInfo];
-    NSString *date = [[metaInfo componentsSeparatedByString:@"<br>"] objectAtIndex:0];
+    NSString *date = [[metaInfo componentsSeparatedByString:@"\n"] objectAtIndex:0];
     NSString *announcement = @"";
     if ([@"Date to be announced" isEqualToString:date]) {
         announcement = @"Date to be announced!";

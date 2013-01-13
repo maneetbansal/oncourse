@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12D32" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Course" representedClassName="Course" syncable="YES">
+        <attribute name="courseID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="metaInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="course" inverseEntity="Lecture" syncable="YES"/>
+    </entity>
+    <entity name="Lecture" representedClassName="Lecture" syncable="YES">
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="course" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectures" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Course" positionX="1008" positionY="293" width="128" height="163"/>
+        <element name="Lecture" positionX="1312" positionY="276" width="128" height="88"/>
+    </elements>
+</model>

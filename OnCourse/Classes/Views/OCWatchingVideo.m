@@ -8,7 +8,6 @@
 
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
-#import "OCCourse.h"
 #import "OCWatchingVideo.h"
 #import "UIButton+Style.h"
 #import "OCLectureListingsViewController.h"
