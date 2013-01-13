@@ -10,4 +10,19 @@
 
 @implementation OCLecture
 
+- (id)initWithJson:(NSDictionary *)json
+{
+    self = [super init];
+    if (self) {
+        NSArray *jsonAttributes = @[@"lecture_link", @"lecture_title"];
+        NSArray *properties = @[@"setLink:", @"setTitle:"];
+        [jsonAttributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([json objectForKey:obj] && [json objectForKey:obj] != [NSNull null]) {
+                [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
+            }
+        }];
+    }
+    return self;
+}
+
 @end

@@ -12,6 +12,7 @@
 #import "OCUtility.h"
 #import "OCCourseListingsViewController.h"
 #import "OCLecture.h"
+#import <SBJson.h>
 
 @interface OCCrawlerLectureListingState()
 
@@ -46,7 +47,6 @@
         
         NSString *function = (NSString*)[components objectAtIndex:1];
         if ([@"pageLoaded" isEqualToString:function]) {
-            NSLog(@"fetch all lecture links");
             [self fetchAllLectureLinks];
         }
         
@@ -62,31 +62,47 @@
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
 }
 
+- (NSString *)executeJSFetchLectureLinks
+{
+    return [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFetchLectureLinks]];
+}
+
 - (void)fetchAllLectureLinks
 {
-    NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFetchLectureLinks]];
-    NSArray *sectionItems = [result componentsSeparatedByString:@"|"];
+    NSLog(@"fetch all lecture links");
+    NSString *jsonLecture = [self executeJSFetchLectureLinks];
+    NSDictionary *resDict = [jsonLecture JSONValue];
+
     NSMutableArray *lectureData = [@[] mutableCopy];
-    for (int i = 0; i < sectionItems.count; ++i) {
-        NSArray *data = [[sectionItems objectAtIndex:i] componentsSeparatedByString:@"^"];
-        if (2 == data.count) {
-            [lectureData addObject:[data objectAtIndex:0]];
-            NSArray *lectures = [[data objectAtIndex:1] componentsSeparatedByString:@";"];
-            NSMutableArray *arrayLectures = [@[] mutableCopy];
-            [lectures enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSArray *lec = [obj componentsSeparatedByString:@"~"];
-                if (2 == lec.count) {
-                    OCLecture *aLecture = [OCLecture new];
-                    aLecture.link = [lec objectAtIndex:0];
-                    aLecture.title = [lec objectAtIndex:1];
-                    [arrayLectures addObject:aLecture];
-                }
-            }];
-            [lectureData addObject:arrayLectures];
+    NSArray *lectures = [resDict objectForKey:@"lectures"];
+    for (int i = 0; i < lectures.count; ++i) {
+        NSDictionary *sectionDict = [lectures objectAtIndex:i];
+        NSString *sectionName = [sectionDict objectForKey:@"section_name"];
+        [lectureData addObject:sectionName];
+        NSMutableArray *arrayLectures = [@[] mutableCopy];
+        NSArray *lectureList = [sectionDict objectForKey:@"lecture"];
+        for (int j = 0; j < lectureList.count; ++j) {
         }
+        [lectureList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            OCLecture *aLecture = [OCLecture new];
+            aLecture.link = [obj objectForKey:@"lecture_link"];
+            aLecture.title = [obj objectForKey:@"lecture_title"];
+            [arrayLectures addObject:aLecture];
+        }];
+        [lectureData addObject:arrayLectures];
     }
     [self presentLectureView:lectureData];
     self.webviewCrawler.delegate = nil;
+}
+
+- (NSArray *)lectureJsonToLecture:(NSArray *)lectureJson
+{
+    __block NSArray *lectures = @[];
+    [lectureJson enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        OCLecture *aLecture = [[OCLecture alloc] initWithJson:obj];
+        lectures = [lectures arrayByAddingObject:aLecture];
+    }];
+    return lectures;
 }
 
 - (void)presentLectureView:(NSMutableArray *)lectureData

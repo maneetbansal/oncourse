@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSString *link;
 @property (nonatomic, strong) NSString *title;
 
+- (id)initWithJson:(NSDictionary *)json;
+
 @end
