@@ -10,6 +10,7 @@
 #import "NSManagedObject+Adapter.h"
 #import "OCUtility.h"
 #import "OCAppDelegate.h"
+#import "Course+CoreData.h"
 
 @implementation Lecture (CoreData)
 
@@ -43,6 +44,12 @@
             [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
         }
     }];
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"currentCourseID"]) {
+        Course *course = (Course *)[NSManagedObject findSingleEntity:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[userDefaults objectForKey:@"currentCourseID"]] withSortDescriptionKey:nil];
+        self.course = course;
+    }
 }
 
 @end

@@ -257,7 +257,9 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
         self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
         [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
     }
+    [self setUserDefaultForCourseSelected:indexPath];
 }
+
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
 }
@@ -280,6 +282,13 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 0, 10, 0);
+}
+
+- (void)setUserDefaultForCourseSelected:(NSIndexPath *)indexPath
+{
+    NSNumber *courseID = [[self.listAllCourse objectAtIndex:indexPath.row] courseID];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:courseID forKey:@"currentCourseID"];
 }
 
 /*
