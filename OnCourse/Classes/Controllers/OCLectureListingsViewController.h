@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSString *selectedVideoTitle;
 
-- (id)initWithLectureData:(NSMutableArray *)lectureData;
+- (void)reloadData;
 
 @end

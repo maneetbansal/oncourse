@@ -10,6 +10,6 @@
 
 @interface OCLectureListingView : UIView <UITableViewDataSource, UITableViewDelegate>
 
-- (id)initWithLectureData:(NSMutableArray *)lectureData;
+- (void)reloadData;
 
 @end

@@ -15,6 +15,8 @@
 		849860301698264900CCF46F /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8498602F1698264900CCF46F /* back_button.png */; };
 		9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
+		974246AA16A4688A003C69E5 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 974246A916A4688A003C69E5 /* Lecture.m */; };
+		974246AB16A4688A003C69E5 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 974246A916A4688A003C69E5 /* Lecture.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
 		9752A6B9166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
 		975CCFAC1668D990008B5CB3 /* OCLoginViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */; };
@@ -23,8 +25,6 @@
 		977B7C8C169F133000D107DA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977B7C8B169F133000D107DA /* CoreData.framework */; };
 		977B7C90169F137900D107DA /* OnCourse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */; };
 		977B7C91169F137900D107DA /* OnCourse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 977B7C8E169F137900D107DA /* OnCourse.xcdatamodeld */; };
-		977B7CA5169F237B00D107DA /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CA4169F237B00D107DA /* Lecture.m */; };
-		977B7CA6169F237B00D107DA /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CA4169F237B00D107DA /* Lecture.m */; };
 		977B7CAD169F23A900D107DA /* Course+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CAC169F23A900D107DA /* Course+CoreData.m */; };
 		977B7CAE169F23A900D107DA /* Course+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CAC169F23A900D107DA /* Course+CoreData.m */; };
 		977B7CC9169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */; };
@@ -104,6 +104,8 @@
 		97DD0E511667C1AE0022378D /* OCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E501667C1AE0022378D /* OCUtility.m */; };
 		97DD0E521667C1AE0022378D /* OCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E501667C1AE0022378D /* OCUtility.m */; };
 		97DD0E581667C7400022378D /* OCUtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD0E561667C7400022378D /* OCUtilityTests.m */; };
+		97F7B17016A3221A000B4F4C /* Lecture+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F7B16F16A3221A000B4F4C /* Lecture+CoreData.m */; };
+		97F7B17116A3221A000B4F4C /* Lecture+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F7B16F16A3221A000B4F4C /* Lecture+CoreData.m */; };
 		97FC3F271677B16A008FD22F /* OCCrawlerLectureListingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F241677B16A008FD22F /* OCCrawlerLectureListingState.m */; };
 		97FC3F281677B16A008FD22F /* OCCrawlerLectureListingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F241677B16A008FD22F /* OCCrawlerLectureListingState.m */; };
 		97FC3F2E1677B187008FD22F /* OCLectureListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FC3F2D1677B187008FD22F /* OCLectureListingsViewController.m */; };
@@ -129,6 +131,8 @@
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
 		9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingCell.m; sourceTree = "<group>"; };
+		974246A816A4688A003C69E5 /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
+		974246A916A4688A003C69E5 /* Lecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lecture.m; sourceTree = "<group>"; };
 		9752A6B6166D000B00B0A75A /* OCCourseListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingView.h; sourceTree = "<group>"; };
 		9752A6B7166D000B00B0A75A /* OCCourseListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingView.m; sourceTree = "<group>"; };
 		975CCFAA1668D990008B5CB3 /* OCLoginViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewTests.m; sourceTree = "<group>"; };
@@ -136,8 +140,6 @@
 		975CCFAE1668DA56008B5CB3 /* OCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginView.m; sourceTree = "<group>"; };
 		977B7C8B169F133000D107DA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		977B7C8F169F137900D107DA /* OnCourse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnCourse.xcdatamodel; sourceTree = "<group>"; };
-		977B7CA3169F237B00D107DA /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
-		977B7CA4169F237B00D107DA /* Lecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lecture.m; sourceTree = "<group>"; };
 		977B7CAB169F23A800D107DA /* Course+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Course+CoreData.h"; sourceTree = "<group>"; };
 		977B7CAC169F23A900D107DA /* Course+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreData.m"; sourceTree = "<group>"; };
 		977B7CC7169F264C00D107DA /* NSManagedObject+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Adapter.h"; sourceTree = "<group>"; };
@@ -209,6 +211,8 @@
 		97DD0E4F1667C1AE0022378D /* OCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCUtility.h; sourceTree = "<group>"; };
 		97DD0E501667C1AE0022378D /* OCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCUtility.m; sourceTree = "<group>"; };
 		97DD0E561667C7400022378D /* OCUtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCUtilityTests.m; sourceTree = "<group>"; };
+		97F7B16E16A3221A000B4F4C /* Lecture+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lecture+CoreData.h"; sourceTree = "<group>"; };
+		97F7B16F16A3221A000B4F4C /* Lecture+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lecture+CoreData.m"; sourceTree = "<group>"; };
 		97FC3F231677B16A008FD22F /* OCCrawlerLectureListingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerLectureListingState.h; sourceTree = "<group>"; };
 		97FC3F241677B16A008FD22F /* OCCrawlerLectureListingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerLectureListingState.m; sourceTree = "<group>"; };
 		97FC3F2C1677B187008FD22F /* OCLectureListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLectureListingsViewController.h; sourceTree = "<group>"; };
@@ -261,10 +265,10 @@
 		977B7C9A169F222100D107DA /* GenerateFiles */ = {
 			isa = PBXGroup;
 			children = (
+				974246A816A4688A003C69E5 /* Lecture.h */,
+				974246A916A4688A003C69E5 /* Lecture.m */,
 				977B7CED169FEEDF00D107DA /* Course.h */,
 				977B7CEE169FEEDF00D107DA /* Course.m */,
-				977B7CA3169F237B00D107DA /* Lecture.h */,
-				977B7CA4169F237B00D107DA /* Lecture.m */,
 			);
 			path = GenerateFiles;
 			sourceTree = "<group>";
@@ -479,6 +483,8 @@
 				977B7CAC169F23A900D107DA /* Course+CoreData.m */,
 				977B7CC7169F264C00D107DA /* NSManagedObject+Adapter.h */,
 				977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */,
+				97F7B16E16A3221A000B4F4C /* Lecture+CoreData.h */,
+				97F7B16F16A3221A000B4F4C /* Lecture+CoreData.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -687,10 +693,11 @@
 				97AAAAEE168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F016946BE000A9E34E /* UIButton+Style.m in Sources */,
 				977B7C90169F137900D107DA /* OnCourse.xcdatamodeld in Sources */,
-				977B7CA5169F237B00D107DA /* Lecture.m in Sources */,
 				977B7CAD169F23A900D107DA /* Course+CoreData.m in Sources */,
 				977B7CC9169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */,
 				977B7CEF169FEEDF00D107DA /* Course.m in Sources */,
+				97F7B17016A3221A000B4F4C /* Lecture+CoreData.m in Sources */,
+				974246AA16A4688A003C69E5 /* Lecture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,10 +734,11 @@
 				97AAAAEF168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F116946BE000A9E34E /* UIButton+Style.m in Sources */,
 				977B7C91169F137900D107DA /* OnCourse.xcdatamodeld in Sources */,
-				977B7CA6169F237B00D107DA /* Lecture.m in Sources */,
 				977B7CAE169F23A900D107DA /* Course+CoreData.m in Sources */,
 				977B7CCA169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */,
 				977B7CF0169FEEDF00D107DA /* Course.m in Sources */,
+				97F7B17116A3221A000B4F4C /* Lecture+CoreData.m in Sources */,
+				974246AB16A4688A003C69E5 /* Lecture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

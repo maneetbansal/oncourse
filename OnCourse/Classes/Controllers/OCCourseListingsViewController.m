@@ -52,9 +52,9 @@
     [self.courseListingView reloadData];
 }
 
-- (void)presentLectureViewController:(NSMutableArray *)lectureData
+- (void)presentLectureViewController
 {
-    self.lectureListingsViewController = [[OCLectureListingsViewController alloc] initWithLectureData:lectureData];
+    self.lectureListingsViewController = [OCLectureListingsViewController new];
     [self.navigationController pushViewController:self.lectureListingsViewController animated:YES];
 }
 

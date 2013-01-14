@@ -22,23 +22,25 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self initLectureListingViewUI];
     }
     return self;
 }
 
-- (id)initWithLectureData:(NSMutableArray *)lectureData
+- (void)reloadData
 {
-    self = [super init];
-    if (self) {
-        self.lectureListingView = [[OCLectureListingView alloc] initWithLectureData:lectureData];
-    }
-    return self;
+    [self.lectureListingView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)initLectureListingViewUI
+{
+    self.lectureListingView = [OCLectureListingView new];
     self.view = self.lectureListingView;
 }
 

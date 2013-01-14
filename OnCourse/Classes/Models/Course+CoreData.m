@@ -19,13 +19,12 @@
     if (![NSManagedObject entityExist:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[json objectForKey:@"course_id"]] withSortDescriptionKey:nil]) {
         course = [NSEntityDescription insertNewObjectForEntityForName:@"Course" inManagedObjectContext:[OCUtility appDelegate].managedObjectContext];
         course.courseID = [json objectForKey:@"course_id"];
-        [course updateAttributes:json];
     }
     else
     {
         course = (Course *)[NSManagedObject findSingleEntity:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[json objectForKey:@"course_id"]] withSortDescriptionKey:nil];
-        
     }
+    [course updateAttributes:json];
 }
 
 + (void)initCourses:(NSArray *)jsonArray

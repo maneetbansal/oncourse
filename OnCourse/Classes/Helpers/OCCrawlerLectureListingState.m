@@ -11,7 +11,7 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseListingsViewController.h"
-#import "OCLecture.h"
+#import "Lecture+CoreData.h"
 #import <SBJson.h>
 
 @interface OCCrawlerLectureListingState()
@@ -48,6 +48,7 @@
         NSString *function = (NSString*)[components objectAtIndex:1];
         if ([@"pageLoaded" isEqualToString:function]) {
             [self fetchAllLectureLinks];
+            [self presentLectureView];
         }
         
         return NO;
@@ -71,45 +72,17 @@
 {
     NSLog(@"fetch all lecture links");
     NSString *jsonLecture = [self executeJSFetchLectureLinks];
-    NSDictionary *resDict = [jsonLecture JSONValue];
+    NSArray *resArray = [jsonLecture JSONValue];
 
-    NSMutableArray *lectureData = [@[] mutableCopy];
-    NSArray *lectures = [resDict objectForKey:@"lectures"];
-    for (int i = 0; i < lectures.count; ++i) {
-        NSDictionary *sectionDict = [lectures objectAtIndex:i];
-        NSString *sectionName = [sectionDict objectForKey:@"section_name"];
-        [lectureData addObject:sectionName];
-        NSMutableArray *arrayLectures = [@[] mutableCopy];
-        NSArray *lectureList = [sectionDict objectForKey:@"lecture"];
-        for (int j = 0; j < lectureList.count; ++j) {
-        }
-        [lectureList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            OCLecture *aLecture = [OCLecture new];
-            aLecture.link = [obj objectForKey:@"lecture_link"];
-            aLecture.title = [obj objectForKey:@"lecture_title"];
-            [arrayLectures addObject:aLecture];
-        }];
-        [lectureData addObject:arrayLectures];
-    }
-    [self presentLectureView:lectureData];
+    [Lecture initLectures:resArray];
     self.webviewCrawler.delegate = nil;
 }
 
-- (NSArray *)lectureJsonToLecture:(NSArray *)lectureJson
-{
-    __block NSArray *lectures = @[];
-    [lectureJson enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        OCLecture *aLecture = [[OCLecture alloc] initWithJson:obj];
-        lectures = [lectures arrayByAddingObject:aLecture];
-    }];
-    return lectures;
-}
-
-- (void)presentLectureView:(NSMutableArray *)lectureData
+- (void)presentLectureView
 {
     OCAppDelegate *delegate = [OCUtility appDelegate];
     OCCourseListingsViewController *courseListingViewController = (OCCourseListingsViewController *)delegate.navigationController.topViewController;
-    [courseListingViewController presentLectureViewController:lectureData];
+    [courseListingViewController presentLectureViewController];
     
 }
 

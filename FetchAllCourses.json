@@ -33,22 +33,18 @@ function OCFetchLectureLinks()
 	var listSection = document.getElementsByClassName('course-item-list-header');
 	var listItem = document.getElementsByClassName('course-item-list-section-list');
 	for (var i = 0; i < listSection.length; ++i) {
-		var aSection = new Object();
-		var sectionName = listSection[i].getElementsByTagName('h3')[0].innerText;
+		var sectionName = listSection[i].getElementsByTagName('h3')[0].textContent;
 		var items = listItem[i].getElementsByClassName('lecture-link');
-		var listLectureInSection = [];
 		for (var j = 0; j < items.length; ++j) {
-			var aLecture = new Object();
+      var aLecture = new Object();
+      aLecture.lecture_section = sectionName;
+      aLecture.lecture_section_index = i + 1;
+      aLecture.lecture_id = parseInt(items[j].getAttribute('data-lecture-id'));
 			aLecture.lecture_link = items[j].href;
-			aLecture.lecture_title = items[j].text;
-			listLectureInSection.push(aLecture);
+			aLecture.lecture_title = items[j].textContent;
+      lecture_listing.push(aLecture);
 		}
-		aSection.section_name = sectionName;
-		aSection.lecture = listLectureInSection;
-		lecture_listing.push(aSection);
 	}
-	var rs = new Object();
-	rs.lectures = lecture_listing;
-	return JSON.stringify(rs);
+	return JSON.stringify(lecture_listing);
 }
 OCFetchLectureLinks();

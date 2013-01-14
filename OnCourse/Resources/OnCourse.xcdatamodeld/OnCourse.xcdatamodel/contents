@@ -11,12 +11,15 @@
         <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="course" inverseEntity="Lecture" syncable="YES"/>
     </entity>
     <entity name="Lecture" representedClassName="Lecture" syncable="YES">
+        <attribute name="lectureID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectionIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="course" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectures" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
         <element name="Course" positionX="1008" positionY="293" width="128" height="163"/>
-        <element name="Lecture" positionX="1312" positionY="276" width="128" height="88"/>
+        <element name="Lecture" positionX="1312" positionY="276" width="128" height="135"/>
     </elements>
 </model>

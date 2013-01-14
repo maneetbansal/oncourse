@@ -10,12 +10,13 @@
 #import "OCCourseraCrawler.h"
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
-#import "OCLecture.h"
 #import "OCWatchingVideoViewController.h"
 #import "OCLectureListingsViewController.h"
 #import "OCCrawlerAuthenticationCourseState.h"
 #import "OCCourseraCrawler.h"
 #import "UIButton+Style.h"
+#import "NSManagedObject+Adapter.h"
+#import "Lecture+CoreData.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -33,7 +34,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 @property (nonatomic, strong) UILabel *labelTop;
 @property (nonatomic, strong) UITableView *tableviewLecture;
-@property (nonatomic, strong) NSMutableArray *lectureData;
+@property (nonatomic, strong) __block NSMutableDictionary *lectureData;
+@property (nonatomic, strong) NSArray *lectureSections;
 @property (nonatomic, strong) UIButton *buttonBack;
 @property (nonatomic, strong) OCWatchingVideoViewController *watchingVideoController;
 @property (nonatomic, strong) NSString *videoLink;
@@ -52,16 +54,39 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     return self;
 }
 
-- (id)initWithLectureData:(NSMutableArray *)lectureData
+- (id)init
 {
     self = [super init];
     if (self) {
+        [self initLectureData];
         [self constructUIComponents];
         [self addConstraints:[self arrayContraints]];
         [self setNiceBackground];
-        self.lectureData = lectureData;
     }
     return self;
+}
+
+- (void)reloadData
+{
+    [self initLectureData];
+    [self.tableviewLecture reloadData];
+}
+
+- (void)initLectureData
+{
+    self.lectureData = [@{} mutableCopy];
+
+    NSArray *lectureItems = [NSManagedObject findEntities:@"Lecture" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
+    [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];
+        [self.lectureData setObject:lecturesInSection forKey:obj];
+    }];
+    self.lectureSections = [self.lectureData keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([[[obj1 lastObject] sectionIndex] intValue] > [[[obj2 lastObject] sectionIndex] intValue])
+            return NSOrderedDescending;
+        return NSOrderedAscending;
+    }];
 }
 
 - (void)constructUIComponents
@@ -171,13 +196,14 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return self.lectureData.count/2;
+    return self.lectureSections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self.lectureData objectAtIndex:(section * 2 + 1)] count];
+    NSString *sectionKey = [self.lectureSections objectAtIndex:section];
+    return [[self.lectureData objectForKey:sectionKey] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,8 +213,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LectureCell"];
     }
-    
-    cell.textLabel.text = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] title];
+
+    NSString *sectionKey = [self.lectureSections objectAtIndex:indexPath.section];
+    cell.textLabel.text = [[[self.lectureData objectForKey:sectionKey] objectAtIndex:indexPath.row] title];
     cell.textLabel.font = [UIFont fontWithName:@"Livory" size:16];
     
     return cell;
@@ -201,7 +228,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.lectureData objectAtIndex:section*2];
+    return [self.lectureSections objectAtIndex:section];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -226,10 +253,8 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.videoLink = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] link];
-    self.videoTitle = [[[self.lectureData objectAtIndex:indexPath.section * 2 + 1] objectAtIndex:indexPath.row] title];
-    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
-    
+//    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
+
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
 }
