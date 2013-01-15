@@ -54,7 +54,6 @@
                 [self authenticateCourse];
             else
             {
-//                [self loadRequest:[self lectureLink]];
                 OCAppDelegate *appDelegate = [OCUtility appDelegate];
                 NSLog(@"authentication course successfully");
                 self.lectureState = [[OCCrawlerLectureListingState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andLectureIndexLink:[self lectureLink]];

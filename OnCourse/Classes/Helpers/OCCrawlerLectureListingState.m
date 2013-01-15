@@ -48,7 +48,7 @@
         NSString *function = (NSString*)[components objectAtIndex:1];
         if ([@"pageLoaded" isEqualToString:function]) {
             [self fetchAllLectureLinks];
-            [self presentLectureView];
+            [self broadcastFetchAllLecturesSuccessfully];
         }
         
         return NO;
@@ -78,12 +78,9 @@
     self.webviewCrawler.delegate = nil;
 }
 
-- (void)presentLectureView
+- (void)broadcastFetchAllLecturesSuccessfully
 {
-    OCAppDelegate *delegate = [OCUtility appDelegate];
-    OCCourseListingsViewController *courseListingViewController = (OCCourseListingsViewController *)delegate.navigationController.topViewController;
-    [courseListingViewController presentLectureViewController];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FetchAllLecturesSuccessfully" object:nil];
 }
 
 @end

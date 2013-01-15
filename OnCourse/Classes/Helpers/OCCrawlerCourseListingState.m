@@ -72,14 +72,12 @@
 
     //save to database
     [Course initCourses:resArray];
-    [self updateCoursesListing];
+    [self broadcastFetchAllCoursesSuccessfully];
 }
 
-- (void)updateCoursesListing
+- (void)broadcastFetchAllCoursesSuccessfully
 {
-    OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    OCCourseListingsViewController * courseListing = (OCCourseListingsViewController *)appDelegate.navigationController.topViewController;
-    [courseListing updateCourseListing];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FetchAllCoursesSuccessfully" object:nil];
 }
 
 @end

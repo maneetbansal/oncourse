@@ -12,7 +12,6 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseraCrawler.h"
-#import "NSManagedObject+Adapter.h"
 
 @interface OCCourseListingsViewController ()
 
@@ -36,6 +35,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCourseListing) name:@"FetchAllCoursesSuccessfully" object:nil];
     self.courseListingView = [[OCCourseListingView alloc] initWithFrame:self.view.frame];
     self.view = self.courseListingView;
 }
@@ -48,7 +48,6 @@
 
 - (void)updateCourseListing
 {
-    self.courseListingView.listAllCourse = [NSManagedObject findEntities:@"Course" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
     [self.courseListingView reloadData];
 }
 

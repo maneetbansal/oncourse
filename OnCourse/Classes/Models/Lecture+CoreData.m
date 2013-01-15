@@ -26,6 +26,7 @@
         lecture = (Lecture *)[NSManagedObject findSingleEntity:@"Lecture" withPredicateString:@"(lectureID == %@)" andArguments:@[[json objectForKey:@"lecture_id"]] withSortDescriptionKey:nil];
     }
     [lecture updateAttributes:json];
+    [[OCUtility appDelegate] saveContext];
 }
 
 + (void)initLectures:(NSArray *)jsonArray

@@ -17,6 +17,7 @@
 #import "UIButton+Style.h"
 #import "NSManagedObject+Adapter.h"
 #import "Lecture+CoreData.h"
+#import "MBProgressHUD.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -77,6 +78,11 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.lectureData = [@{} mutableCopy];
 
     NSArray *lectureItems = [NSManagedObject findEntities:@"Lecture" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    if (0 == lectureItems.count)
+        [MBProgressHUD showHUDAddedTo:self animated:YES];
+    else
+        [MBProgressHUD hideHUDForView:self animated:YES];
+
     NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
     [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];

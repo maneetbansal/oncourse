@@ -25,6 +25,7 @@
         course = (Course *)[NSManagedObject findSingleEntity:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[json objectForKey:@"course_id"]] withSortDescriptionKey:nil];
     }
     [course updateAttributes:json];
+    [[OCUtility appDelegate] saveContext];
 }
 
 + (void)initCourses:(NSArray *)jsonArray

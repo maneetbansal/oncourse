@@ -40,12 +40,8 @@
 		97938ECE1667D1DC00D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938ECC1667D1DC00D53965 /* OCLoginViewController.m */; };
 		97AAAADC168C62B100EB1EBC /* OCSignupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD7168C62B100EB1EBC /* OCSignupView.m */; };
 		97AAAADD168C62B100EB1EBC /* OCSignupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD7168C62B100EB1EBC /* OCSignupView.m */; };
-		97AAAADE168C62B100EB1EBC /* OCStartScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD9168C62B100EB1EBC /* OCStartScreenView.m */; };
-		97AAAADF168C62B100EB1EBC /* OCStartScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD9168C62B100EB1EBC /* OCStartScreenView.m */; };
 		97AAAAE4168C62BD00EB1EBC /* OCSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE1168C62BD00EB1EBC /* OCSignupViewController.m */; };
 		97AAAAE5168C62BD00EB1EBC /* OCSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE1168C62BD00EB1EBC /* OCSignupViewController.m */; };
-		97AAAAE6168C62BD00EB1EBC /* OCStartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE3168C62BD00EB1EBC /* OCStartScreenViewController.m */; };
-		97AAAAE7168C62BD00EB1EBC /* OCStartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE3168C62BD00EB1EBC /* OCStartScreenViewController.m */; };
 		97AAAAEA168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE9168C62C700EB1EBC /* OCCrawlerSignupState.m */; };
 		97AAAAEB168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE9168C62C700EB1EBC /* OCCrawlerSignupState.m */; };
 		97AAAAEE168C636000EB1EBC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAED168C636000EB1EBC /* MBProgressHUD.m */; };
@@ -156,12 +152,8 @@
 		97938ECC1667D1DC00D53965 /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
 		97AAAAD6168C62B100EB1EBC /* OCSignupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSignupView.h; sourceTree = "<group>"; };
 		97AAAAD7168C62B100EB1EBC /* OCSignupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSignupView.m; sourceTree = "<group>"; };
-		97AAAAD8168C62B100EB1EBC /* OCStartScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCStartScreenView.h; sourceTree = "<group>"; };
-		97AAAAD9168C62B100EB1EBC /* OCStartScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCStartScreenView.m; sourceTree = "<group>"; };
 		97AAAAE0168C62BD00EB1EBC /* OCSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSignupViewController.h; sourceTree = "<group>"; };
 		97AAAAE1168C62BD00EB1EBC /* OCSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSignupViewController.m; sourceTree = "<group>"; };
-		97AAAAE2168C62BD00EB1EBC /* OCStartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCStartScreenViewController.h; sourceTree = "<group>"; };
-		97AAAAE3168C62BD00EB1EBC /* OCStartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCStartScreenViewController.m; sourceTree = "<group>"; };
 		97AAAAE8168C62C700EB1EBC /* OCCrawlerSignupState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerSignupState.h; sourceTree = "<group>"; };
 		97AAAAE9168C62C700EB1EBC /* OCCrawlerSignupState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerSignupState.m; sourceTree = "<group>"; };
 		97AAAAEC168C636000EB1EBC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -278,8 +270,6 @@
 			children = (
 				97AAAAD6168C62B100EB1EBC /* OCSignupView.h */,
 				97AAAAD7168C62B100EB1EBC /* OCSignupView.m */,
-				97AAAAD8168C62B100EB1EBC /* OCStartScreenView.h */,
-				97AAAAD9168C62B100EB1EBC /* OCStartScreenView.m */,
 				97FC3F301677B199008FD22F /* OCLectureListingView.h */,
 				97FC3F311677B199008FD22F /* OCLectureListingView.m */,
 				975CCFAD1668DA56008B5CB3 /* OCLoginView.h */,
@@ -433,8 +423,6 @@
 			children = (
 				97AAAAE0168C62BD00EB1EBC /* OCSignupViewController.h */,
 				97AAAAE1168C62BD00EB1EBC /* OCSignupViewController.m */,
-				97AAAAE2168C62BD00EB1EBC /* OCStartScreenViewController.h */,
-				97AAAAE3168C62BD00EB1EBC /* OCStartScreenViewController.m */,
 				97FC3F2C1677B187008FD22F /* OCLectureListingsViewController.h */,
 				97FC3F2D1677B187008FD22F /* OCLectureListingsViewController.m */,
 				844CAC2C1675ED600057CEDA /* OCWatchingVideoViewController.h */,
@@ -686,9 +674,7 @@
 				97FC3F321677B199008FD22F /* OCLectureListingView.m in Sources */,
 				97FC3F3E1677BF25008FD22F /* OCLecture.m in Sources */,
 				97AAAADC168C62B100EB1EBC /* OCSignupView.m in Sources */,
-				97AAAADE168C62B100EB1EBC /* OCStartScreenView.m in Sources */,
 				97AAAAE4168C62BD00EB1EBC /* OCSignupViewController.m in Sources */,
-				97AAAAE6168C62BD00EB1EBC /* OCStartScreenViewController.m in Sources */,
 				97AAAAEA168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */,
 				97AAAAEE168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F016946BE000A9E34E /* UIButton+Style.m in Sources */,
@@ -727,9 +713,7 @@
 				97FC3F331677B199008FD22F /* OCLectureListingView.m in Sources */,
 				97FC3F3F1677BF25008FD22F /* OCLecture.m in Sources */,
 				97AAAADD168C62B100EB1EBC /* OCSignupView.m in Sources */,
-				97AAAADF168C62B100EB1EBC /* OCStartScreenView.m in Sources */,
 				97AAAAE5168C62BD00EB1EBC /* OCSignupViewController.m in Sources */,
-				97AAAAE7168C62BD00EB1EBC /* OCStartScreenViewController.m in Sources */,
 				97AAAAEB168C62C700EB1EBC /* OCCrawlerSignupState.m in Sources */,
 				97AAAAEF168C636000EB1EBC /* MBProgressHUD.m in Sources */,
 				845940F116946BE000A9E34E /* UIButton+Style.m in Sources */,

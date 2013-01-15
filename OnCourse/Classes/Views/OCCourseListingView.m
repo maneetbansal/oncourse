@@ -14,6 +14,9 @@
 #import "OCCourseraCrawler.h"
 #import "UIButton+Style.h"
 #import "Course+CoreData.h"
+#import "NSManagedObject+Adapter.h"
+#import "OCCourseListingsViewController.h"
+#import "MBProgressHUD.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -45,6 +48,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self initListAllCourses];
         [self constructUIComponents];
         [self addConstraints:[self arrayConstraints]];
         [self setNiceBackground];
@@ -64,7 +68,17 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 
 - (void)reloadData
 {
+    [self initListAllCourses];
     [self.collectionCourseListing.collectionView reloadData];
+}
+
+- (void)initListAllCourses
+{
+    self.listAllCourse = [NSManagedObject findEntities:@"Course" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    if (0 == self.listAllCourse.count)
+        [MBProgressHUD showHUDAddedTo:self animated:YES];
+    else
+        [MBProgressHUD hideHUDForView:self animated:YES];
 }
 
 - (void)constructUIComponents
@@ -256,8 +270,16 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
         self.crawlerAuthenticationCourse = [[OCCrawlerAuthenticationCourseState alloc] initWithWebView:appDelegate.courseCrawler.webviewCrawler andCourseLink:courseLink andCourseTitle:courseTitle];
         self.crawlerAuthenticationCourse.crawlerDelegate = appDelegate.courseCrawler;
         [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
+        [self presentLectureViewController];
     }
     [self setUserDefaultForCourseSelected:indexPath];
+}
+
+- (void)presentLectureViewController
+{
+    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    OCCourseListingsViewController *courseListingViewController = (OCCourseListingsViewController *)appDelegate.navigationController.topViewController;
+    [courseListingViewController presentLectureViewController];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {

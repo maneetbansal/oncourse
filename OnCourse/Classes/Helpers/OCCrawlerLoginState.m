@@ -13,6 +13,12 @@
 #import "OCUtility.h"
 #import "OCCourseListingsViewController.h"
 
+@interface OCCrawlerLoginState()
+
+@property (nonatomic, strong) OCCourseListingsViewController *courseListingsViewController;
+
+@end
+
 @implementation OCCrawlerLoginState
 
 - (id)initWithWebview:(UIWebView *)webview andEmail:(NSString *)email andPassword:(NSString *)password
@@ -60,7 +66,7 @@
                     [userDefaults setObject:self.email forKey:@"email"];
                     [userDefaults setObject:self.password forKey:@"password"];
                 }
-                [self presentListCourseViewController];
+                [self presentCourseListingsViewController];
             }
         }
         else if ([@"login_fail" isEqualToString:function])
@@ -84,10 +90,12 @@
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
 }
 
-- (void)presentListCourseViewController
+
+- (void)presentCourseListingsViewController
 {
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    [appDelegate.navigationController pushViewController:[[OCCourseListingsViewController alloc] init] animated:YES];
+    self.courseListingsViewController = [OCCourseListingsViewController new];
+    [appDelegate.navigationController pushViewController:self.courseListingsViewController animated:YES];
 }
 
 @end
