@@ -42,10 +42,17 @@
         self.webviewPlayer = [[UIWebView alloc] init];
         self.webviewPlayer.delegate = self;
         self.currentLecture = lecture;
-        [self loadRequest:self.currentLecture.link];
         self.watchingVideoView = [OCWatchingVideo new];
         self.moviePlayer = self.watchingVideoView.moviePlayer;
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        if (lecture.directVideoLink) {
+            self.videoDirectLink = self.currentLecture.directVideoLink;
+            [self playVideo];
+        }
+        else
+        {
+            [self loadRequest:self.currentLecture.link];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        }
     }
     return self;
 }
@@ -69,7 +76,6 @@
         //add your code
         NSLog(@"Played video");
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +103,7 @@
         else if ([@"haveDirectLink" isEqualToString:function])
         {
             self.videoDirectLink = [self getDirectLink];
+            self.currentLecture.directVideoLink = self.videoDirectLink;
             [self playVideo];
             self.webviewPlayer = nil;
             [MBProgressHUD hideHUDForView:self.view animated:YES];

@@ -2,7 +2,7 @@
 //  Lecture.h
 //  OnCourse
 //
-//  Created by East Agile on 1/14/13.
+//  Created by East Agile on 1/16/13.
 //  Copyright (c) 2013 phatle. All rights reserved.
 //
 
@@ -16,8 +16,9 @@
 @property (nonatomic, retain) NSNumber * lectureID;
 @property (nonatomic, retain) NSString * link;
 @property (nonatomic, retain) NSString * section;
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * sectionIndex;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * directVideoLink;
 @property (nonatomic, retain) Course *course;
 
 @end
