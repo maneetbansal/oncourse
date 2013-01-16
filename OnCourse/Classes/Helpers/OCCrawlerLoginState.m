@@ -65,8 +65,8 @@
                     [userDefaults setObject:@"Logined" forKey:@"isLogin"];
                     [userDefaults setObject:self.email forKey:@"email"];
                     [userDefaults setObject:self.password forKey:@"password"];
+                    [self presentCourseListingsViewController];
                 }
-                [self presentCourseListingsViewController];
             }
         }
         else if ([@"login_fail" isEqualToString:function])
