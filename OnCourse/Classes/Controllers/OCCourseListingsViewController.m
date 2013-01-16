@@ -12,6 +12,8 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseraCrawler.h"
+#import "NSManagedObject+Adapter.h"
+#import "MBProgressHUD.h"
 
 @interface OCCourseListingsViewController ()
 
@@ -48,6 +50,10 @@
 
 - (void)updateCourseListing
 {
+    NSArray *courseListings = [NSManagedObject findEntities:@"Course" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    if (0 == courseListings.count) {
+        [MBProgressHUD hideHUDForView:self.courseListingView animated:YES];
+    }
     [self.courseListingView reloadData];
 }
 

@@ -11,11 +11,14 @@
 #import "OCJavascriptFunctions.h"
 #import "OCUtility.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "Lecture+CoreData.h"
+#import "MBProgressHUD.h"
 
 @interface OCWatchingVideoViewController ()
 
 @property (nonatomic, strong) OCWatchingVideo *watchingVideoView;
-@property (nonatomic, strong) NSString *videoLectureLink;
+@property (nonatomic, strong) NSString *videoDirectLink;
+@property (nonatomic, strong) Lecture *currentLecture;
 @property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, strong) UIWebView *webviewPlayer;
 
@@ -32,16 +35,17 @@
     return self;
 }
 
-- (id)initWithVideoLink:(NSString *)videoLink andTitle:(NSString *)videoTitle
+- (id)initWithLecture:(Lecture *)lecture
 {
     self = [super init];
     if (self) {
         self.webviewPlayer = [[UIWebView alloc] init];
         self.webviewPlayer.delegate = self;
-        self.videoTitle = videoTitle;
-        [self loadRequest:videoLink];
+        self.currentLecture = lecture;
+        [self loadRequest:self.currentLecture.link];
         self.watchingVideoView = [OCWatchingVideo new];
         self.moviePlayer = self.watchingVideoView.moviePlayer;
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
     return self;
 }
@@ -92,9 +96,10 @@
         }
         else if ([@"haveDirectLink" isEqualToString:function])
         {
-            self.videoLectureLink = [self getDirectLink];
+            self.videoDirectLink = [self getDirectLink];
             [self playVideo];
             self.webviewPlayer = nil;
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
         return NO;
     }
@@ -114,11 +119,10 @@
 
 - (void)playVideo
 {
-    NSURL *url = [NSURL URLWithString:self.videoLectureLink];
+    NSURL *url = [NSURL URLWithString:self.videoDirectLink];
     [self.moviePlayer setContentURL:url];
     [self.moviePlayer prepareToPlay];
     [self.moviePlayer play];
-
 }
 
 - (void)stopVideo

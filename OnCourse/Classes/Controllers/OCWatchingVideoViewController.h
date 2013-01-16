@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Lecture;
 
 @interface OCWatchingVideoViewController : UIViewController<UIWebViewDelegate>
 
 @property (nonatomic, strong) NSString *videoTitle;
 
-- (id)initWithVideoLink:(NSString *)videoLink andTitle:(NSString *)videoTitle;
+- (id)initWithLecture:(Lecture *)lecture;
 
 @end

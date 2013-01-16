@@ -259,7 +259,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithVideoLink:self.videoLink andTitle:self.videoTitle];
+    NSString *sectionKey = [self.lectureSections objectAtIndex:indexPath.section];
+    Lecture *lecture = [[self.lectureData objectForKey:sectionKey] objectAtIndex:indexPath.row];
+    self.watchingVideoController = [[OCWatchingVideoViewController alloc] initWithLecture:lecture];
 
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController pushViewController:self.watchingVideoController animated:YES];
