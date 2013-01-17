@@ -57,8 +57,14 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
          addObserver:self selector:@selector(orientationChanged)
          name:UIDeviceOrientationDidChangeNotification
          object:[UIDevice currentDevice]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectionView) name:@"ImageDownloaded" object:nil];
     }
     return self;
+}
+
+- (void)reloadCollectionView
+{
+    [self.collectionCourseListing.collectionView reloadData];
 }
 
 - (void)orientationChanged

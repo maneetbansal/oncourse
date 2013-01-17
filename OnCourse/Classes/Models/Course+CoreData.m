@@ -10,6 +10,7 @@
 #import "OCUtility.h"
 #import "OCAppDelegate.h"
 #import "NSManagedObject+Adapter.h"
+#import <AFImageRequestOperation.h>
 
 @implementation Course (CoreData)
 
@@ -44,6 +45,20 @@
             [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
         }
     }];
+    if (!self.imageData)
+        [self pullImage];
+}
+
+- (void)pullImage
+{
+    // download the photo
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.image]];
+    AFImageRequestOperation *operator = [AFImageRequestOperation imageRequestOperationWithRequest:request success:^(UIImage *image) {
+        NSData *imageData = UIImagePNGRepresentation(image);
+        self.imageData = imageData;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ImageDownloaded" object:nil];
+    }];
+    [operator start];
 }
 
 @end

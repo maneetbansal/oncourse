@@ -2,7 +2,7 @@
 //  Course.h
 //  OnCourse
 //
-//  Created by East Agile on 1/11/13.
+//  Created by East Agile on 1/17/13.
 //  Copyright (c) 2013 phatle. All rights reserved.
 //
 
@@ -13,13 +13,14 @@
 
 @interface Course : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * courseID;
 @property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSString * link;
 @property (nonatomic, retain) NSString * metaInfo;
 @property (nonatomic, retain) NSNumber * progress;
 @property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * courseID;
+@property (nonatomic, retain) NSData * imageData;
 @property (nonatomic, retain) NSSet *lectures;
 @end
 
