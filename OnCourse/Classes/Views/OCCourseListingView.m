@@ -258,6 +258,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: Select Item
+    [self setUserDefaultForCourseSelected:indexPath];
     NSString *courseLink = [[self.listAllCourse objectAtIndex:indexPath.row] link];
     NSString *courseTitle = [[self.listAllCourse objectAtIndex:indexPath.row] title];
     NSString *courseStatus = [[self.listAllCourse objectAtIndex:indexPath.row] status];
@@ -278,7 +279,6 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
         [appDelegate.courseCrawler changeState:self.crawlerAuthenticationCourse];
         [self presentLectureViewController];
     }
-    [self setUserDefaultForCourseSelected:indexPath];
 }
 
 - (void)presentLectureViewController

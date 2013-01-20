@@ -18,6 +18,7 @@
 #import "NSManagedObject+Adapter.h"
 #import "Lecture+CoreData.h"
 #import "MBProgressHUD.h"
+#import "Course+CoreData.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -76,23 +77,36 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 - (void)initLectureData
 {
     self.lectureData = [@{} mutableCopy];
+    self.lectureSections = [@[] mutableCopy];
 
-    NSArray *lectureItems = [NSManagedObject findEntities:@"Lecture" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    Course *course = [self currentCourse];
+    NSArray *lectureItems = [[course lectures] allObjects];
     if (0 == lectureItems.count)
         [MBProgressHUD showHUDAddedTo:self animated:YES];
     else
+    {
         [MBProgressHUD hideHUDForView:self animated:YES];
 
-    NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
-    [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];
-        [self.lectureData setObject:lecturesInSection forKey:obj];
-    }];
-    self.lectureSections = [self.lectureData keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        if ([[[obj1 lastObject] sectionIndex] intValue] > [[[obj2 lastObject] sectionIndex] intValue])
-            return NSOrderedDescending;
-        return NSOrderedAscending;
-    }];
+        NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
+        [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];
+            [self.lectureData setObject:lecturesInSection forKey:obj];
+        }];
+        self.lectureSections = [self.lectureData keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            if ([[[obj1 lastObject] sectionIndex] intValue] > [[[obj2 lastObject] sectionIndex] intValue])
+                return NSOrderedDescending;
+            return NSOrderedAscending;
+        }];
+    }
+}
+
+- (Course *)currentCourse
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"currentCourseID"]) {
+        return (Course *)[NSManagedObject findSingleEntity:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[userDefaults objectForKey:@"currentCourseID"]] withSortDescriptionKey:nil];
+    }
+    return nil;
 }
 
 - (void)constructUIComponents
