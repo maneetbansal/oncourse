@@ -11,6 +11,10 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="course" inverseEntity="Lecture" syncable="YES"/>
     </entity>
+    <entity name="Data" representedClassName="Data" syncable="YES">
+        <attribute name="dataID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="javascript" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Lecture" representedClassName="Lecture" syncable="YES">
         <attribute name="directVideoLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lectureID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -23,5 +27,6 @@
     <elements>
         <element name="Course" positionX="1008" positionY="293" width="128" height="180"/>
         <element name="Lecture" positionX="1312" positionY="276" width="128" height="150"/>
+        <element name="Data" positionX="1161" positionY="56" width="128" height="73"/>
     </elements>
 </model>

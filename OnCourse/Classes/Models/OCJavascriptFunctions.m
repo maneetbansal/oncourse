@@ -7,89 +7,122 @@
 //
 
 #import "OCJavascriptFunctions.h"
+#import "OCAppDelegate.h"
+#import "NSManagedObject+Adapter.h"
+#import "OCUtility.h"
+#import "Data+Coredata.h"
+#import <SBJson.h>
+
+@interface OCJavascriptFunctions()
+
+@property (nonatomic, strong) NSDictionary *jsonJavascriptFunctions;
+
+@end
+
 
 @implementation OCJavascriptFunctions
 
-+ (NSString *)jsLogin
++ (OCJavascriptFunctions *)sharedInstance
 {
-    return @"function OCLogin() { document.getElementsByClassName('btn btn-success coursera-signin-button')[0].click(); } OCLogin();";
+    static OCJavascriptFunctions * instance = nil;
+
+    static dispatch_once_t createIns;
+    dispatch_once(&createIns, ^{
+        // --- call to super avoids a deadlock with the above allocWithZone
+        instance = [[OCJavascriptFunctions alloc] init];
+    });
+    return instance;
 }
 
-+ (NSString *)jsFillElement:(NSString *)element withContent:(NSString *)content
+- (id)init
 {
-    return [NSString stringWithFormat:@"function OCFillElement(){ document.getElementById('%@').value = '%@' } OCFillElement();",element, content];
+    self = [super init];
+    if (self) {
+         Data *data = (Data *)[NSManagedObject findSingleEntity:@"Data" withPredicateString:@"(dataID == %@)" andArguments:@[ @1 ] withSortDescriptionKey:nil];
+        self.jsonJavascriptFunctions = [data.javascript JSONValue];
+    }
+    return self;
 }
 
-+ (NSString *)jsCheckCheckbox:(NSString *)checkboxId
+- (NSString *)jsLogin
 {
-    return [NSString stringWithFormat:@"function OCCheckCheckbox(){ document.getElementById('%@').checked = true; } OCCheckCheckbox();",checkboxId];
+    return [self.jsonJavascriptFunctions objectForKey:@"jsLogin"];
 }
 
-+ (NSString *)jsClickButton:(NSString *)buttonClassName
+- (NSString *)jsFillElement:(NSString *)element withContent:(NSString *)content
 {
-    return [NSString stringWithFormat:@"var pageLoadIntervalId = setInterval(function() { var bts = document.getElementsByClassName('%@'); if (bts[0] != 0) { clearInterval(pageLoadIntervalId); bts[0].click();} else {  } }, 1000);",buttonClassName];
+    return [NSString stringWithFormat:[self.jsonJavascriptFunctions objectForKey:@"jsFillElement"],element, content];
 }
 
-+ (NSString *)jsSimulateKeyupEvent:(NSString *)elementId
+- (NSString *)jsCheckCheckbox:(NSString *)checkboxId
 {
-    return [NSString stringWithFormat:@"jQuery('#%@').keyup();", elementId ];
+    return [NSString stringWithFormat:[self.jsonJavascriptFunctions objectForKey:@"jsCheckCheckbox"],checkboxId];
 }
 
-+ (NSString *)jsCallObjectiveCFunction
+- (NSString *)jsClickButton:(NSString *)buttonClassName
 {
-    return @"function callObjectiveCFunction(functionName, args) { var iframe = document.createElement('IFRAME'); iframe.setAttribute('src', 'js-frame:' + functionName + ':' + encodeURIComponent(JSON.stringify(args))); document.documentElement.appendChild(iframe); iframe.parentNode.removeChild(iframe); iframe = null; }";
+    return [NSString stringWithFormat:[self.jsonJavascriptFunctions objectForKey:@"jsClickButton"],buttonClassName];
 }
 
-+ (NSString *)checkLogined
+- (NSString *)jsSimulateKeyupEvent:(NSString *)elementId
 {
-    return @"var intervalId = setInterval(function() { var courses = document.getElementsByClassName('coursera-course-listing-box coursera-course-listing-box-wide coursera-account-course-listing-box'); var signinFail = document.getElementById('signin-fail'); if (courses.length > 0) { callObjectiveCFunction('login_successfully','nothing'); clearInterval(intervalId); } else if (signinFail) { callObjectiveCFunction('login_fail','nothing'); clearInterval(intervalId); } }, 1000);";
+    return [NSString stringWithFormat:[self.jsonJavascriptFunctions objectForKey:@"jsSimulateKeyupEvent"], elementId ];
 }
 
-+ (NSString *)checkPageLoaded
+- (NSString *)jsCallObjectiveCFunction
 {
-    return @"var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { clearInterval(pageLoadIntervalId); callObjectiveCFunction('pageLoaded','nothing');} else {  } }, 1000);";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsCallObjectiveCFunction"];
+}
+
+- (NSString *)checkLogined
+{
+    return [self.jsonJavascriptFunctions objectForKey:@"checkLogined"];
+}
+
+- (NSString *)checkPageLoaded
+{
+    return [self.jsonJavascriptFunctions objectForKey:@"checkPageLoaded"];
     
 }
 
-+ (NSString *)checkCourseLoaded
+- (NSString *)checkCourseLoaded
 {
-    return @"var number = 0; var pageLoadIntervalId = setInterval(function() { if (jQuery.active == 0) { number +=1; if(number >=2) {callObjectiveCFunction('pageLoaded','nothing'); clearInterval(pageLoadIntervalId);} } else {  } }, 1000);";
+    return [self.jsonJavascriptFunctions objectForKey:@"checkCourseLoaded"];
 }
 
-+ (NSString *)jsCheckAuthenticationCourseNeeded
+- (NSString *)jsCheckAuthenticationCourseNeeded
 {
-    return @"function OCCheckAuthenticationCourseNeeded(){ if (document.getElementById('agreehonorcode')) return true; else return false; } OCCheckAuthenticationCourseNeeded();";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsCheckAuthenticationCourseNeeded"];
 }
 
-+ (NSString *)jsAuthenticateCourse
+- (NSString *)jsAuthenticateCourse
 {
-    return @"function OCAuthenticateCourse(){ return document.getElementById('agreehonorcode').href; } OCAuthenticateCourse();";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsAuthenticateCourse"];
 }
 
-+ (NSString *)jsFetchLectureLinks
+- (NSString *)jsFetchLectureLinks
 {
-    return @"function OCFetchLectureLinks() { var lecture_listing = []; var listSection = document.getElementsByClassName('course-item-list-header'); var listItem = document.getElementsByClassName('course-item-list-section-list'); for (var i = 0; i < listSection.length; ++i) { var sectionName = listSection[i].getElementsByTagName('h3')[0].textContent; var items = listItem[i].getElementsByClassName('lecture-link'); for (var j = 0; j < items.length; ++j) { var aLecture = new Object(); aLecture.lecture_section = sectionName; aLecture.lecture_section_index = i + 1; aLecture.lecture_id = parseInt(items[j].getAttribute('data-lecture-id')); aLecture.lecture_link = items[j].href; aLecture.lecture_title = items[j].textContent; lecture_listing.push(aLecture); } } return JSON.stringify(lecture_listing); } OCFetchLectureLinks(); ";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsFetchLectureLinks"];
 }
 
-+ (NSString *)jsPlayLectureVideo
+- (NSString *)jsPlayLectureVideo
 {
-    return @"var checkDirectLinkIntervalId = setInterval(function() { iframe = document.getElementsByTagName('iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; var directLink = innerDoc.getElementById('QL_video_element_first').src; if (directLink) { clearInterval(checkDirectLinkIntervalId); callObjectiveCFunction('haveDirectLink', directLink);} else {  } }, 1000);";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsPlayLectureVideo"];
 }
 
-+ (NSString *)jsGetDirectLink
+- (NSString *)jsGetDirectLink
 {
-    return @"function OCGetDirectLink(){ iframe = document.getElementsByTagName('iframe')[0]; var innerDoc = iframe.contentDocument || iframe.contentWindow.document; return innerDoc.getElementById('QL_video_element_first').src; } OCGetDirectLink();";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsGetDirectLink"];
 }
 
-+ (NSString *)jsCheckSignUpSuccessfully
+- (NSString *)jsCheckSignUpSuccessfully
 {
-    return @"var pageLoadIntervalId = setInterval(function() { if (document.getElementsByClassName('coursera-header-account-name').length != 0) { callObjectiveCFunction('signup_successfully','nothing'); clearInterval(pageLoadIntervalId); } else {  } }, 1000);";
-    
+    return [self.jsonJavascriptFunctions objectForKey:@"jsCheckSignUpSuccessfully"];
 }
 
-+ (NSString *)jsFetchAllCourses
+- (NSString *)jsFetchAllCourses
 {
-    return @"function OCFetchAllCourses() { var coursera_listing = []; var coursera_listing_box = document.getElementsByClassName('coursera-course-listing-box coursera-course-listing-box-wide coursera-account-course-listing-box'); for (var i = 0; i< coursera_listing_box.length; ++i) { aCourse = new Object(); var aBox = coursera_listing_box[i]; var coursera_id = aBox.getAttribute('data-course-id'); var coursera_image = aBox.getElementsByClassName('coursera-course-listing-icon')[0].src; var coursera_name = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].innerText; var coursera_link = aBox.getElementsByClassName('coursera-course-listing-name')[0].getElementsByTagName('a')[0].href; var coursera_meta_info = aBox.getElementsByTagName('span')[0].innerText; var coursera_meta_status = aBox.getElementsByClassName('coursera-course-listing-meta')[0].getElementsByTagName('a')[0].getAttribute('disabled') ? 'disable' : 'available'; var progress_bar = aBox.getElementsByClassName('progress-bar'); var coursera_progress = progress_bar.length > 0 ? progress_bar[0].style.width.slice(0, -1) : -1; aCourse.course_id = parseInt(coursera_id); aCourse.course_image = coursera_image; aCourse.course_name = coursera_name; aCourse.course_link = coursera_link; aCourse.course_meta_info = coursera_meta_info; aCourse.course_status = coursera_meta_status; aCourse.course_progress = parseInt(coursera_progress); coursera_listing.push(aCourse); } return JSON.stringify(coursera_listing); } OCFetchAllCourses(); ";
+    return [self.jsonJavascriptFunctions objectForKey:@"jsFetchAllCourses"];
 }
 
 @end

@@ -38,6 +38,8 @@
 		97938ECA1667D15100D53965 /* OCLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */; };
 		97938ECD1667D1DC00D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938ECC1667D1DC00D53965 /* OCLoginViewController.m */; };
 		97938ECE1667D1DC00D53965 /* OCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938ECC1667D1DC00D53965 /* OCLoginViewController.m */; };
+		97A7C63416A920C300B20865 /* Data+Coredata.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A7C63316A920C300B20865 /* Data+Coredata.m */; };
+		97A7C63716A9222D00B20865 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A7C63616A9222D00B20865 /* Data.m */; };
 		97AAAADC168C62B100EB1EBC /* OCSignupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD7168C62B100EB1EBC /* OCSignupView.m */; };
 		97AAAADD168C62B100EB1EBC /* OCSignupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAD7168C62B100EB1EBC /* OCSignupView.m */; };
 		97AAAAE4168C62BD00EB1EBC /* OCSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AAAAE1168C62BD00EB1EBC /* OCSignupViewController.m */; };
@@ -150,6 +152,10 @@
 		97938EC81667D15100D53965 /* OCLoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewControllerTests.m; sourceTree = "<group>"; };
 		97938ECB1667D1DC00D53965 /* OCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginViewController.h; sourceTree = "<group>"; };
 		97938ECC1667D1DC00D53965 /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
+		97A7C63216A920C300B20865 /* Data+Coredata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Data+Coredata.h"; sourceTree = "<group>"; };
+		97A7C63316A920C300B20865 /* Data+Coredata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Data+Coredata.m"; sourceTree = "<group>"; };
+		97A7C63516A9222D00B20865 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		97A7C63616A9222D00B20865 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		97AAAAD6168C62B100EB1EBC /* OCSignupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSignupView.h; sourceTree = "<group>"; };
 		97AAAAD7168C62B100EB1EBC /* OCSignupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSignupView.m; sourceTree = "<group>"; };
 		97AAAAE0168C62BD00EB1EBC /* OCSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSignupViewController.h; sourceTree = "<group>"; };
@@ -257,6 +263,8 @@
 		977B7C9A169F222100D107DA /* GenerateFiles */ = {
 			isa = PBXGroup;
 			children = (
+				97A7C63516A9222D00B20865 /* Data.h */,
+				97A7C63616A9222D00B20865 /* Data.m */,
 				973B41DF16A7DA4000056406 /* Course.h */,
 				973B41E016A7DA4000056406 /* Course.m */,
 				973B41A216A680A000056406 /* Lecture.h */,
@@ -473,6 +481,8 @@
 				977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */,
 				97F7B16E16A3221A000B4F4C /* Lecture+CoreData.h */,
 				97F7B16F16A3221A000B4F4C /* Lecture+CoreData.m */,
+				97A7C63216A920C300B20865 /* Data+Coredata.h */,
+				97A7C63316A920C300B20865 /* Data+Coredata.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -684,6 +694,8 @@
 				97F7B17016A3221A000B4F4C /* Lecture+CoreData.m in Sources */,
 				973B41A416A680A000056406 /* Lecture.m in Sources */,
 				973B41E116A7DA4000056406 /* Course.m in Sources */,
+				97A7C63416A920C300B20865 /* Data+Coredata.m in Sources */,
+				97A7C63716A9222D00B20865 /* Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

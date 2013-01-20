@@ -57,28 +57,28 @@
 - (void)fillAllElements
 {
     //Simulate keyup event to enable signupbutton
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsSimulateKeyupEvent:@"coursera-signup-fullname"]];
-    NSString *jsFillSignUpElement = [OCJavascriptFunctions jsFillElement:@"coursera-signup-fullname" withContent:self.fullname];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsSimulateKeyupEvent:@"coursera-signup-fullname"]];
+    NSString *jsFillSignUpElement = [[OCJavascriptFunctions sharedInstance] jsFillElement:@"coursera-signup-fullname" withContent:self.fullname];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsFillSignUpElement];
-    NSString *jsFillEmailElement = [OCJavascriptFunctions jsFillElement:@"coursera-signup-email" withContent:self.username];
+    NSString *jsFillEmailElement = [[OCJavascriptFunctions sharedInstance] jsFillElement:@"coursera-signup-email" withContent:self.username];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsFillEmailElement];
-    NSString *jsFillPasswordElement = [OCJavascriptFunctions jsFillElement:@"coursera-signup-password" withContent:self.password];
+    NSString *jsFillPasswordElement = [[OCJavascriptFunctions sharedInstance] jsFillElement:@"coursera-signup-password" withContent:self.password];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsFillPasswordElement];
-    NSString *jsCheckAgreeBox = [OCJavascriptFunctions jsCheckCheckbox:@"coursera-signup-agree"];
+    NSString *jsCheckAgreeBox = [[OCJavascriptFunctions sharedInstance] jsCheckCheckbox:@"coursera-signup-agree"];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsCheckAgreeBox];
-    NSString *jsClickSignUpButton = [OCJavascriptFunctions jsClickButton:@"btn btn-success coursera-signup-button"];
+    NSString *jsClickSignUpButton = [[OCJavascriptFunctions sharedInstance] jsClickButton:@"btn btn-success coursera-signup-button"];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsClickSignUpButton];
     
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    NSString *jsCheckSignUped = [OCJavascriptFunctions jsCheckSignUpSuccessfully];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    NSString *jsCheckSignUped = [[OCJavascriptFunctions sharedInstance] jsCheckSignUpSuccessfully];
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:jsCheckSignUped];
 
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 
 @end

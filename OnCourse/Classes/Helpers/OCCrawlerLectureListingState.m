@@ -59,13 +59,13 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 
 - (NSString *)executeJSFetchLectureLinks
 {
-    return [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFetchLectureLinks]];
+    return [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsFetchLectureLinks]];
 }
 
 - (void)fetchAllLectureLinks

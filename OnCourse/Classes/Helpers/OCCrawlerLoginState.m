@@ -36,11 +36,11 @@
 
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFillElement:@"signin-email" withContent:email]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFillElement:@"signin-password" withContent:password]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsLogin]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkLogined]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsFillElement:@"signin-email" withContent:email]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsFillElement:@"signin-password" withContent:password]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsLogin]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkLogined]];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -86,8 +86,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 
 

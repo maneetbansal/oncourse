@@ -116,12 +116,12 @@
 
 - (void)checkDirectLink
 {
-    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsPlayLectureVideo]];
+    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsPlayLectureVideo]];
 }
 
 - (NSString *)getDirectLink
 {
-    return [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsGetDirectLink]];
+    return [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsGetDirectLink]];
 }
 
 - (void)playVideo
@@ -139,7 +139,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewPlayer stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 @end

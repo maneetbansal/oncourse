@@ -10,21 +10,22 @@
 
 @interface OCJavascriptFunctions : NSObject
 
-+ (NSString *)jsLogin;
-+ (NSString *)jsFillElement:(NSString *)element withContent:(NSString *)content;
-+ (NSString *)checkLogined;
-+ (NSString *)jsCallObjectiveCFunction;
-+ (NSString *)checkPageLoaded;
-+ (NSString *)jsCheckAuthenticationCourseNeeded;
-+ (NSString *)jsAuthenticateCourse;
-+ (NSString *)jsFetchLectureLinks;
-+ (NSString *)jsPlayLectureVideo;
-+ (NSString *)checkCourseLoaded;
-+ (NSString *)jsCheckCheckbox:(NSString *)checkboxId;
-+ (NSString *)jsClickButton:(NSString *)buttonClassName;
-+ (NSString *)jsCheckSignUpSuccessfully;
-+ (NSString *)jsGetDirectLink;
-+ (NSString *)jsSimulateKeyupEvent:(NSString *)elementId;
-+ (NSString *)jsFetchAllCourses;
+- (NSString *)jsLogin;
+- (NSString *)jsFillElement:(NSString *)element withContent:(NSString *)content;
+- (NSString *)checkLogined;
+- (NSString *)jsCallObjectiveCFunction;
+- (NSString *)checkPageLoaded;
+- (NSString *)jsCheckAuthenticationCourseNeeded;
+- (NSString *)jsAuthenticateCourse;
+- (NSString *)jsFetchLectureLinks;
+- (NSString *)jsPlayLectureVideo;
+- (NSString *)checkCourseLoaded;
+- (NSString *)jsCheckCheckbox:(NSString *)checkboxId;
+- (NSString *)jsClickButton:(NSString *)buttonClassName;
+- (NSString *)jsCheckSignUpSuccessfully;
+- (NSString *)jsGetDirectLink;
+- (NSString *)jsSimulateKeyupEvent:(NSString *)elementId;
+- (NSString *)jsFetchAllCourses;
++ (OCJavascriptFunctions *)sharedInstance;
 
 @end

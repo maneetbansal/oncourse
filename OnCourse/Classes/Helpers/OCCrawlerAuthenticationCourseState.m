@@ -70,13 +70,13 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkPageLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 
 - (BOOL)checkAuthenticated
 {
-    NSString *js = [OCJavascriptFunctions jsCheckAuthenticationCourseNeeded];
+    NSString *js = [[OCJavascriptFunctions sharedInstance] jsCheckAuthenticationCourseNeeded];
     NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:js];
     if ([@"true" isEqualToString:result])
         return true;
@@ -94,7 +94,7 @@
 
 - (void)authenticateCourse
 {
-    NSString *js = [OCJavascriptFunctions jsAuthenticateCourse];
+    NSString *js = [[OCJavascriptFunctions sharedInstance] jsAuthenticateCourse];
     NSString *result = [self.webviewCrawler stringByEvaluatingJavaScriptFromString:js];
     [self loadRequest:result];
 }

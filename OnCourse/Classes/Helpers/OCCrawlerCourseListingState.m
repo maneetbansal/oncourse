@@ -55,13 +55,13 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsCallObjectiveCFunction]];
-    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions checkCourseLoaded]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsCallObjectiveCFunction]];
+    [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkCourseLoaded]];
 }
 
 - (NSString *)executeJSFetchCourses
 {
-    return [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[OCJavascriptFunctions jsFetchAllCourses]];
+    return [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] jsFetchAllCourses]];
 }
 
 - (void)fetchAllCourse
