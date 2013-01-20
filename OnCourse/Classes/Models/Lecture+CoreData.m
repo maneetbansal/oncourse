@@ -17,13 +17,13 @@
 + (void)lectureWithInfo:(NSDictionary *)json
 {
     Lecture *lecture = nil;
-    if (![NSManagedObject entityExist:@"Lecture" withPredicateString:@"(lectureID == %@)" andArguments:@[[json objectForKey:@"lecture_id"] ] withSortDescriptionKey:nil]) {
+    if (![NSManagedObject entityExist:@"Lecture" withPredicateString:@"(link == %@)" andArguments:@[[json objectForKey:@"lecture_link"] ] withSortDescriptionKey:nil]) {
         lecture = [NSEntityDescription insertNewObjectForEntityForName:@"Lecture" inManagedObjectContext:[OCUtility appDelegate].managedObjectContext];
-        lecture.lectureID = [json objectForKey:@"lecture_id"];
+        lecture.link = [json objectForKey:@"lecture_link"];
     }
     else
     {
-        lecture = (Lecture *)[NSManagedObject findSingleEntity:@"Lecture" withPredicateString:@"(lectureID == %@)" andArguments:@[[json objectForKey:@"lecture_id"]] withSortDescriptionKey:nil];
+        lecture = (Lecture *)[NSManagedObject findSingleEntity:@"Lecture" withPredicateString:@"(link == %@)" andArguments:@[[json objectForKey:@"lecture_link"]] withSortDescriptionKey:nil];
     }
     [lecture updateAttributes:json];
     [[OCUtility appDelegate] saveContext];
@@ -38,8 +38,8 @@
 
 - (void)updateAttributes:(NSDictionary *)json
 {
-    NSArray *jsonAttributes = @[ @"lecture_link", @"lecture_title", @"lecture_section", @"lecture_section_index" ];
-    NSArray *properties = @[ @"setLink:", @"setTitle:", @"setSection:", @"setSectionIndex:" ];
+    NSArray *jsonAttributes = @[ @"lecture_id", @"lecture_title", @"lecture_section", @"lecture_section_index" ];
+    NSArray *properties = @[ @"setLectureID:", @"setTitle:", @"setSection:", @"setSectionIndex:" ];
     [jsonAttributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([json objectForKey:obj] && [json objectForKey:obj] != [NSNull null]) {
             [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
