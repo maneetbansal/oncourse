@@ -38,19 +38,27 @@
 
 - (void)updateAttributes:(NSDictionary *)json
 {
-    NSArray *jsonAttributes = @[ @"lecture_id", @"lecture_title", @"lecture_section", @"lecture_section_index" ];
-    NSArray *properties = @[ @"setLectureID:", @"setTitle:", @"setSection:", @"setSectionIndex:" ];
+    NSArray *jsonAttributes = @[ @"lecture_id", @"lecture_title", @"lecture_section", @"lecture_section_index", ];
+    NSArray *properties = @[ @"setLectureID:", @"setTitle:", @"setSection:", @"setSectionIndex:", ];
     [jsonAttributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([json objectForKey:obj] && [json objectForKey:obj] != [NSNull null]) {
             [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
         }
     }];
 
+    [self updateSubtitle];
+
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults objectForKey:@"currentCourseID"]) {
         Course *course = (Course *)[NSManagedObject findSingleEntity:@"Course" withPredicateString:@"(courseID == %@)" andArguments:@[[userDefaults objectForKey:@"currentCourseID"]] withSortDescriptionKey:nil];
         self.course = course;
     }
+}
+
+- (void)updateSubtitle
+{
+    NSString *prePath = [self.link stringByDeletingLastPathComponent];
+    self.subtitleLink = [prePath stringByAppendingFormat:@"/subtitles?q=%@_en&format=srt", self.lectureID];
 }
 
 @end

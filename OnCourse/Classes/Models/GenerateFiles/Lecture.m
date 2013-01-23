@@ -2,7 +2,7 @@
 //  Lecture.m
 //  OnCourse
 //
-//  Created by East Agile on 1/16/13.
+//  Created by East Agile on 1/23/13.
 //  Copyright (c) 2013 phatle. All rights reserved.
 //
 
@@ -12,12 +12,14 @@
 
 @implementation Lecture
 
+@dynamic directVideoLink;
 @dynamic lectureID;
 @dynamic link;
 @dynamic section;
 @dynamic sectionIndex;
+@dynamic subtitle;
 @dynamic title;
-@dynamic directVideoLink;
+@dynamic subtitleLink;
 @dynamic course;
 
 @end
