@@ -17,6 +17,8 @@
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9723747716AF7EBE007A3604 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9723747616AF7EBE007A3604 /* Lecture.m */; };
 		9723747816AF7EBE007A3604 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9723747616AF7EBE007A3604 /* Lecture.m */; };
+		9723749316AFBAA8007A3604 /* OCSubTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9723749216AFBAA8007A3604 /* OCSubTitle.m */; };
+		9723749416AFBAA8007A3604 /* OCSubTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9723749216AFBAA8007A3604 /* OCSubTitle.m */; };
 		973B41E116A7DA4000056406 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 973B41E016A7DA4000056406 /* Course.m */; };
 		973B41E216A7DA4000056406 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 973B41E016A7DA4000056406 /* Course.m */; };
 		9752A6B8166D000B00B0A75A /* OCCourseListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9752A6B7166D000B00B0A75A /* OCCourseListingView.m */; };
@@ -31,6 +33,8 @@
 		977B7CAE169F23A900D107DA /* Course+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CAC169F23A900D107DA /* Course+CoreData.m */; };
 		977B7CC9169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */; };
 		977B7CCA169F264D00D107DA /* NSManagedObject+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */; };
+		978BABBE16B25914003C3450 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 978BABBD16B25914003C3450 /* AVFoundation.framework */; };
+		978BABC116B25945003C3450 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 978BABC016B25945003C3450 /* CoreMedia.framework */; };
 		978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */; };
@@ -129,6 +133,8 @@
 		9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingCell.m; sourceTree = "<group>"; };
 		9723747516AF7EBE007A3604 /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
 		9723747616AF7EBE007A3604 /* Lecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lecture.m; sourceTree = "<group>"; };
+		9723749116AFBAA8007A3604 /* OCSubTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSubTitle.h; sourceTree = "<group>"; };
+		9723749216AFBAA8007A3604 /* OCSubTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSubTitle.m; sourceTree = "<group>"; };
 		973B41DF16A7DA4000056406 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		973B41E016A7DA4000056406 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		9752A6B6166D000B00B0A75A /* OCCourseListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingView.h; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 		977B7CAC169F23A900D107DA /* Course+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreData.m"; sourceTree = "<group>"; };
 		977B7CC7169F264C00D107DA /* NSManagedObject+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Adapter.h"; sourceTree = "<group>"; };
 		977B7CC8169F264C00D107DA /* NSManagedObject+Adapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Adapter.m"; sourceTree = "<group>"; };
+		978BABBD16B25914003C3450 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		978BABC016B25945003C3450 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerAuthenticationCourseState.h; sourceTree = "<group>"; };
 		978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerAuthenticationCourseState.m; sourceTree = "<group>"; };
 		97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingsViewController.h; sourceTree = "<group>"; };
@@ -224,6 +232,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				978BABC116B25945003C3450 /* CoreMedia.framework in Frameworks */,
+				978BABBE16B25914003C3450 /* AVFoundation.framework in Frameworks */,
 				977B7C8C169F133000D107DA /* CoreData.framework in Frameworks */,
 				97FC3F781678F980008FD22F /* MediaPlayer.framework in Frameworks */,
 				97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */,
@@ -340,6 +350,8 @@
 		97DD0D9916671FD50022378D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				978BABC016B25945003C3450 /* CoreMedia.framework */,
+				978BABBD16B25914003C3450 /* AVFoundation.framework */,
 				977B7C8B169F133000D107DA /* CoreData.framework */,
 				97FC3F771678F97F008FD22F /* MediaPlayer.framework */,
 				97DD0D9A16671FD50022378D /* UIKit.framework */,
@@ -445,6 +457,8 @@
 				845940ED16946BE000A9E34E /* Category */,
 				97AAAAE8168C62C700EB1EBC /* OCCrawlerSignupState.h */,
 				97AAAAE9168C62C700EB1EBC /* OCCrawlerSignupState.m */,
+				9723749116AFBAA8007A3604 /* OCSubTitle.h */,
+				9723749216AFBAA8007A3604 /* OCSubTitle.m */,
 				97FC3F231677B16A008FD22F /* OCCrawlerLectureListingState.h */,
 				97FC3F241677B16A008FD22F /* OCCrawlerLectureListingState.m */,
 				97DD0E4F1667C1AE0022378D /* OCUtility.h */,
@@ -689,6 +703,7 @@
 				97A7C63416A920C300B20865 /* Data+Coredata.m in Sources */,
 				97A7C63716A9222D00B20865 /* Data.m in Sources */,
 				9723747716AF7EBE007A3604 /* Lecture.m in Sources */,
+				9723749316AFBAA8007A3604 /* OCSubTitle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +742,7 @@
 				97F7B17116A3221A000B4F4C /* Lecture+CoreData.m in Sources */,
 				973B41E216A7DA4000056406 /* Course.m in Sources */,
 				9723747816AF7EBE007A3604 /* Lecture.m in Sources */,
+				9723749416AFBAA8007A3604 /* OCSubTitle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

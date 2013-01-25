@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+@class OCSubTitle;
+@class Lecture;
 
 @interface OCWatchingVideo : UIView
 
 @property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
+
+- (id)initWithLecture:(Lecture *)lecture;
 
 @end

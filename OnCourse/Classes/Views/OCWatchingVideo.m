@@ -11,6 +11,9 @@
 #import "OCWatchingVideo.h"
 #import "UIButton+Style.h"
 #import "OCLectureListingsViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "OCSubTitle.h"
+#import "Lecture+CoreData.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -24,22 +27,35 @@ NSString *const kLabelTopWatchingHorizontal = @"H:[_labelTopWatching]-0-|";
 NSString *const kMoviePlayerHorizontal = @"H:|-0-[moviePlayerView]-0-|";
 NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
+NSString *const kLabelSubtitleVertical = @"V:[_labelSubtitle(==50)]-70-|";
+NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
+
 @interface OCWatchingVideo()
 
 @property (nonatomic, strong) UILabel *labelTopWatching;
 @property (nonatomic, strong) UIButton *buttonBack;
+@property (nonatomic, strong) UILabel *labelSubtitle;
+@property (nonatomic, strong) OCSubTitle *subtitle;
+@property (nonatomic, strong) Lecture *lecture;
 
 @end
 
 @implementation OCWatchingVideo
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithLecture:(Lecture *)lecture
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
+        self.lecture = lecture;
         [self constructUIComponents];
         [self addConstraints:[self arrayContraints]];
         [self setNiceBackground];
+        if (lecture.subtitleLink) {
+            self.subtitle = [[OCSubTitle alloc] initWithLecture:lecture];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateChanged:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+        }
+        else
+            [self.labelSubtitle performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:7];
     }
     return self;
 }
@@ -49,6 +65,7 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self buttonBackUI];
     [self labelTopWatchingUI];
     [self moviePlayerUI];
+    [self labelSubtitleUI];
 }
 
 - (void)labelTopWatchingUI
@@ -59,6 +76,19 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
     self.labelTopWatching.text = @"Your course";
     [self addSubview:self.labelTopWatching];
+}
+
+- (void)labelSubtitleUI
+{
+    self.labelSubtitle = [[UILabel alloc] init];
+    self.labelSubtitle.translatesAutoresizingMaskIntoConstraints = NO;
+    self.labelSubtitle.backgroundColor = [UIColor clearColor];
+    [self.labelSubtitle setFont:[UIFont fontWithName:@"Livory-Bold" size:14]];
+    self.labelSubtitle.text = @"Subtitle for this video not available";
+    self.labelSubtitle.textColor = [UIColor whiteColor];
+    self.labelSubtitle.numberOfLines = 3;
+    self.labelSubtitle.textAlignment = NSTextAlignmentCenter;
+    [self.moviePlayer.view addSubview:self.labelSubtitle];
 }
 
 - (void)moviePlayerUI
@@ -83,6 +113,7 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
 - (void)actionBack
 {
+    [self stopVideo];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 }
@@ -94,6 +125,12 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     else
         [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"login_background"]]];
     
+}
+
+- (void)stopVideo
+{
+    [self.moviePlayer pause];
+    [self.moviePlayer stop];
 }
 
 - (NSArray *)buttonBackConstraints
@@ -134,6 +171,18 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
 }
 
+- (NSArray *)labelSubtitleConstraints
+{
+    NSMutableArray *result = [@[] mutableCopy];
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_labelSubtitle);
+
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelSubtitleHorizontal options:0 metrics:nil views:viewsDictionary]];
+    [result addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:kLabelSubtitleVertical options:0 metrics:nil views:viewsDictionary]];
+
+    return [NSArray arrayWithArray:result];
+
+}
+
 - (NSArray *)arrayContraints
 {
     NSMutableArray *result = [@[] mutableCopy];
@@ -141,8 +190,63 @@ NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
     [result addObjectsFromArray:[self buttonBackConstraints]];
     [result addObjectsFromArray:[self labelTopWatchingConstraints]];
     [result addObjectsFromArray:[self moviePlayerConstraints]];
+    [result addObjectsFromArray:[self labelSubtitleConstraints]];
     
     return [NSArray arrayWithArray:result];
 }
+
+- (void)moviePlayerPlaybackStateChanged:(NSNotification *)info
+{
+    NSLog(@"movie player play back state changed");
+    NSLog(@"%i", self.moviePlayer.playbackState);
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(displaySubTitle:) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        NSLog(@"playing");
+        NSLog(@"%d", abs([self.moviePlayer currentPlaybackTime]));
+        if (abs([self.moviePlayer currentPlaybackTime]) < 1)
+        {
+            NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:0] ChiSubtitle];
+            NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:0] EngSubtitle];
+            self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+            NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:1] startTime]);
+            [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:0] afterDelay:distance];
+        }
+        else
+        {
+            CMTime time = CMTimeMake((float)[self.moviePlayer currentPlaybackTime] *600, 600);
+            NSUInteger idx = [self.subtitle indexOfProperSubtitleWithGivenCMTime:time];
+            NSUInteger nextIndex = idx + 1;
+            NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:idx] ChiSubtitle];
+            NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:idx] EngSubtitle];
+            self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+
+            NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:nextIndex] startTime]) - CMTimeGetSeconds(time);
+            [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:idx] afterDelay:distance];
+        }
+    }
+}
+
+- (void)displaySubTitle:(NSNumber *)currentIndex
+{
+    NSUInteger nextIndex = [currentIndex integerValue] + 1;
+    if (nextIndex < self.subtitle.subtitleItems.count) {
+        NSLog(@"%i", nextIndex);
+        NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:nextIndex] ChiSubtitle];
+        NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:nextIndex] EngSubtitle];
+        self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+        CMTime time = CMTimeMake((float)[self.moviePlayer currentPlaybackTime] *600, 600);
+        if (nextIndex != self.subtitle.subtitleItems.count - 1) {
+            NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:nextIndex+1] startTime]) - CMTimeGetSeconds(time);
+            [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:nextIndex] afterDelay:distance];
+        }
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+}
+
 
 @end

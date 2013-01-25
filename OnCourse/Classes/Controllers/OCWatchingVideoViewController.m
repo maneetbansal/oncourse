@@ -42,7 +42,7 @@
         self.webviewPlayer = [[UIWebView alloc] init];
         self.webviewPlayer.delegate = self;
         self.currentLecture = lecture;
-        self.watchingVideoView = [OCWatchingVideo new];
+        self.watchingVideoView = [[OCWatchingVideo alloc] initWithLecture:lecture];
         self.moviePlayer = self.watchingVideoView.moviePlayer;
         if (lecture.directVideoLink) {
             self.videoDirectLink = self.currentLecture.directVideoLink;
@@ -67,15 +67,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view = self.watchingVideoView;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MPMoviePlayerLoadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
-}
-
-- (void)MPMoviePlayerLoadStateDidChange:(NSNotification *)notification
-{
-    if ((self.moviePlayer.loadState & MPMovieLoadStatePlaythroughOK) == MPMovieLoadStatePlaythroughOK) {
-        //add your code
-        NSLog(@"Played video");
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,11 +121,6 @@
     [self.moviePlayer setContentURL:url];
     [self.moviePlayer prepareToPlay];
     [self.moviePlayer play];
-}
-
-- (void)stopVideo
-{
-    [self.moviePlayer stop];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
