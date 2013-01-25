@@ -27,7 +27,7 @@ NSString *const kLabelTopWatchingHorizontal = @"H:[_labelTopWatching]-0-|";
 NSString *const kMoviePlayerHorizontal = @"H:|-0-[moviePlayerView]-0-|";
 NSString *const kMoviePlayerVertical = @"V:[moviePlayerView]-0-|";
 
-NSString *const kLabelSubtitleVertical = @"V:[_labelSubtitle(==50)]-70-|";
+NSString *const kLabelSubtitleVertical = @"V:[_labelSubtitle(==50)]-30-|";
 NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
 
 @interface OCWatchingVideo()
@@ -50,14 +50,19 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
         [self constructUIComponents];
         [self addConstraints:[self arrayContraints]];
         [self setNiceBackground];
-        if (lecture.subtitleLink) {
-            self.subtitle = [[OCSubTitle alloc] initWithLecture:lecture];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateChanged:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
-        }
-        else
-            [self.labelSubtitle performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:7];
+        [self initSubtitleData];
     }
     return self;
+}
+
+- (void)initSubtitleData
+{
+    if (self.lecture.subtitleLink) {
+        self.subtitle = [[OCSubTitle alloc] initWithLecture:self.lecture];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateChanged:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+    }
+    else
+        [self.labelSubtitle performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:7];
 }
 
 - (void)constructUIComponents
@@ -83,7 +88,7 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
     self.labelSubtitle = [[UILabel alloc] init];
     self.labelSubtitle.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelSubtitle.backgroundColor = [UIColor clearColor];
-    [self.labelSubtitle setFont:[UIFont fontWithName:@"Livory-Bold" size:14]];
+    [self.labelSubtitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
     self.labelSubtitle.text = @"Subtitle for this video not available";
     self.labelSubtitle.textColor = [UIColor whiteColor];
     self.labelSubtitle.numberOfLines = 3;
@@ -208,7 +213,7 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
         {
             NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:0] ChiSubtitle];
             NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:0] EngSubtitle];
-            self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+            [self setLabelAttributedSubtitle:line1 withSencondLine:line2];
             NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:1] startTime]);
             [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:0] afterDelay:distance];
         }
@@ -219,7 +224,7 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
             NSUInteger nextIndex = idx + 1;
             NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:idx] ChiSubtitle];
             NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:idx] EngSubtitle];
-            self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+            [self setLabelAttributedSubtitle:line1 withSencondLine:line2];
 
             NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:nextIndex] startTime]) - CMTimeGetSeconds(time);
             [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:idx] afterDelay:distance];
@@ -234,13 +239,22 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
         NSLog(@"%i", nextIndex);
         NSString *line1 = [[self.subtitle.subtitleItems objectAtIndex:nextIndex] ChiSubtitle];
         NSString *line2 = [[self.subtitle.subtitleItems objectAtIndex:nextIndex] EngSubtitle];
-        self.labelSubtitle.text = [line1 stringByAppendingFormat:@"\n%@", line2];
+        [self setLabelAttributedSubtitle:line1 withSencondLine:line2];
         CMTime time = CMTimeMake((float)[self.moviePlayer currentPlaybackTime] *600, 600);
         if (nextIndex != self.subtitle.subtitleItems.count - 1) {
             NSUInteger distance = CMTimeGetSeconds([[self.subtitle.subtitleItems objectAtIndex:nextIndex+1] startTime]) - CMTimeGetSeconds(time);
             [self performSelector:@selector(displaySubTitle:) withObject:[NSNumber numberWithInteger:nextIndex] afterDelay:distance];
         }
     }
+}
+
+- (void)setLabelAttributedSubtitle:(NSString *)line1 withSencondLine:(NSString *)line2
+{
+    NSString *sub = [line1 stringByAppendingFormat:@"\n%@", line2];
+    NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:sub];
+    [attString addAttribute:NSBackgroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, line1.length)];
+    [attString addAttribute:NSBackgroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(line1.length + 1, line2.length-1)];
+    self.labelSubtitle.attributedText = attString;
 }
 
 - (void)dealloc
