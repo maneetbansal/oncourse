@@ -22,7 +22,8 @@
 {
     self = [super init];
     if (self) {
-        lecture.subtitle = [NSString stringWithContentsOfURL:[NSURL URLWithString:lecture.subtitleLink] encoding:NSUTF8StringEncoding error:nil];
+        if (!lecture.subtitle)
+            lecture.subtitle = [NSString stringWithContentsOfURL:[NSURL URLWithString:lecture.subtitleLink] encoding:NSUTF8StringEncoding error:nil];
         self.subtitle = lecture.subtitle;
         self.subtitleItems = [@[] mutableCopy];
         NSArray *contextLine=[self.subtitle componentsSeparatedByString:@"\n"];
