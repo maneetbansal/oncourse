@@ -18,6 +18,7 @@
 #import "OCCourseListingsViewController.h"
 #import "MBProgressHUD.h"
 #import "User+CoreData.h"
+#import "OCCrawlerLogoutState.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -40,6 +41,8 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 @property (nonatomic, strong) UIButton *buttonAccountInfo;
 @property (nonatomic, strong) UIButton *buttonSignOut;
 @property (nonatomic, strong) OCCrawlerAuthenticationCourseState *crawlerAuthenticationCourse;
+@property (nonatomic, strong) OCCrawlerLogoutState *crawlerLogoutState;
+
 @end
 
 @implementation OCCourseListingView
@@ -136,6 +139,9 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 
 - (void)buttonSignOutAction
 {
+    self.crawlerLogoutState = [[OCCrawlerLogoutState alloc] initWithWebview:[OCUtility appDelegate].courseCrawler.webviewCrawler];
+    self.crawlerLogoutState.crawlerDelegate = [OCUtility appDelegate].courseCrawler;
+
     NSLog(@"Sign out");
 }
 

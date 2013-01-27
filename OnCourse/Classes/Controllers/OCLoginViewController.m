@@ -54,8 +54,8 @@
 
 - (void)actionLogin:(UIButton *)sender
 {
-    NSString *username = @"letan5505055@gmail.com";//self.loginView.textFieldUsername.text;
-    NSString *password = @"123456";//self.loginView.textFieldPassword.text;
+    NSString *username = self.loginView.textFieldUsername.text;
+    NSString *password = self.loginView.textFieldPassword.text;
     if (username != nil && password != nil && username.length > 0 && password.length > 0)
     {
         if ([self validateEmail:username] == NO) {

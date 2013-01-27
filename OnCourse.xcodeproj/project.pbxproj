@@ -39,6 +39,8 @@
 		978BAC4F16B4D656003C3450 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 978BAC4D16B4D656003C3450 /* User.m */; };
 		978BAC5216B4D656003C3450 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 978BAC5116B4D656003C3450 /* Course.m */; };
 		978BAC5316B4D656003C3450 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 978BAC5116B4D656003C3450 /* Course.m */; };
+		978BAC5E16B4E817003C3450 /* OCCrawlerLogoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978BAC5D16B4E817003C3450 /* OCCrawlerLogoutState.m */; };
+		978BAC5F16B4E817003C3450 /* OCCrawlerLogoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978BAC5D16B4E817003C3450 /* OCCrawlerLogoutState.m */; };
 		978EFF731673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		978EFF741673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */; };
 		97938EC31667CB5000D53965 /* OCCourseListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97938EC21667CB5000D53965 /* OCCourseListingsViewController.m */; };
@@ -158,6 +160,8 @@
 		978BAC4D16B4D656003C3450 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		978BAC5016B4D656003C3450 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		978BAC5116B4D656003C3450 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		978BAC5C16B4E817003C3450 /* OCCrawlerLogoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerLogoutState.h; sourceTree = "<group>"; };
+		978BAC5D16B4E817003C3450 /* OCCrawlerLogoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerLogoutState.m; sourceTree = "<group>"; };
 		978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCrawlerAuthenticationCourseState.h; sourceTree = "<group>"; };
 		978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerAuthenticationCourseState.m; sourceTree = "<group>"; };
 		97938EC11667CB5000D53965 /* OCCourseListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingsViewController.h; sourceTree = "<group>"; };
@@ -481,6 +485,8 @@
 				97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */,
 				978EFF711673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.h */,
 				978EFF721673A0AC00320DE6 /* OCCrawlerAuthenticationCourseState.m */,
+				978BAC5C16B4E817003C3450 /* OCCrawlerLogoutState.h */,
+				978BAC5D16B4E817003C3450 /* OCCrawlerLogoutState.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -718,6 +724,7 @@
 				978BAC4A16B4D439003C3450 /* User+CoreData.m in Sources */,
 				978BAC4E16B4D656003C3450 /* User.m in Sources */,
 				978BAC5216B4D656003C3450 /* Course.m in Sources */,
+				978BAC5E16B4E817003C3450 /* OCCrawlerLogoutState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,6 +766,7 @@
 				978BAC4B16B4D439003C3450 /* User+CoreData.m in Sources */,
 				978BAC4F16B4D656003C3450 /* User.m in Sources */,
 				978BAC5316B4D656003C3450 /* Course.m in Sources */,
+				978BAC5F16B4E817003C3450 /* OCCrawlerLogoutState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
