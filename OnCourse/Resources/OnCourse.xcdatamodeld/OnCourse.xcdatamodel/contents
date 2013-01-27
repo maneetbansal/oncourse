@@ -10,6 +10,7 @@
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="course" inverseEntity="Lecture" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="courses" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Data" representedClassName="Data" syncable="YES">
         <attribute name="dataID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -26,9 +27,15 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="course" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectures" inverseEntity="Course" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="users" inverseEntity="Course" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Course" positionX="1008" positionY="293" width="128" height="180"/>
+        <element name="Course" positionX="1395" positionY="90" width="128" height="193"/>
         <element name="Data" positionX="1161" positionY="56" width="128" height="73"/>
-        <element name="Lecture" positionX="1312" positionY="276" width="128" height="180"/>
+        <element name="Lecture" positionX="1215" positionY="279" width="128" height="180"/>
+        <element name="User" positionX="1431" positionY="380" width="128" height="88"/>
     </elements>
 </model>

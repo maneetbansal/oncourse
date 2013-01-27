@@ -11,6 +11,7 @@
 #import "OCAppDelegate.h"
 #import "NSManagedObject+Adapter.h"
 #import <AFImageRequestOperation.h>
+#import "User+CoreData.h"
 
 @implementation Course (CoreData)
 
@@ -47,6 +48,7 @@
     }];
     if (!self.imageData)
         [self pullImage];
+    [self updateUserInfo];
 }
 
 - (void)pullImage
@@ -59,6 +61,14 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ImageDownloaded" object:nil];
     }];
     [operator start];
+}
+
+- (void)updateUserInfo
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    User *user = (User *)[NSManagedObject findSingleEntity:@"User" withPredicateString:@"(email == %@)" andArguments:@[[userDefaults objectForKey:@"email"]] withSortDescriptionKey:nil];
+    if (user)
+        [user addACourse:self];
 }
 
 @end

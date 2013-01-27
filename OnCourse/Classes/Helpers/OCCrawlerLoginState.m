@@ -12,6 +12,7 @@
 #import "OCAppDelegate.h"
 #import "OCUtility.h"
 #import "OCCourseListingsViewController.h"
+#import "User+CoreData.h"
 
 @interface OCCrawlerLoginState()
 
@@ -60,13 +61,7 @@
             if ([self.crawlerDelegate respondsToSelector:@selector(changeState:)]) {
                 [self.crawlerDelegate changeState:[[OCCrawlerCourseListingState alloc] initWithWebview:self.webviewCrawler]];
                 NSLog(@"Login_ successfully");
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                if (![userDefaults objectForKey:@"email"]) {
-                    [userDefaults setObject:@"Logined" forKey:@"isLogin"];
-                    [userDefaults setObject:self.email forKey:@"email"];
-                    [userDefaults setObject:self.password forKey:@"password"];
-                    [self presentCourseListingsViewController];
-                }
+                [self saveUserInfo];
             }
         }
         else if ([@"login_fail" isEqualToString:function])
@@ -90,6 +85,17 @@
     [self.webviewCrawler stringByEvaluatingJavaScriptFromString:[[OCJavascriptFunctions sharedInstance] checkPageLoaded]];
 }
 
+- (void)saveUserInfo
+{
+    [User initWithInfo:@{ @"email" : self.email, @"password" : self.password }];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults objectForKey:@"email"]) {
+        [userDefaults setObject:@"Logined" forKey:@"isLogin"];
+        [userDefaults setObject:self.email forKey:@"email"];
+        [userDefaults setObject:self.password forKey:@"password"];
+        [self presentCourseListingsViewController];
+    }
+}
 
 - (void)presentCourseListingsViewController
 {

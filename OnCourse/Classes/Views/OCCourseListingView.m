@@ -17,6 +17,7 @@
 #import "NSManagedObject+Adapter.h"
 #import "OCCourseListingsViewController.h"
 #import "MBProgressHUD.h"
+#import "User+CoreData.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -80,7 +81,9 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 
 - (void)initListAllCourses
 {
-    self.listAllCourse = [NSManagedObject findEntities:@"Course" withPredicateString:nil andArguments:nil withSortDescriptionKey:nil];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    User *user = (User *)[NSManagedObject findSingleEntity:@"User" withPredicateString:@"(email == %@)" andArguments:@[[userDefaults objectForKey:@"email"]] withSortDescriptionKey:nil];
+    self.listAllCourse = [user.courses allObjects];
     if (0 == self.listAllCourse.count)
         [MBProgressHUD showHUDAddedTo:self animated:YES];
     else
