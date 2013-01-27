@@ -82,10 +82,14 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     Course *course = [self currentCourse];
     NSArray *lectureItems = [[course lectures] allObjects];
     if (0 == lectureItems.count)
+    {
         [MBProgressHUD showHUDAddedTo:self animated:YES];
+        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:15];
+    }
     else
     {
         [MBProgressHUD hideHUDForView:self animated:YES];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeLectureView) object:nil];
 
         NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
         [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -97,6 +101,15 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
                 return NSOrderedDescending;
             return NSOrderedAscending;
         }];
+    }
+}
+
+- (void)removeLectureView
+{
+    id topView = [OCUtility appDelegate].navigationController.topViewController;
+    if ([topView class] == [OCLectureListingsViewController class]) {
+        [[OCUtility appDelegate].navigationController popViewControllerAnimated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"No Lecture" message:@"No lecture is available now" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -145,6 +158,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)actionBack
 {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeLectureView) object:nil];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 }
