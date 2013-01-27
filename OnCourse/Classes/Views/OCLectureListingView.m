@@ -23,7 +23,7 @@
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
 
-NSString *const kButtonBackToCoursesViewHorizontal = @"H:|-15-[_buttonBack(==75)]-15-[_labelTop]";
+NSString *const kButtonBackToCoursesViewHorizontal = @"H:|-0-[_buttonBack(==75)]-20-[_labelTop]";
 NSString *const kButtonBackToCoursesViewVertical = @"V:|-15-[_buttonBack(==40)]-10-[_tableviewLecture]";
 
 NSString *const kLabelTopLectureVertical = @"V:|-15-[_labelTop]-10-[_tableviewLecture]";
@@ -84,7 +84,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     if (0 == lectureItems.count)
     {
         [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:15];
+        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:45];
     }
     else
     {
@@ -132,7 +132,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Courses"];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@""];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -142,7 +142,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     self.labelTop.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTop.backgroundColor = [UIColor clearColor];
     [self.labelTop setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
-    self.labelTop.text = @"Your course";
+    self.labelTop.text = @"Your Lectures";
 }
 
 - (void)tableviewLectureUI

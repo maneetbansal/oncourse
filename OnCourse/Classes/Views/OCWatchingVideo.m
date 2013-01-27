@@ -14,6 +14,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "OCSubTitle.h"
 #import "Lecture+CoreData.h"
+#import "OCWatchingVideoViewController.h"
 
 #define WIDTH_IPHONE_5 568
 #define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == WIDTH_IPHONE_5)
@@ -79,7 +80,7 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
     self.labelTopWatching.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelTopWatching.backgroundColor = [UIColor clearColor];
     [self.labelTopWatching setFont:[UIFont fontWithName:@"Livory-Bold" size:16]];
-    self.labelTopWatching.text = @"Your course";
+    self.labelTopWatching.text = @"Your Video";
     [self addSubview:self.labelTopWatching];
 }
 
@@ -111,7 +112,7 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Lectures"];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@""];
     [self.buttonBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.buttonBack];
 }
@@ -120,6 +121,8 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
 {
     [self stopVideo];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
+    OCWatchingVideoViewController *watchingViewController = (OCWatchingVideoViewController *)appDelegate.navigationController.topViewController;
+    [watchingViewController cancelRemoveWatchingView];
     [appDelegate.navigationController popViewControllerAnimated:YES];
 }
 

@@ -85,7 +85,7 @@ NSString *const kButtonSignupSignupVertical = @"V:[_textFieldPassword]-20-[_butt
 
 - (void)buttonBackUI
 {
-    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@"Log In"];
+    self.buttonBack = [UIButton buttonWithBackStyleAndTitle:@""];
     [self.buttonBack addTarget:self action:@selector(actionGoToLoginView) forControlEvents:UIControlEventTouchDown];
 }
 

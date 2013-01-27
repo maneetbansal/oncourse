@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *videoTitle;
 
 - (id)initWithLecture:(Lecture *)lecture;
+- (void)cancelRemoveWatchingView;
 
 @end

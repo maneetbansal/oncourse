@@ -10,6 +10,7 @@
 #import "OCWatchingVideo.h"
 #import "OCJavascriptFunctions.h"
 #import "OCUtility.h"
+#import "OCAppDelegate.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "Lecture+CoreData.h"
 #import "MBProgressHUD.h"
@@ -52,9 +53,19 @@
         {
             [self loadRequest:self.currentLecture.link];
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self performSelector:@selector(removeWatchingView) withObject:nil afterDelay:25];
         }
     }
     return self;
+}
+
+- (void)removeWatchingView
+{
+    id topView = [OCUtility appDelegate].navigationController.topViewController;
+    if ([topView class] == [OCWatchingVideoViewController class]) {
+        [[OCUtility appDelegate].navigationController popViewControllerAnimated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"Error!" message:@"Can not load this video.\nPlease try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
 }
 
 - (void)loadRequest:(NSString *)videoLink
@@ -98,11 +109,17 @@
             [self playVideo];
             self.webviewPlayer = nil;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self cancelRemoveWatchingView];
         }
         return NO;
     }
     
     return YES;
+}
+
+- (void)cancelRemoveWatchingView
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeWatchingView) object:nil];
 }
 
 - (void)checkDirectLink
