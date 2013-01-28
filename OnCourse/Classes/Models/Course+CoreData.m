@@ -46,9 +46,14 @@
             [self performSelector:NSSelectorFromString([properties objectAtIndex:idx]) withObject:[json objectForKey:obj]];
         }
     }];
-    if (!self.imageData)
+    if (!self.imageData || ![self imageFromData])
         [self pullImage];
     [self updateUserInfo];
+}
+
+- (UIImage *)imageFromData
+{
+    return [UIImage imageWithData:self.imageData];
 }
 
 - (void)pullImage
