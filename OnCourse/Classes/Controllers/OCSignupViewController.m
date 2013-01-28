@@ -48,29 +48,27 @@
 
 - (void)actionSignup
 {
-
-    [[[UIAlertView alloc] initWithTitle:@"Coming soon" message:@"This feature is in development." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
-    //    NSString *fullname = self.signupView.textFieldFullname.text;
-//    NSString *username = self.signupView.textFieldUsername.text; // email format
-//    NSString *password = self.signupView.textFieldPassword.text;
-//    
-//    if (fullname != nil && username != nil && password != nil & fullname.length > 0 & username.length > 0 && password.length > 0) {
-//        if ([self validateEmail:username] == NO) {
-//            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The email is invalid. Please check it again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//        } else if (password.length < 4) {
-//            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The password is weak. Please use a stronger password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//        } else {
-//            // Fill valid information
-//            OCAppDelegate *appDelegate = [OCUtility appDelegate];
-//            self.crawlerSignupState = [[OCCrawlerSignupState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andFullname:fullname andUsername:username andPassword:password];
-//            self.crawlerSignupState.crawlerDelegate = appDelegate.courseCrawler;
-//            [appDelegate.courseCrawler changeState:self.crawlerSignupState];
-//        }
-//    }
-//    else
-//    {
-//        [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"Please fill enough information!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//    }
+    NSString *fullname = self.signupView.textFieldFullname.text;
+    NSString *username = self.signupView.textFieldUsername.text; // email format
+    NSString *password = self.signupView.textFieldPassword.text;
+    
+    if (fullname != nil && username != nil && password != nil & fullname.length > 0 & username.length > 0 && password.length > 0) {
+        if ([self validateEmail:username] == NO) {
+            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The email is invalid. Please check it again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        } else if (password.length < 4) {
+            [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"The password is weak. Please use a stronger password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        } else {
+            // Fill valid information
+            OCAppDelegate *appDelegate = [OCUtility appDelegate];
+            self.crawlerSignupState = [[OCCrawlerSignupState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andFullname:fullname andUsername:username andPassword:password];
+            self.crawlerSignupState.crawlerDelegate = appDelegate.courseCrawler;
+            [appDelegate.courseCrawler changeState:self.crawlerSignupState];
+        }
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Sign up fail" message:@"Please fill enough information!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
 }
 
 - (BOOL)validateEmail:(NSString *)email

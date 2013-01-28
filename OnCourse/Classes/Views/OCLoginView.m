@@ -105,8 +105,9 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
 
 - (void)buttonSignupAction
 {
-    OCAppDelegate *appDelegate = [OCUtility appDelegate];
-    [appDelegate.navigationController pushViewController:[[OCSignupViewController alloc] init] animated: YES];
+    [[[UIAlertView alloc] initWithTitle:@"Coming soon" message:@"This feature is in development." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+//    OCAppDelegate *appDelegate = [OCUtility appDelegate];
+//    [appDelegate.navigationController pushViewController:[[OCSignupViewController alloc] init] animated: YES];
 }
 
 - (UITextField *)textFieldWithPlaceholder:(NSString *)placeholder
