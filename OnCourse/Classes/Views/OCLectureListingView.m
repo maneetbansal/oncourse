@@ -161,6 +161,9 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeLectureView) object:nil];
     OCAppDelegate *appDelegate = [OCUtility appDelegate];
     [appDelegate.navigationController popViewControllerAnimated:YES];
+    if ([appDelegate.navigationController.topViewController respondsToSelector:@selector(updateCourseListing)]) {
+        [appDelegate.navigationController.topViewController performSelector:@selector(updateCourseListing)];
+    }
 }
 
 - (void)addUIComponetToView:(UIView *)paramView

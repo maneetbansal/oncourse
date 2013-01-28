@@ -124,6 +124,9 @@ NSString *const kLabelSubtitleHorizontal = @"H:|-5-[_labelSubtitle]-5-|";
     OCWatchingVideoViewController *watchingViewController = (OCWatchingVideoViewController *)appDelegate.navigationController.topViewController;
     [watchingViewController cancelRemoveWatchingView];
     [appDelegate.navigationController popViewControllerAnimated:YES];
+    if ([appDelegate.navigationController.topViewController respondsToSelector:@selector(reloadData)]) {
+        [appDelegate.navigationController.topViewController performSelector:@selector(reloadData)];
+    }
 }
 
 - (void)setNiceBackground
