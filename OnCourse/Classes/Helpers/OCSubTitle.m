@@ -28,39 +28,44 @@
         self.subtitleItems = [@[] mutableCopy];
         NSArray *contextLine=[self.subtitle componentsSeparatedByString:@"\n"];
 
-        for (int i=0; i<[contextLine count]; i++)
-        {
-            NSRange firstCharRange=NSMakeRange(0, 1);
-            NSString *lineIndex=[contextLine objectAtIndex:i];
-            if ([lineIndex length])  //to skip over blank lines
+        @try {
+            for (int i=0; i<[contextLine count]; i++)
             {
-                if ([[lineIndex substringWithRange:firstCharRange] intValue]>=1 &&
-                    [[lineIndex substringWithRange:firstCharRange] intValue]<=9) // the index line
+                NSRange firstCharRange=NSMakeRange(0, 1);
+                NSString *lineIndex=[contextLine objectAtIndex:i];
+                if ([lineIndex length])  //to skip over blank lines
                 {
-                    NSString *lineTime=[contextLine objectAtIndex:i+1];
-                    if ([[lineTime substringWithRange:firstCharRange] isEqualToString:@"0"]) //the time line
+                    if ([[lineIndex substringWithRange:firstCharRange] intValue]>=1 &&
+                        [[lineIndex substringWithRange:firstCharRange] intValue]<=9) // the index line
                     {
-                        IndividualSubtitle *subtitle=[IndividualSubtitle new];
-                        NSString *lineEng1=[contextLine objectAtIndex:i+2];
-                        NSString *lineEng2=[contextLine objectAtIndex:i+3];
-                        
-                        subtitle.startTime=[self makeCMTimeStart:lineTime];
-                        subtitle.endTime=[self makeCMTimeEnd:lineTime];
-                        subtitle.ChiSubtitle=[NSString stringWithString:lineEng1];
-                        if ([lineEng2 length]) {
-                            subtitle.EngSubtitle=[NSString stringWithString:lineEng2];
-                        }else{
-                            subtitle.EngSubtitle=@" ";
+                        NSString *lineTime=[contextLine objectAtIndex:i+1];
+                        if ([[lineTime substringWithRange:firstCharRange] isEqualToString:@"0"]) //the time line
+                        {
+                            IndividualSubtitle *subtitle=[IndividualSubtitle new];
+                            NSString *lineEng1=[contextLine objectAtIndex:i+2];
+                            NSString *lineEng2=[contextLine objectAtIndex:i+3];
+
+                            subtitle.startTime=[self makeCMTimeStart:lineTime];
+                            subtitle.endTime=[self makeCMTimeEnd:lineTime];
+                            subtitle.ChiSubtitle=[NSString stringWithString:lineEng1];
+                            if ([lineEng2 length]) {
+                                subtitle.EngSubtitle=[NSString stringWithString:lineEng2];
+                            }else{
+                                subtitle.EngSubtitle=@" ";
+                            }
+                            [self.subtitleItems addObject:subtitle];
                         }
-                        [self.subtitleItems addObject:subtitle];
-                    }
-                    else
-                    {
-                        //如果字幕索引下不是时间轴，则出错
-                        NSLog(@"subtitle package wrong");
+                        else
+                        {
+                            //如果字幕索引下不是时间轴，则出错
+                            NSLog(@"subtitle package wrong");
+                        }
                     }
                 }
             }
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
         }
     }
     return self;
