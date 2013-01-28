@@ -12,6 +12,7 @@
 #import "OCAppDelegate.h"
 #import "OCCourseraCrawler.h"
 #import "OCCrawlerLoginState.h"
+#import <MBProgressHUD.h>
 
 @interface OCLoginViewController ()
 
@@ -68,6 +69,7 @@
             self.crawlerLoginState = [[OCCrawlerLoginState alloc] initWithWebview:appDelegate.courseCrawler.webviewCrawler andEmail:username andPassword:password];
             self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
             [appDelegate.courseCrawler changeState:self.crawlerLoginState];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         }
     }
     else
