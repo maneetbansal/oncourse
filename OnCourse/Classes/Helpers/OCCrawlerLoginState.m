@@ -61,6 +61,7 @@
         if ([@"login_successfully" isEqualToString:function]) {
             if ([self.crawlerDelegate respondsToSelector:@selector(changeState:)]) {
                 [MBProgressHUD hideHUDForView:[OCUtility appDelegate].navigationController.topViewController.view animated:YES];
+                [NSObject cancelPreviousPerformRequestsWithTarget:[OCUtility appDelegate].navigationController.topViewController];
                 [self.crawlerDelegate changeState:[[OCCrawlerCourseListingState alloc] initWithWebview:self.webviewCrawler]];
                 NSLog(@"Login_ successfully");
                 [self saveUserInfo];
@@ -69,6 +70,7 @@
         else if ([@"login_fail" isEqualToString:function])
         {
             [MBProgressHUD hideHUDForView:[OCUtility appDelegate].navigationController.topViewController.view animated:YES];
+            [NSObject cancelPreviousPerformRequestsWithTarget:[OCUtility appDelegate].navigationController.topViewController];
             [[[UIAlertView alloc] initWithTitle:@"Login Fail" message:@"Please check your email and password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
         }
         else if ([@"pageLoaded" isEqualToString:function])

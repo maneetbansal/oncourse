@@ -70,12 +70,19 @@
             self.crawlerLoginState.crawlerDelegate = appDelegate.courseCrawler;
             [appDelegate.courseCrawler changeState:self.crawlerLoginState];
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self performSelector:@selector(networkSlowAlert) withObject:nil afterDelay:60];
         }
     }
     else
     {
         [[[UIAlertView alloc] initWithTitle:@"Login fail" message:@"Please fill the email and password!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     }
+}
+
+- (void)networkSlowAlert
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [[[UIAlertView alloc] initWithTitle:@"Network Status" message:@"Your network seem to be slow.\nPlease check your network and login again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
 }
 
 - (BOOL)validateEmail:(NSString *)email
