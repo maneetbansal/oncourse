@@ -12,6 +12,12 @@
 		844CAC2E1675ED600057CEDA /* OCWatchingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CAC2D1675ED600057CEDA /* OCWatchingVideoViewController.m */; };
 		845940F016946BE000A9E34E /* UIButton+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 845940EF16946BE000A9E34E /* UIButton+Style.m */; };
 		845940F116946BE000A9E34E /* UIButton+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 845940EF16946BE000A9E34E /* UIButton+Style.m */; };
+		970C219716B6C14C0061BF1E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219616B6C14C0061BF1E /* Icon-72@2x.png */; };
+		970C219816B6C14C0061BF1E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219616B6C14C0061BF1E /* Icon-72@2x.png */; };
+		970C219B16B6C1CD0061BF1E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219916B6C1CD0061BF1E /* Icon-Small.png */; };
+		970C219C16B6C1CD0061BF1E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219916B6C1CD0061BF1E /* Icon-Small.png */; };
+		970C219D16B6C1CD0061BF1E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219A16B6C1CD0061BF1E /* Icon-Small@2x.png */; };
+		970C219E16B6C1CD0061BF1E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C219A16B6C1CD0061BF1E /* Icon-Small@2x.png */; };
 		9715C2EA166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9715C2EB166FA23700C67F0C /* OCCourseListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */; };
 		9723747716AF7EBE007A3604 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9723747616AF7EBE007A3604 /* Lecture.m */; };
@@ -96,8 +102,6 @@
 		97B30882166B1AD700089470 /* OCCrawlerCourseListingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */; };
 		97D6F3BC16B50A33001BD3B9 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3BB16B50A33001BD3B9 /* back_button.png */; };
 		97D6F3C816B51AA7001BD3B9 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3C216B51AA7001BD3B9 /* Icon-72.png */; };
-		97D6F3CA16B51AA7001BD3B9 /* Icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3C416B51AA7001BD3B9 /* Icon-small.png */; };
-		97D6F3CB16B51AA7001BD3B9 /* Icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3C516B51AA7001BD3B9 /* Icon-small@2x.png */; };
 		97D6F3CC16B51AA7001BD3B9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3C616B51AA7001BD3B9 /* Icon.png */; };
 		97D6F3CD16B51AA7001BD3B9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D6F3C716B51AA7001BD3B9 /* Icon@2x.png */; };
 		97DD0D9B16671FD50022378D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DD0D9A16671FD50022378D /* UIKit.framework */; };
@@ -139,6 +143,9 @@
 		845940EF16946BE000A9E34E /* UIButton+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Style.m"; sourceTree = "<group>"; };
 		8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnCourse.xcconfig"; path = "Pods/Pods-OnCourse.xcconfig"; sourceTree = SOURCE_ROOT; };
 		950E0993CFFE4A7899600FA1 /* libPods-OnCourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnCourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		970C219616B6C14C0061BF1E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		970C219916B6C1CD0061BF1E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		970C219A16B6C1CD0061BF1E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		9715C2E8166FA23700C67F0C /* OCCourseListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCourseListingCell.h; sourceTree = "<group>"; };
 		9715C2E9166FA23700C67F0C /* OCCourseListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCourseListingCell.m; sourceTree = "<group>"; };
 		9723747516AF7EBE007A3604 /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
@@ -212,8 +219,6 @@
 		97B30880166B1AD700089470 /* OCCrawlerCourseListingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCrawlerCourseListingState.m; sourceTree = "<group>"; };
 		97D6F3BB16B50A33001BD3B9 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		97D6F3C216B51AA7001BD3B9 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		97D6F3C416B51AA7001BD3B9 /* Icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-small.png"; sourceTree = "<group>"; };
-		97D6F3C516B51AA7001BD3B9 /* Icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-small@2x.png"; sourceTree = "<group>"; };
 		97D6F3C616B51AA7001BD3B9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		97D6F3C716B51AA7001BD3B9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		97DD0D9616671FD50022378D /* OnCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,9 +330,10 @@
 		97B30801166A0E9300089470 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				970C219916B6C1CD0061BF1E /* Icon-Small.png */,
+				970C219A16B6C1CD0061BF1E /* Icon-Small@2x.png */,
+				970C219616B6C14C0061BF1E /* Icon-72@2x.png */,
 				97D6F3C216B51AA7001BD3B9 /* Icon-72.png */,
-				97D6F3C416B51AA7001BD3B9 /* Icon-small.png */,
-				97D6F3C516B51AA7001BD3B9 /* Icon-small@2x.png */,
 				97D6F3C616B51AA7001BD3B9 /* Icon.png */,
 				97D6F3C716B51AA7001BD3B9 /* Icon@2x.png */,
 				97D6F3BB16B50A33001BD3B9 /* back_button.png */,
@@ -630,10 +636,11 @@
 				97AAAAF4168C639E00EB1EBC /* startScreen@2x.png in Resources */,
 				97D6F3BC16B50A33001BD3B9 /* back_button.png in Resources */,
 				97D6F3C816B51AA7001BD3B9 /* Icon-72.png in Resources */,
-				97D6F3CA16B51AA7001BD3B9 /* Icon-small.png in Resources */,
-				97D6F3CB16B51AA7001BD3B9 /* Icon-small@2x.png in Resources */,
 				97D6F3CC16B51AA7001BD3B9 /* Icon.png in Resources */,
 				97D6F3CD16B51AA7001BD3B9 /* Icon@2x.png in Resources */,
+				970C219716B6C14C0061BF1E /* Icon-72@2x.png in Resources */,
+				970C219B16B6C1CD0061BF1E /* Icon-Small.png in Resources */,
+				970C219D16B6C1CD0061BF1E /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +662,9 @@
 				97B3084E166A54C000089470 /* login_Down@2x.png in Resources */,
 				97AAAAF3168C639E00EB1EBC /* startScreen.png in Resources */,
 				97AAAAF5168C639E00EB1EBC /* startScreen@2x.png in Resources */,
+				970C219816B6C14C0061BF1E /* Icon-72@2x.png in Resources */,
+				970C219C16B6C1CD0061BF1E /* Icon-Small.png in Resources */,
+				970C219E16B6C1CD0061BF1E /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,15 +883,15 @@
 			baseConfigurationReference = 8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: le phat";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: le phat";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnCourse/OnCourse-Prefix.pch";
 				INFOPLIST_FILE = "OnCourse/OnCourse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				PROVISIONING_PROFILE = "2B19CBC2-95BD-4443-8405-9584A381D8D3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2B19CBC2-95BD-4443-8405-9584A381D8D3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -891,15 +901,15 @@
 			baseConfigurationReference = 8960141CC2814ECA9BFC8E10 /* Pods-OnCourse.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: East Agile Dev (E5CV8LCBTY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: le phat";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: le phat";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnCourse/OnCourse-Prefix.pch";
 				INFOPLIST_FILE = "OnCourse/OnCourse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD1AC562-945A-4E5C-8EAC-64F05954B433";
+				PROVISIONING_PROFILE = "2B19CBC2-95BD-4443-8405-9584A381D8D3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2B19CBC2-95BD-4443-8405-9584A381D8D3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
