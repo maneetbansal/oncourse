@@ -154,6 +154,7 @@ NSString *const kButtonSignOutVertical = @"V:[_buttonSignOut(==35)]-0-|";
 - (void)buttonAccountInfoAction
 {
     NSLog(@"Account Information");
+    [[[UIAlertView alloc] initWithTitle:@"Coming soon" message:@"This feature is in development." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
 }
 
 - (void)setNiceBackground
