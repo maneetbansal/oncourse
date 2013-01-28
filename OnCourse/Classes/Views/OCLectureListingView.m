@@ -84,7 +84,7 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     if (0 == lectureItems.count)
     {
         [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:45];
+        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:65];
     }
     else
     {

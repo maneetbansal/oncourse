@@ -53,7 +53,7 @@
         {
             [self loadRequest:self.currentLecture.link];
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [self performSelector:@selector(removeWatchingView) withObject:nil afterDelay:25];
+            [self performSelector:@selector(removeWatchingView) withObject:nil afterDelay:35];
         }
     }
     return self;
