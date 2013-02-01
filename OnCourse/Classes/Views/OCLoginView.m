@@ -70,7 +70,7 @@ NSString *const kButtonSignupVertical = @"V:[_labelOr]-20-[_buttonSignup]";
     self.labelAppname.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelAppname.backgroundColor = [UIColor clearColor];
     [self.labelAppname setFont:[UIFont fontWithName:@"Livory-Bold" size:38]];
-    self.labelAppname.text = @"OnCourse";
+    self.labelAppname.text = @"OpenCourse";
 }
 
 - (void)labelOrUI
