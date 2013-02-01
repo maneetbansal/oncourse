@@ -38,7 +38,8 @@
 - (void)pullJavascriptFile
 {
     NSString *javascript = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://dl.dropbox.com/u/81417138/oncourse_json.txt"] encoding:NSUTF8StringEncoding error:nil];
-    [Data dataWithInfo:@{ @"data_id" : @1, @"javascript" : javascript }];
+    if (javascript)
+        [Data dataWithInfo:@{ @"data_id" : @1, @"javascript" : javascript }];
 }
 
 - (void)presentFirstView
