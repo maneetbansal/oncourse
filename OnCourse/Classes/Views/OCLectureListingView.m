@@ -74,34 +74,53 @@ NSString *const kTableviewLectureListingVertical = @"V:[_tableviewLecture]-0-|";
     [self.tableviewLecture reloadData];
 }
 
+#pragma Mark the beginning of our calendar code
+
+
 - (void)initLectureData
 {
     self.lectureData = [@{} mutableCopy];
     self.lectureSections = [@[] mutableCopy];
 
-    Course *course = [self currentCourse];
-    NSArray *lectureItems = [[course lectures] allObjects];
-    if (0 == lectureItems.count)
-    {
-        [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:65];
-    }
-    else
-    {
-        [MBProgressHUD hideHUDForView:self animated:YES];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeLectureView) object:nil];
+    Course *course = [self currentCourse] ;
+    
+    NSString *delim = @"/";
+    NSString *calLink = @"calendar/ics";
+    
+    NSArray *chunks = [[course link] componentsSeparatedByString: delim];
+    NSLog(@"Course link  =  %@", [chunks objectAtIndex:3]);
 
-        NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
-        [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];
-            [self.lectureData setObject:lecturesInSection forKey:obj];
-        }];
-        self.lectureSections = [self.lectureData keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            if ([[[obj1 lastObject] sectionIndex] intValue] > [[[obj2 lastObject] sectionIndex] intValue])
-                return NSOrderedDescending;
-            return NSOrderedAscending;
-        }];
-    }
+    NSString *calendarAddress = [[NSString alloc] init];
+    calendarAddress = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@", [chunks objectAtIndex:0], delim, [chunks objectAtIndex:1], delim, [chunks objectAtIndex:2], delim, [chunks objectAtIndex:3], delim, calLink];
+    
+    NSLog(@"Calendar Link = %@", calendarAddress);
+    
+    //Open calendar link in Safari
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:calendarAddress]];
+    
+//    NSArray *lectureItems = [[course lectures] allObjects];
+//    if (0 == lectureItems.count)
+//    {
+//        [MBProgressHUD showHUDAddedTo:self animated:YES];
+//        [self performSelector:@selector(removeLectureView) withObject:nil afterDelay:65];
+//    }
+//    else
+//    {
+//        [MBProgressHUD hideHUDForView:self animated:YES];
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeLectureView) object:nil];
+//
+//        NSArray *lectureSections = [lectureItems valueForKeyPath:@"@distinctUnionOfObjects.section"];
+//        [lectureSections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            NSArray *lecturesInSection = [NSManagedObject findEntities:@"Lecture" withPredicateString:@"(section == %@)" andArguments:@[obj] withSortDescriptionKey:@{ @"lectureID" : @1 }];
+//            [self.lectureData setObject:lecturesInSection forKey:obj];
+//        }];
+//        self.lectureSections = [self.lectureData keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//            if ([[[obj1 lastObject] sectionIndex] intValue] > [[[obj2 lastObject] sectionIndex] intValue])
+//                return NSOrderedDescending;
+//            return NSOrderedAscending;
+//        }];
+//    }
+//    NSLog(@"%@");
 }
 
 - (void)removeLectureView
